@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -7,114 +6,162 @@
     <title>Portfolio | Tatsuki</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <header class="hero">
+        <nav class="nav">
+            <a class="logo" href="#">Tatsuki</a>
+            <ul>
+                <li><a href="#about">自己紹介</a></li>
+                <li><a href="#skills">スキル</a></li>
+                <li><a href="#portfolio">制作物</a></li>
+                <li><a href="#experience">経験</a></li>
+                <li><a href="#contact">連絡先</a></li>
+            </ul>
+        </nav>
 
-```
-<header>
-    <h1>Tatsuki Portfolio</h1>
-    <p>挑戦を楽しみ、ITで価値を生み出す。</p>
+        <div class="hero-content">
+            <p class="label">IT Student / Fitness Trainer</p>
+            <h1>Tatsuki Portfolio</h1>
+            <p class="lead">
+                挑戦を楽しみ、ITで価値を生み出す。将来はITとfitnessを掛け合わせた事業で、
+                fitness人口の拡大に貢献することを目指しています。
+            </p>
+            <div class="hero-actions">
+                <a class="button primary" href="#portfolio">制作物を見る</a>
+                <a class="button secondary" href="#contact">連絡する</a>
+            </div>
+        </div>
+    </header>
 
-    <nav>
-        <ul>
-            <li><a href="#about">自己紹介</a></li>
-            <li><a href="#skills">スキル</a></li>
-            <li><a href="#portfolio">制作物</a></li>
-            <li><a href="#experience">学生時代に力を入れたこと</a></li>
-            <li><a href="#qualification">資格</a></li>
-            <li><a href="#contact">お問い合わせ</a></li>
-        </ul>
-    </nav>
-</header>
+    <main>
+        <section id="about" class="section two-column">
+            <div>
+                <p class="label">About</p>
+                <h2>自己紹介</h2>
+            </div>
+            <div class="content">
+                <p>
+                    IT業界を志望している専門学生です。学業でWeb制作やPython、ネットワークを学びながら、
+                    学外ではトレーナーとして活動しています。
+                </p>
+                <p>
+                    IT技術が社会に大きな影響を与えていることに魅力を感じ、
+                    人の行動や健康を支えるサービスづくりに関わりたいと考えています。
+                </p>
+            </div>
+        </section>
 
-<main>
+        <section id="skills" class="section">
+            <p class="label">Skills</p>
+            <h2>スキル</h2>
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <span>HTML / CSS</span>
+                    <strong>★★☆☆☆</strong>
+                </div>
+                <div class="skill-card">
+                    <span>JavaScript</span>
+                    <strong>★★☆☆☆</strong>
+                </div>
+                <div class="skill-card">
+                    <span>Python</span>
+                    <strong>★★★☆☆</strong>
+                </div>
+                <div class="skill-card">
+                    <span>Git / GitHub</span>
+                    <strong>★☆☆☆☆</strong>
+                </div>
+                <div class="skill-card">
+                    <span>基本情報技術者試験</span>
+                    <strong>取得済み</strong>
+                </div>
+                <div class="skill-card">
+                    <span>MOS Excel,Word</span>
+                    <strong>取得済み</strong>
+                </div>
+                <div class="skill-card">
+                    <span>J検 2級</span>
+                    <strong>取得済み</strong>
+                </div>
+                <div class="skill-card">
+                    <span>J検（SE,PG認定）</span>
+                    <strong>取得済み</strong>
+                </div>
+                <div class="skill-card">
+                    <span>応用情報技術者試験</span>
+                    <strong>学習中</strong>
+                </div>
+                <div class="skill-card">
+                    <span>CCNA</span>
+                    <strong>学習中</strong>
+                </div>
 
-    <section id="about">
-        <h2>👤 自己紹介</h2>
+            </div>
+        </section>
 
-        <p>
-            IT業界を志望している専門学生です。
-            将来のなりたい姿として「IT×fitnessで事業を起こしfitness人口に寄与する」を掲げています。
-            その中で現在は、学業とは別でトレーナーとして活動しています。        </p>
+        <section id="portfolio" class="section">
+            <p class="label">Works</p>
+            <h2>制作物</h2>
+            <div class="work-grid">
+                <article class="work-card">
+                    <p class="work-tag">Web Site</p>
+                    <h3>coming soon...</h3>
+                    <p>coming soon...</p>
+                </article>
+                <article class="work-card">
+                    <p class="work-tag">Python</p>
+                    <h3>coming soon...</h3>
+                    <p>coming soon...</p>
+                </article>
+                <article class="work-card">
+                    <p class="work-tag">Idea</p>
+                    <h3>coming soon...</h3>
+                    <p>coming soon...</p>
+                </article>
+            </div>
+        </section>
 
-        <p>
-            IT業界を志望する理由は、IT技術の進化が社会に大きな影響を与えていることに魅力を感じているからです。
-        </p>
-    </section>
+        <section id="experience" class="section two-column">
+            <div>
+                <p class="label">Experience</p>
+                <h2>学生時代に力を入れたこと</h2>
+            </div>
+            <div class="content highlight-box">
+                <p>
+                    私が学生時代力を入れたことは、昨年出場したボディコンテストです。
+                    6か月間で76kgから60kgまで減量する計画を立て、マッスルゲートの新人の部で優勝、一般の部で4位入賞しました。
+                </p>
+                <p>
+                    この経験から、目標設定力・継続力・課題解決力を身につけました。
+                    現在の学習や制作活動でも、目標から逆算して行動する姿勢を大切にしています。
+                    ※詳しくはクリック
+                </p>
+            </div>
+        </section>
 
-    <section id="skills">
-        <h2>💻 スキル</h2>
+        <section id="qualification" class="section">
+            <p class="label">Qualification</p>
+            <h2>資格</h2>
+            <ul class="qualification-list">
+                <li>普通自動車第一種運転免許</li>
+                <li>基本情報技術者試験</li>
+                <li>MOS Excel,Word</li>
+                <li>J検 2級</li>
+                <li>J検（SE,PG認定）</li>
+            </ul>
+        </section>
 
-        <ul>
-            <li>HTML / CSS ★★☆☆☆</li>
-            <li>JavaScript ★★☆☆☆</li>
-            <li>Python ★★★☆☆</li>
-            <li>CCNA 学習中</li>
-            <li>Git / GitHub ★☆☆☆☆</li>
-        </ul>
-    </section>
+        <section id="contact" class="section contact">
+            <p class="label">Contact</p>
+            <h2>お問い合わせ</h2>
+            <p>ポートフォリオをご覧いただきありがとうございます。</p>
+            <a class="mail-link" href="mailto:g024c1045@g.neec.ac.jp">g024c1045@g.neec.ac.jp</a>
+            <p class="github-text">GitHub : GitHubアカウントを掲載</p>
+        </section>
+    </main>
 
-    <section id="portfolio">
-        <h2>🚀 制作物</h2>
-
-        <article>
-            <h3>ジムホームページ</h3>
-            <p>HTML・CSSを用いて制作したWebサイトです。</p>
-        </article>
-
-        <article>
-            <h3>Pythonチャットアプリ</h3>
-            <p>Socket通信を利用したチャットシステムです。</p>
-        </article>
-
-        <article>
-            <h3>Failink</h3>
-            <p>失敗経験を共有し学びに変えるSNS企画です。</p>
-        </article>
-    </section>
-
-    <section id="experience">
-        <h2>📈 学生時代に力を入れたこと</h2>
-
-        <p>
-            ボディコンテスト出場を決意し、
-            「出場するなら優勝する」という目標を設定しました。
-        </p>
-
-        <p>
-            6か月間で76kgから60kgまで減量する計画を立て、
-            日々の食事管理とトレーニングを継続しました。
-        </p>
-
-        <p>
-            この経験から、目標設定力・継続力・課題解決力を身につけました。
-        </p>
-    </section>
-
-    <section id="qualification">
-        <h2>🏅 資格</h2>
-
-        <ul>
-            <li>普通自動車第一種運転免許</li>
-            <li>基本情報技術者試験取得</li>
-            <li>CCNA（取得予定）</li>
-            
-        </ul>
-    </section>
-
-    <section id="contact">
-        <h2>📩 お問い合わせ</h2>
-
-        <p>Email : g024c1045@g.neec.ac.jp</p>
-        <p>GitHub : GitHubアカウントを掲載</p>
-    </section>
-
-</main>
-
-<footer>
-    <p>&copy; 2026 Tatsuki Portfolio</p>
-</footer>
-```
-
+    <footer>
+        <p>&copy; 2026 Tatsuki Portfolio</p>
+    </footer>
 </body>
 </html>
