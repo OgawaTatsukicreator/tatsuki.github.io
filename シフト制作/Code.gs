@@ -6,25 +6,25 @@ const DEFAULT_START = "11:00";
 const DEFAULT_END = "20:00";
 
 const APP_STORES = [
-  { label: "大山", value: "大山" },
-  { label: "八王子", value: "八王" },
-  { label: "成増", value: "成増" },
-  { label: "板橋", value: "板橋" },
-  { label: "赤塚", value: "赤塚" },
-  { label: "池袋", value: "池袋" },
-  { label: "葛西", value: "葛西" },
-  { label: "西八王子", value: "西八" },
-  { label: "八王子みなみ野", value: "みなみ" },
+  { label: "A店", value: "A店" },
+  { label: "B店", value: "B店" },
+  { label: "C店", value: "C店" },
+  { label: "D店", value: "D店" },
+  { label: "E店", value: "E店" },
+  { label: "F店", value: "F店" },
+  { label: "G店", value: "G店" },
+  { label: "H店", value: "H店" },
+  { label: "I店", value: "I店" },
 ];
 const STORES = APP_STORES.map((store) => store.value);
 
 const STAFF_GROUPS = [
-  { role: "エリマネ", names: ["笠原丈", "比嘉里奈"], color: "#93c47d" },
-  { role: "店長", names: ["須藤友樹", "福岡渓吾", "生江健仁", "松田渉", "加藤慎也", "中澤可林"], color: "#c9daf8" },
-  { role: "正社トレーナー", names: ["西久保豪海"], color: "#d9ead3" },
-  { role: "バイトトレーナー", names: ["加藤はるか", "堤翔", "内田寛人", "熊谷碧", "室山綾", "坂田淳秦", "大川晄人", "小川樹"], color: "#f9cb9c" },
-  { role: "研修中バイト", names: ["橋本剛道", "穂積駿介", "石渡章太郎", "田中玲音", "森脇大生", "濱本哲也", "太田諒"], color: "#fce5cd" },
-  { role: "アルバイト", names: ["和田利旺", "安田耕生", "高井颯太", "迎春輝", "奥寺湊", "新井サブリナ", "松田真之介"], color: "#ead1dc" },
+  { role: "エリマネ", names: ["A", "B"], color: "#93c47d" },
+  { role: "店長", names: ["C", "D", "E", "F", "G", "H"], color: "#c9daf8" },
+  { role: "正社トレーナー", names: ["I"], color: "#d9ead3" },
+  { role: "バイトトレーナー", names: ["J"], color: "#f9cb9c" },
+  { role: "研修中バイト", names: ["K"], color: "#fce5cd" },
+  { role: "アルバイト", names: ["L"], color: "#ead1dc" },
 ];
 
 const SUBMISSION_HEADERS = [
