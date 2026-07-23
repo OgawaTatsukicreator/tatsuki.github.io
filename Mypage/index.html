@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">本文へ移動</a>
     <header class="hero">
-        <nav class="nav">
+        <nav class="nav" aria-label="メインナビゲーション">
             <a class="logo" href="#">Tatsuki</a>
             <ul>
                 <li><a href="#about">自己紹介</a></li>
@@ -33,7 +34,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <section id="about" class="section two-column">
             <div>
                 <p class="label">About</p>
@@ -125,18 +126,28 @@
             <div>
                 <p class="label">Experience</p>
                 <h2>学生時代に力を入れたこと</h2>
-            </div>
-            <div class="content highlight-box">
-                <p>
-                    私が学生時代力を入れたことは、昨年出場したボディコンテストです。
-                    6か月間で76kgから60kgまで減量する計画を立て、マッスルゲートの新人の部で優勝、一般の部で4位入賞しました。
-                </p>
-                <p>
-                    この経験から、目標設定力・継続力・課題解決力を身につけました。
-                    現在の学習や制作活動でも、目標から逆算して行動する姿勢を大切にしています。
-                    ※詳しくはクリック
+                <p class="section-intro">
+                    詳しく見たいテーマを選択してください。
                 </p>
             </div>
+            <nav class="experience-menu" aria-label="学生時代に力を入れたこと">
+                <a class="experience-option body-contest-option" href="body-contest.html">
+                    <span class="experience-option-label">Body contest</span>
+                    <strong>ボディコンテスト</strong>
+                    <span class="experience-option-action">
+                        詳しく見る
+                        <span aria-hidden="true">→</span>
+                    </span>
+                </a>
+                <a class="experience-option business-option" href="business-model.html">
+                    <span class="experience-option-label">Business model</span>
+                    <strong>ビジネスモデル</strong>
+                    <span class="experience-option-action">
+                        詳しく見る
+                        <span aria-hidden="true">→</span>
+                    </span>
+                </a>
+            </nav>
         </section>
 
         <section id="qualification" class="section">
