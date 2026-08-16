@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="筋トレ記録と2Dキャラクター育成を組み合わせたWebアプリ『マソ君の日常』を紹介します。">
+    <title>育成型筋トレ日記 | Tatsuki Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="detail-page project-page project-page-training">
+    <a class="skip-link" href="#project-content">本文へ移動</a>
+
+    <header class="project-header">
+        <div class="project-header-inner">
+            <a class="back-link" href="index.html#portfolio">
+                <span aria-hidden="true">←</span>
+                制作物へ戻る
+            </a>
+            <a class="project-brand" href="index.html">Tatsuki Portfolio</a>
+        </div>
+    </header>
+
+    <main id="project-content" class="project-main">
+        <section class="project-hero" aria-labelledby="project-title">
+            <div class="project-hero-copy">
+                <p class="label">Works / Web Application</p>
+                <h1 id="project-title">マソ君の<br>日常</h1>
+                <p class="project-subtitle">理想の自分育成型・筋トレ日記</p>
+                <p class="project-lead">
+                    筋トレの記録を、数字の入力だけで終わらせない。
+                    自分の努力と2Dキャラクターの成長が重なるWebアプリです。
+                </p>
+            </div>
+            <dl class="project-impact" aria-label="プロジェクトの主な特徴">
+                <div>
+                    <dt>主要画面</dt>
+                    <dd>4<small>画面</small></dd>
+                </div>
+                <div>
+                    <dt>キャラクター</dt>
+                    <dd>50<small>段階</small></dd>
+                </div>
+                <div>
+                    <dt>単体テスト</dt>
+                    <dd>18<small>件</small></dd>
+                </div>
+            </dl>
+        </section>
+
+        <div class="project-layout">
+            <aside class="project-toc">
+                <nav aria-label="ページ内メニュー">
+                    <p class="project-toc-title">Agenda</p>
+                    <ol>
+                        <li><a href="#overview"><span>01</span>アプリケーションの概要</a></li>
+                        <li><a href="#background"><span>02</span>創った背景</a></li>
+                        <li><a href="#stack"><span>03</span>技術スタック</a></li>
+                        <li><a href="#reason"><span>04</span>技術選定の理由</a></li>
+                        <li><a href="#ideas"><span>05</span>工夫した点</a></li>
+                        <li><a href="#improvements"><span>06</span>現時点の改善点</a></li>
+                        <li><a href="#preview"><span>07</span>公開画像・URL</a></li>
+                    </ol>
+                </nav>
+            </aside>
+
+            <article class="project-content">
+                <section id="overview" class="project-section">
+                    <p class="project-section-number">01</p>
+                    <h2>アプリケーションの概要</h2>
+                    <p>
+                        「マソ君の日常」は、筋トレ記録と2Dキャラクター育成を組み合わせたWebアプリです。重量・回数・セット数からトータルボリュームを自動計算し、成果を育成ポイントやアイテムを通じて「マソ君」の成長へ反映します。
+                    </p>
+                    <p>
+                        ホーム、記録カレンダー、トレーニング入力、履歴分析の画面を用意しています。現在の記録データはブラウザ内に保存しており、Supabaseによる認証とデータベースの下地まで作成済みです。
+                    </p>
+                    <div class="project-note">
+                        <span class="project-note-label">現在地</span>
+                        <p>主要機能はローカル環境で動作。クラウド保存とWeb公開を次の段階として進めています。</p>
+                    </div>
+                </section>
+
+                <section id="background" class="project-section">
+                    <p class="project-section-number">02</p>
+                    <h2>創った背景</h2>
+                    <p>
+                        一般的な筋トレ記録アプリは数値管理が中心で、入力そのものが作業になりがちです。特に記録習慣のない人は、重量や回数だけでは成果を実感しにくく、継続する理由を見失いやすいと考えました。
+                    </p>
+                    <p>
+                        そこで、育成ゲームが持つ成長と報酬の楽しさを筋トレ記録へ取り入れました。自分がトレーニングを続けるほどマソ君も成長する仕組みにし、記録を義務ではなく、次の変化が楽しみになる体験へ変えることを目指しています。
+                    </p>
+                    <div class="before-after" aria-label="アプリの考え方">
+                        <div>
+                            <span>Record</span>
+                            <strong>重量・回数・セット数</strong>
+                            <p>日々のトレーニングを記録</p>
+                        </div>
+                        <div>
+                            <span>Reward</span>
+                            <strong>ポイント・アイテム・成長</strong>
+                            <p>努力が目に見える変化になる</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="stack" class="project-section">
+                    <p class="project-section-number">03</p>
+                    <h2>技術スタック</h2>
+                    <div class="tech-stack-grid">
+                        <div class="tech-item">
+                            <span>Frontend</span>
+                            <h3>Next.js 16 / React 19</h3>
+                            <p>画面表示、ルーティング、アプリ全体の構成</p>
+                        </div>
+                        <div class="tech-item">
+                            <span>Language</span>
+                            <h3>TypeScript</h3>
+                            <p>記録や育成状態を型付きで安全に管理</p>
+                        </div>
+                        <div class="tech-item">
+                            <span>UI</span>
+                            <h3>Tailwind CSS 4</h3>
+                            <p>スマートフォン中心の画面と操作部品</p>
+                        </div>
+                        <div class="tech-item">
+                            <span>Backend</span>
+                            <h3>Supabase</h3>
+                            <p>Auth、PostgreSQL、RLSによるユーザーデータ分離</p>
+                        </div>
+                        <div class="tech-item">
+                            <span>Validation</span>
+                            <h3>Zod</h3>
+                            <p>重量・回数・セット数などの入力検証</p>
+                        </div>
+                        <div class="tech-item">
+                            <span>Test</span>
+                            <h3>Vitest</h3>
+                            <p>計算、換算、育成、日付処理の単体テスト</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="reason" class="project-section">
+                    <p class="project-section-number">04</p>
+                    <h2>技術選定の理由</h2>
+                    <div class="reason-list">
+                        <div>
+                            <h3>複数画面と状態を型付きで扱う</h3>
+                            <p>ホーム、カレンダー、入力、分析を1つのWebアプリとして構築し、記録と育成状態の食い違いを減らすためにNext.js、React、TypeScriptを選びました。</p>
+                        </div>
+                        <div>
+                            <h3>認証とデータ分離を一体で設計する</h3>
+                            <p>Supabaseは認証とPostgreSQLをまとめて扱えます。RLSを使い、利用者が自分の記録だけを扱える構成を目指しています。</p>
+                        </div>
+                        <div>
+                            <h3>バックエンド未接続でも操作を検証する</h3>
+                            <p>開発中はブラウザ内へ保存し、Supabaseの接続情報がなくても主要な操作を試せるようにしました。</p>
+                        </div>
+                        <div>
+                            <h3>計算の正しさを画面と切り離して確かめる</h3>
+                            <p>Zodで入力値を検証し、Vitestでボリューム計算や単位換算、育成処理を確認しています。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="ideas" class="project-section">
+                    <p class="project-section-number">05</p>
+                    <h2>工夫した点</h2>
+                    <div class="feature-list">
+                        <article>
+                            <span>01</span>
+                            <div>
+                                <h3>筋トレの成果を育成体験へ変換</h3>
+                                <p>トータルボリュームを表示するだけでなく、育成ポイントやアイテムを介してマソ君の成長につなげました。</p>
+                            </div>
+                        </article>
+                        <article>
+                            <span>02</span>
+                            <div>
+                                <h3>スマートフォンで記録しやすい導線</h3>
+                                <p>画面下部からホーム、記録、分析へ移動できます。入力中はトータルボリュームをその場で確認できます。</p>
+                            </div>
+                        </article>
+                        <article>
+                            <span>03</span>
+                            <div>
+                                <h3>入力ミスと二重保存への対策</h3>
+                                <p>未来日の記録、入力値の上限、メモの文字数を検証。リクエストIDを使い、同じ記録の二重保存も防ぎます。</p>
+                            </div>
+                        </article>
+                        <article>
+                            <span>04</span>
+                            <div>
+                                <h3>計算処理を画面から分離</h3>
+                                <p>ボリューム、kg・lb換算、育成ポイント、経験値、日付処理を分け、単体で検証できる構成にしました。</p>
+                            </div>
+                        </article>
+                        <article>
+                            <span>05</span>
+                            <div>
+                                <h3>50段階の変化を視覚化</h3>
+                                <p>レベルに応じてキャラクター画像を切り替え、呼吸、まばたき、レベルアップ時の動きをCSSで加えています。</p>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="improvements" class="project-section">
+                    <p class="project-section-number">06</p>
+                    <h2>現時点の改善点</h2>
+                    <ul class="improvement-list">
+                        <li><span>01</span><p>トレーニング記録、設定、育成状態をSupabaseへ保存する処理を接続する。</p></li>
+                        <li><span>02</span><p>ブラウザ内の既存データを、ログイン後にクラウドへ移行できるようにする。</p></li>
+                        <li><span>03</span><p>複数ユーザーを使い、RLSによるデータ分離を結合テストで確認する。</p></li>
+                        <li><span>04</span><p>記録の編集・削除と、それに伴う育成ポイントの差分調整を実装する。</p></li>
+                        <li><span>05</span><p>自重種目と有酸素運動の計算、週別・月別の分析を追加する。</p></li>
+                        <li><span>06</span><p>E2Eテストと性能計測を行い、Vercelで公開する。</p></li>
+                    </ul>
+                </section>
+
+                <section id="preview" class="project-section project-preview-section">
+                    <p class="project-section-number">07</p>
+                    <h2>公開画像・URL</h2>
+                    <p>現在はローカル環境で開発・検証中です。Web公開後、実際の操作画面とURLを掲載します。</p>
+                    <figure class="project-preview-placeholder">
+                        <div class="preview-window" aria-hidden="true">
+                            <span></span><span></span><span></span>
+                            <div class="preview-window-content">Image</div>
+                        </div>
+                        <figcaption>
+                            <strong>公開画面を準備中</strong>
+                            <span>画像URL：未設定</span>
+                        </figcaption>
+                    </figure>
+                    <span class="project-link-disabled" aria-disabled="true">Webアプリを開く（準備中）</span>
+                </section>
+            </article>
+        </div>
+
+        <nav class="project-next project-next-back" aria-label="他の制作物">
+            <span>Previous project</span>
+            <a href="work-shift-system.html">
+                <span aria-hidden="true">←</span>
+                シフト提出システム
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tatsuki Portfolio</p>
+    </footer>
+</body>
+</html>

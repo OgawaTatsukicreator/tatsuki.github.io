@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Google Apps Scriptで制作したシフト提出システムの概要、背景、技術選定、工夫した点を紹介します。">
+    <title>シフト提出システム | Tatsuki Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="detail-page project-page project-page-shift">
+    <a class="skip-link" href="#project-content">本文へ移動</a>
+
+    <header class="project-header">
+        <div class="project-header-inner">
+            <a class="back-link" href="index.html#portfolio">
+                <span aria-hidden="true">←</span>
+                制作物へ戻る
+            </a>
+            <a class="project-brand" href="index.html">Tatsuki Portfolio</a>
+        </div>
+    </header>
+
+    <main id="project-content" class="project-main">
+        <section class="project-hero" aria-labelledby="project-title">
+            <div class="project-hero-copy">
+                <p class="label">Works / Web System</p>
+                <h1 id="project-title">シフト提出<br>システム</h1>
+                <p class="project-lead">
+                    約30名が使うシフト提出を、スマートフォンから迷わず完了できる仕組みへ。
+                    現場に残る運用まで考えて設計したWebアプリです。
+                </p>
+            </div>
+            <dl class="project-impact" aria-label="プロジェクトの主な成果">
+                <div>
+                    <dt>利用対象</dt>
+                    <dd>約30<small>名</small></dd>
+                </div>
+                <div>
+                    <dt>1回の入力時間</dt>
+                    <dd>2<small>分</small> <span aria-hidden="true">→</span> 30<small>秒</small></dd>
+                </div>
+                <div>
+                    <dt>データ構成</dt>
+                    <dd>4<small>ファイル</small></dd>
+                </div>
+            </dl>
+        </section>
+
+        <div class="project-layout">
+            <aside class="project-toc">
+                <nav aria-label="ページ内メニュー">
+                    <p class="project-toc-title">Agenda</p>
+                    <ol>
+                        <li><a href="#overview"><span>01</span>アプリケーションの概要</a></li>
+                        <li><a href="#background"><span>02</span>創った背景</a></li>
+                        <li><a href="#stack"><span>03</span>技術スタック</a></li>
+                        <li><a href="#reason"><span>04</span>技術選定の理由</a></li>
+                        <li><a href="#ideas"><span>05</span>工夫した点</a></li>
+                        <li><a href="#improvements"><span>06</span>現時点の改善点</a></li>
+                        <li><a href="#preview"><span>07</span>公開画像・URL</a></li>
+                    </ol>
+                </nav>
+            </aside>
+
+            <article class="project-content">
+                <section id="overview" class="project-section">
+                    <p class="project-section-number">01</p>
+                    <h2>アプリケーションの概要</h2>
+                    <p>
+                        従業員がスマートフォンから1か月分のシフト希望を提出し、自分の提出内容やPT申請履歴を確認できるWebアプリです。従業員IDによるログイン、初回パスワード登録、下書き保存、希望の再提出にも対応しています。
+                    </p>
+                    <p>
+                        店長やエリア管理者は、使い慣れたGoogleスプレッドシート上で調整と確定作業を行います。従業員の入力画面だけを使いやすくしながら、管理者側の運用を大きく変えない構成にしました。
+                    </p>
+                    <div class="project-note">
+                        <span class="project-note-label">担当範囲</span>
+                        <p>課題整理、要件定義、画面設計、データ設計、実装、動作確認</p>
+                    </div>
+                </section>
+
+                <section id="background" class="project-section">
+                    <p class="project-section-number">02</p>
+                    <h2>創った背景</h2>
+                    <p>
+                        アルバイト先では、約30名の従業員が1つのGoogleスプレッドシートへ直接シフト希望を入力していました。スマートフォンでは表を操作しにくく、他の従業員の入力欄を誤って触ることもありました。
+                    </p>
+                    <p>
+                        月別・店舗別のシートが増えて必要な情報が埋もれることも課題でした。そこで、従業員は自分専用の画面から入力し、管理者は既存のスプレッドシートを使い続けられる仕組みを作りました。入力時間は1人あたり約2分から約30秒まで短縮しました。
+                    </p>
+                    <div class="before-after" aria-label="改善前と改善後">
+                        <div>
+                            <span>Before</span>
+                            <strong>全員が同じ表へ直接入力</strong>
+                            <p>スマホ操作と誤入力に課題</p>
+                        </div>
+                        <div>
+                            <span>After</span>
+                            <strong>個人専用のWeb画面から送信</strong>
+                            <p>短時間で迷わず提出</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="stack" class="project-section">
+                    <p class="project-section-number">03</p>
+                    <h2>技術スタック</h2>
+                    <div class="tech-stack-grid">
+                        <div class="tech-item">
+                            <span>Backend</span>
+                            <h3>Google Apps Script</h3>
+                            <p>認証、入力検証、保存、管理用シートへの反映</p>
+                        </div>
+                        <div class="tech-item">
+                            <span>Data</span>
+                            <h3>Google Sheets</h3>
+                            <p>マスタ、希望提出、PT申請、確定シフト、変更履歴</p>
+                        </div>
+                        <div class="tech-item">
+                            <span>Frontend</span>
+                            <h3>HTML / CSS / JavaScript</h3>
+                            <p>スマートフォン向け入力画面と操作処理</p>
+                        </div>
+                        <div class="tech-item">
+                            <span>Bridge</span>
+                            <h3>google.script.run</h3>
+                            <p>画面からApps Scriptの処理を呼び出す連携</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="reason" class="project-section">
+                    <p class="project-section-number">04</p>
+                    <h2>技術選定の理由</h2>
+                    <div class="reason-list">
+                        <div>
+                            <h3>今ある業務へ無理なく導入する</h3>
+                            <p>もともとGoogleスプレッドシートを使っていたため、新しい管理サービスへ移行せず導入できるGoogle Apps Scriptを選びました。</p>
+                        </div>
+                        <div>
+                            <h3>引き継ぎ後もコードを書かずに管理する</h3>
+                            <p>店舗や従業員の追加はマスタ用シートから行えます。プログラミング知識のない担当者でも日常運用を続けられることを優先しました。</p>
+                        </div>
+                        <div>
+                            <h3>データの役割を分ける</h3>
+                            <p>データを1か所へ集中させず、全体確認・DB管理・エリア確認・提出ログの4ファイルへ分割しました。</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="ideas" class="project-section">
+                    <p class="project-section-number">05</p>
+                    <h2>工夫した点</h2>
+                    <div class="feature-list">
+                        <article>
+                            <span>01</span>
+                            <div>
+                                <h3>スマホで迷わないカード型入力</h3>
+                                <p>1か月分の希望を日付ごとのカードで表示。ログイン後は本人の名前に固定し、他人の名義で提出するミスを防ぎました。</p>
+                            </div>
+                        </article>
+                        <article>
+                            <span>02</span>
+                            <div>
+                                <h3>画面とサーバーの二重検証</h3>
+                                <p>開始・終了時刻などを画面側とApps Script側の両方で確認します。提出や入力クリアの前には確認画面を挟みます。</p>
+                            </div>
+                        </article>
+                        <article>
+                            <span>03</span>
+                            <div>
+                                <h3>運用担当者が保守できるマスタ設計</h3>
+                                <p>エリア、店舗、従業員、所属先をスプレッドシートで管理し、人員の増減をコード変更なしで反映できます。</p>
+                            </div>
+                        </article>
+                        <article>
+                            <span>04</span>
+                            <div>
+                                <h3>認証情報を平文で残さない</h3>
+                                <p>パスワードは従業員ごとのソルトを使ったハッシュで保存。連続失敗時の一時停止とセッション期限も設けました。</p>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="improvements" class="project-section">
+                    <p class="project-section-number">06</p>
+                    <h2>現時点の改善点</h2>
+                    <ul class="improvement-list">
+                        <li><span>01</span><p>従業員向け画面から確定シフトを確認できる機能を追加する。</p></li>
+                        <li><span>02</span><p>通常シフトの受付状態を、再公開せず管理画面から切り替えられるようにする。</p></li>
+                        <li><span>03</span><p>ローカルの修正とApps Script側の反映を自動化し、更新漏れを防ぐ。</p></li>
+                        <li><span>04</span><p>実運用後に管理者の集計時間と入力ミスを測り、改善効果を検証する。</p></li>
+                    </ul>
+                </section>
+
+                <section id="preview" class="project-section project-preview-section">
+                    <p class="project-section-number">07</p>
+                    <h2>公開画像・URL</h2>
+                    <p>実データをダミー情報へ置き換えたうえで、公開後の画面とURLを掲載します。</p>
+                    <figure class="project-preview-placeholder">
+                        <div class="preview-window" aria-hidden="true">
+                            <span></span><span></span><span></span>
+                            <div class="preview-window-content">Image</div>
+                        </div>
+                        <figcaption>
+                            <strong>公開画面を準備中</strong>
+                            <span>画像URL：未設定</span>
+                        </figcaption>
+                    </figure>
+                    <span class="project-link-disabled" aria-disabled="true">Webアプリを開く（準備中）</span>
+                </section>
+            </article>
+        </div>
+
+        <nav class="project-next" aria-label="他の制作物">
+            <span>Next project</span>
+            <a href="work-training-diary.html">
+                育成型筋トレ日記
+                <span aria-hidden="true">→</span>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tatsuki Portfolio</p>
+    </footer>
+</body>
+</html>

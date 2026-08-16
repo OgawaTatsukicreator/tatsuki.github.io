@@ -5,8 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Tatsuki</title>
     <link rel="stylesheet" href="style.css">
+    <script>document.documentElement.classList.add('motion-ready');</script>
 </head>
 <body>
+    <div class="page-intro" aria-hidden="true">
+        <div class="page-intro-wordmark">
+            <span>TATSUKI</span>
+            <strong>PORTFOLIO</strong>
+            <i></i>
+        </div>
+    </div>
+
     <a class="skip-link" href="#main-content">本文へ移動</a>
     <header class="hero">
         <nav class="nav" aria-label="メインナビゲーション">
@@ -23,9 +32,9 @@
         <div class="hero-content">
             <p class="label">IT Student / Fitness Trainer</p>
             <h1>Tatsuki Portfolio</h1>
-            <p class="lead">
-                挑戦を楽しみ、ITで価値を生み出す。将来はITとfitnessを掛け合わせた事業で、
-                fitness人口の拡大に貢献することを目指しています。
+            <p class="lead typewriter" aria-label="挑戦を楽しみ、ITで価値を生み出す。将来はITとfitnessを掛け合わせた事業で、fitness人口の拡大に貢献することを目指しています。">
+                <span class="sr-only">挑戦を楽しみ、ITで価値を生み出す。将来はITとfitnessを掛け合わせた事業で、fitness人口の拡大に貢献することを目指しています。</span>
+                <span class="typewriter-visual" aria-hidden="true">挑戦を楽しみ、ITで価値を生み出す。将来はITとfitnessを掛け合わせた事業で、fitness人口の拡大に貢献することを目指しています。</span>
             </p>
             <div class="hero-actions">
                 <a class="button primary" href="#portfolio">制作物を見る</a>
@@ -58,11 +67,15 @@
             <div class="skill-grid">
                 <div class="skill-card">
                     <span>HTML / CSS</span>
+                    <strong>★★★☆☆</strong>
+                </div>
+                <div class="skill-card">
+                    <span>TypeScript</span>
                     <strong>★★☆☆☆</strong>
                 </div>
                 <div class="skill-card">
                     <span>JavaScript</span>
-                    <strong>★★☆☆☆</strong>
+                    <strong>★★★☆☆</strong>
                 </div>
                 <div class="skill-card">
                     <span>Python</span>
@@ -70,7 +83,7 @@
                 </div>
                 <div class="skill-card">
                     <span>Git / GitHub</span>
-                    <strong>★☆☆☆☆</strong>
+                    <strong>★★☆☆☆</strong>
                 </div>
                 <div class="skill-card">
                     <span>基本情報技術者試験</span>
@@ -104,21 +117,24 @@
             <p class="label">Works</p>
             <h2>制作物</h2>
             <div class="work-grid">
-                <article class="work-card">
-                    <p class="work-tag">Web Site</p>
+                <a class="work-card" href="work-shift-system.html">
+                    <p class="work-tag">Web System</p>
+                    <h3>シフト提出システム</h3>
+                    <p>バイト先のシフト提出用システムをGASを活用して制作しました。</p>
+                    <span class="work-card-action">詳しく見る <span aria-hidden="true">→</span></span>
+                </a>
+                <a class="work-card" href="work-training-diary.html">
+                    <p class="work-tag">Web application</p>
+                    <h3>育成型筋トレ日記</h3>
+                    <p>従来にはない筋トレ日記×育成ゲームの融合アプリケーションです。</p>
+                    <span class="work-card-action">詳しく見る <span aria-hidden="true">→</span></span>
+                </a>
+                <a class="work-card" href="work-coming-soon.html">
+                    <p class="work-tag">next product</p>
                     <h3>coming soon...</h3>
                     <p>coming soon...</p>
-                </article>
-                <article class="work-card">
-                    <p class="work-tag">Python</p>
-                    <h3>coming soon...</h3>
-                    <p>coming soon...</p>
-                </article>
-                <article class="work-card">
-                    <p class="work-tag">Idea</p>
-                    <h3>coming soon...</h3>
-                    <p>coming soon...</p>
-                </article>
+                    <span class="work-card-action">詳しく見る <span aria-hidden="true">→</span></span>
+                </a>
             </div>
         </section>
 
@@ -174,5 +190,6 @@
     <footer>
         <p>&copy; 2026 Tatsuki Portfolio</p>
     </footer>
+    <script src="script.js" defer></script>
 </body>
 </html>
