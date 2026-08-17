@@ -573,6 +573,14 @@ h2 {
     --project-hero-end: #3b2a16;
 }
 
+.experience-page-business {
+    --project-accent: #087a55;
+    --project-accent-dark: #075b41;
+    --project-tint: #ecf8f3;
+    --project-hero-start: #08251b;
+    --project-hero-end: #0d5b43;
+}
+
 .project-page .label {
     color: var(--project-accent);
 }
@@ -667,6 +675,26 @@ h2 {
 
 .experience-page-contest .project-hero .label {
     color: #f9d98e;
+}
+
+.experience-page-business .project-hero .label {
+    color: #9bf3cc;
+}
+
+.experience-page-business .project-hero h1 {
+    font-size: clamp(3.2rem, 7vw, 6.4rem);
+}
+
+.experience-page-business .project-impact dd {
+    font-size: clamp(1.35rem, 2.25vw, 2.05rem);
+}
+
+.experience-page-business .project-impact dd small {
+    display: block;
+    margin: 7px 0 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.72rem;
+    font-weight: 700;
 }
 
 .experience-page-contest .contest-impact-text,
@@ -1105,6 +1133,293 @@ h2 {
     line-height: 1.6;
 }
 
+.business-hypothesis {
+    margin-top: 18px;
+}
+
+.business-flow {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 36px;
+    list-style: none;
+}
+
+.business-flow li {
+    position: relative;
+    min-height: 210px;
+    padding: 25px;
+    border-top: 4px solid var(--project-accent);
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.055);
+}
+
+.business-flow li:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    top: 50%;
+    right: -18px;
+    z-index: 2;
+    color: var(--project-accent);
+    font-size: 1.25rem;
+    font-weight: 800;
+    transform: translateY(-50%);
+}
+
+.business-flow li > span,
+.business-value-grid article > span,
+.business-acquisition-grid article > span,
+.business-pricing-grid article > span {
+    color: var(--project-accent);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.business-flow strong {
+    display: block;
+    margin: 18px 0 9px;
+    font-size: 1rem;
+    line-height: 1.55;
+}
+
+.business-flow p {
+    color: var(--muted);
+    font-size: 0.86rem;
+}
+
+.business-value-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.business-value-grid article {
+    padding: clamp(26px, 5vw, 42px);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--white);
+}
+
+.business-value-grid article:last-child {
+    border-color: color-mix(in srgb, var(--project-accent) 40%, var(--line));
+    background: var(--project-tint);
+}
+
+.business-value-grid h3 {
+    margin: 16px 0 20px;
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+}
+
+.business-value-grid ul {
+    display: grid;
+    gap: 11px;
+    padding-left: 1.1em;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.business-roadmap {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.business-roadmap article {
+    display: flex;
+    min-height: 360px;
+    padding: 27px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--white);
+    flex-direction: column;
+}
+
+.business-roadmap article:nth-child(2) {
+    border-color: color-mix(in srgb, var(--project-accent) 45%, var(--line));
+}
+
+.business-phase-number {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--project-accent-dark);
+    color: var(--white);
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+.business-phase-label {
+    margin-top: 18px;
+    color: var(--project-accent);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.business-roadmap h3 {
+    margin: 10px 0 14px;
+    font-size: 1.06rem;
+}
+
+.business-roadmap article > p:not(.business-phase-label) {
+    color: var(--muted);
+    font-size: 0.88rem;
+}
+
+.business-roadmap article > strong {
+    margin-top: auto;
+    padding-top: 22px;
+    color: var(--project-accent-dark);
+    font-size: 0.92rem;
+}
+
+.business-roadmap article > small {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 0.72rem;
+}
+
+.business-subheading {
+    margin: 54px 0 24px;
+    color: var(--text);
+    font-size: clamp(1.25rem, 2.5vw, 1.7rem);
+}
+
+.business-acquisition-grid,
+.business-pricing-grid {
+    display: grid;
+    gap: 14px;
+}
+
+.business-acquisition-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.business-acquisition-grid article,
+.business-pricing-grid article {
+    padding: 26px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--white);
+}
+
+.business-acquisition-grid strong,
+.business-pricing-grid strong {
+    display: block;
+    margin: 14px 0 8px;
+    color: var(--text);
+    font-size: clamp(1.75rem, 4vw, 2.6rem);
+    line-height: 1.15;
+}
+
+.business-acquisition-grid strong small,
+.business-pricing-grid strong small {
+    margin-left: 3px;
+    font-size: 0.76rem;
+}
+
+.business-acquisition-grid p,
+.business-pricing-grid p {
+    color: var(--muted);
+    font-size: 0.84rem;
+}
+
+.business-followup-copy {
+    max-width: 760px;
+    margin-top: 28px;
+    color: var(--muted);
+    font-size: 0.94rem;
+}
+
+.business-competition-list .is-highlighted {
+    padding-right: 22px;
+    padding-left: 22px;
+    border: 1px solid color-mix(in srgb, var(--project-accent) 42%, var(--line));
+    background: var(--project-tint);
+}
+
+.business-competition-list .is-highlighted h3 {
+    color: var(--project-accent-dark);
+}
+
+.business-difference p {
+    font-size: 1.02rem;
+}
+
+.business-pricing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 36px;
+}
+
+.business-data-growth {
+    margin-top: 18px;
+}
+
+.business-finance-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.business-finance-grid > div {
+    min-height: 150px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--white);
+}
+
+.business-finance-grid > div:nth-child(4),
+.business-finance-grid > div:nth-child(5) {
+    background: var(--project-tint);
+}
+
+.business-finance-grid dt {
+    color: var(--project-accent-dark);
+    font-size: 0.76rem;
+    font-weight: 800;
+}
+
+.business-finance-grid dd {
+    margin-top: 14px;
+    color: var(--text);
+    font-size: clamp(1.45rem, 3.4vw, 2.35rem);
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.business-finance-grid dd small {
+    display: block;
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 0.72rem;
+}
+
+.business-plan-note {
+    margin-top: 30px;
+    padding: 22px 24px;
+    border-left: 4px solid var(--project-accent);
+    background: var(--project-tint);
+}
+
+.business-plan-note strong {
+    color: var(--project-accent-dark);
+    font-size: 0.82rem;
+}
+
+.business-plan-note p {
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 0.86rem;
+}
+
 .project-preview-section {
     padding-bottom: 0;
 }
@@ -1402,6 +1717,27 @@ footer {
     .project-section {
         scroll-margin-top: 16px;
     }
+
+    .business-flow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .business-flow li:not(:last-child)::after {
+        content: none;
+    }
+
+    .business-roadmap,
+    .business-acquisition-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .business-roadmap article {
+        min-height: auto;
+    }
+
+    .business-finance-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 520px) {
@@ -1465,6 +1801,10 @@ footer {
         font-size: clamp(2.8rem, 15vw, 4.4rem);
     }
 
+    .experience-page-business .project-hero h1 {
+        font-size: clamp(2.6rem, 12vw, 3.4rem);
+    }
+
     .project-impact {
         grid-template-columns: 1fr;
     }
@@ -1511,6 +1851,17 @@ footer {
     .before-after,
     .tech-stack-grid {
         grid-template-columns: 1fr;
+    }
+
+    .business-flow,
+    .business-value-grid,
+    .business-pricing-grid,
+    .business-finance-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .business-flow li {
+        min-height: auto;
     }
 
     .contest-result-card dl {

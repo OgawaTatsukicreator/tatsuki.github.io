@@ -3,20 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ビジネスモデル | Tatsuki Portfolio</title>
+    <meta name="description" content="失敗や不満を一次情報として企業へ届け、将来は失敗から学び合うSNSへ展開する事業構想「Feilink」を紹介します。">
+    <title>Feilink 事業構想 | Tatsuki Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="detail-page">
-    <header class="detail-header">
-        <a class="back-link" href="index.html#experience">
-            <span aria-hidden="true">←</span>
-            ポートフォリオへ戻る
-        </a>
+<body class="detail-page project-page experience-page-business">
+    <a class="skip-link" href="#business-content">本文へ移動</a>
+
+    <header class="project-header">
+        <div class="project-header-inner">
+            <a class="back-link" href="index.html#experience">
+                <span aria-hidden="true">←</span>
+                学生時代に力を入れたことへ戻る
+            </a>
+            <a class="project-brand" href="index.html">Tatsuki Portfolio</a>
+        </div>
     </header>
-    <main class="detail-main">
-        <p class="label">Experience / Business model</p>
-        <h1>ビジネスモデル</h1>
-        <div class="detail-placeholder" aria-hidden="true"></div>
+
+    <main id="business-content" class="project-main">
+        <section class="project-hero" aria-labelledby="business-title">
+            <div class="project-hero-copy">
+                <p class="label">Experience / Business Design</p>
+                <h1 id="business-title">失敗を<br>資産に変える。</h1>
+                <p class="project-subtitle">Feilink（フェイリンク）</p>
+                <p class="project-lead">
+                    日常の失敗や不満を投稿するとポイントを受け取れるサービスです。
+                    集まった一次情報を企業へ提供し、将来は失敗から学び合うSNSへ展開します。
+                </p>
+            </div>
+            <dl class="project-impact" aria-label="Feilinkの主な事業計画">
+                <div>
+                    <dt>Phase 1 利用者目標</dt>
+                    <dd>1<small>万人</small></dd>
+                </div>
+                <div>
+                    <dt>36か月目の利用者計画</dt>
+                    <dd>43,540<small>人</small></dd>
+                </div>
+                <div>
+                    <dt>3年間の売上計画</dt>
+                    <dd>約2.34<small>億円・企画時点の試算</small></dd>
+                </div>
+            </dl>
+        </section>
+
+        <div class="project-layout">
+            <aside class="project-toc">
+                <nav aria-label="ページ内メニュー">
+                    <p class="project-toc-title">Agenda</p>
+                    <ol>
+                        <li><a href="#overview"><span>01</span>事業の概要</a></li>
+                        <li><a href="#problem"><span>02</span>解決したい課題</a></li>
+                        <li><a href="#mechanism"><span>03</span>サービスの仕組み</a></li>
+                        <li><a href="#value"><span>04</span>利用者と企業への価値</a></li>
+                        <li><a href="#roadmap"><span>05</span>成長計画と集客</a></li>
+                        <li><a href="#competition"><span>06</span>競合と独自性</a></li>
+                        <li><a href="#finance"><span>07</span>収益モデルと事業計画</a></li>
+                        <li><a href="#role"><span>08</span>担当と検証課題</a></li>
+                    </ol>
+                </nav>
+            </aside>
+
+            <article class="project-content">
+                <section id="overview" class="project-section">
+                    <p class="project-section-number">01</p>
+                    <h2>事業の概要</h2>
+                    <p>
+                        5人のチームで、株式会社フェイリンクを想定した事業案を企画しました。
+                        Feilinkは、生活者の失敗や不満をポイントと引き換えに集め、AIで分類・分析し、企業の商品開発やマーケティングに役立つ情報として提供する構想です。
+                    </p>
+                    <p>
+                        データ収集サービスから始め、段階的にSNS機能を追加します。最終的には、利用者同士が失敗事例と改善方法を共有し、次の挑戦へつなげられる場を目指します。
+                    </p>
+                    <div class="project-note">
+                        <span class="project-note-label">事業コンセプト</span>
+                        <p>失敗を資産に変え、挑戦が当たり前になる社会をつくる。</p>
+                    </div>
+                </section>
+
+                <section id="problem" class="project-section">
+                    <p class="project-section-number">02</p>
+                    <h2>解決したい課題</h2>
+                    <p>
+                        SNSでは成功体験が目立つ一方、その裏にある失敗や試行錯誤は埋もれがちです。
+                        「洗濯物が乾かない」「育児が大変」といった日常の困りごとも、友人との会話や投稿で愚痴として終わることがあります。
+                    </p>
+                    <p>
+                        しかし、その声には、困った原因、発生した状況、望んでいる改善が含まれています。私たちは、消えていた声を企業と他の利用者が活用できる一次情報へ変えることにしました。
+                    </p>
+                    <div class="before-after" aria-label="課題とFeilinkが目指す状態">
+                        <div>
+                            <span>Current</span>
+                            <strong>愚痴や雑談として消える</strong>
+                            <p>失敗の背景や改善要望が整理されず、次の行動に生かされにくい。</p>
+                        </div>
+                        <div>
+                            <span>With Feilink</span>
+                            <strong>一次情報として整理する</strong>
+                            <p>原因、状況、改善要望を蓄積し、商品改善と利用者の学びにつなげる。</p>
+                        </div>
+                    </div>
+                    <div class="project-note business-hypothesis">
+                        <span class="project-note-label">企画の仮説</span>
+                        <p>AIが普及するほど、生活者が実際に困った状況や試したことを含む一次情報の価値が高まる。</p>
+                    </div>
+                </section>
+
+                <section id="mechanism" class="project-section">
+                    <p class="project-section-number">03</p>
+                    <h2>サービスの仕組み</h2>
+                    <p>
+                        利用者の投稿をポイントによって集め、AIで整理し、企業が使えるデータとして販売します。企業が募集するテーマへの回答も対象にする計画です。
+                    </p>
+                    <ol class="business-flow" aria-label="Feilinkのサービスの流れ">
+                        <li>
+                            <span>01</span>
+                            <strong>失敗・不満を投稿</strong>
+                            <p>生活者の実体験と、その背景を集める。</p>
+                        </li>
+                        <li>
+                            <span>02</span>
+                            <strong>ポイントを還元</strong>
+                            <p>投稿や企業テーマへの回答に動機をつくる。</p>
+                        </li>
+                        <li>
+                            <span>03</span>
+                            <strong>AIで整理・分析</strong>
+                            <p>育児、家電、美容、仕事などに分類する。</p>
+                        </li>
+                        <li>
+                            <span>04</span>
+                            <strong>企業へ提供</strong>
+                            <p>商品開発やマーケティングに活用する。</p>
+                        </li>
+                    </ol>
+                    <div class="project-note">
+                        <span class="project-note-label">提供する情報</span>
+                        <p>何が起きたかだけでなく、「なぜ困ったか」「どの状況で起きたか」「どう改善してほしいか」まで整理します。</p>
+                    </div>
+                </section>
+
+                <section id="value" class="project-section">
+                    <p class="project-section-number">04</p>
+                    <h2>利用者と企業への価値</h2>
+                    <div class="business-value-grid">
+                        <article>
+                            <span>For users</span>
+                            <h3>投稿がポイントと学びに変わる</h3>
+                            <ul>
+                                <li>失敗や不満の投稿でポイントを受け取る</li>
+                                <li>似た経験を持つ人の改善方法を知る</li>
+                                <li>一人で抱え込まず、次の挑戦へつなげる</li>
+                            </ul>
+                        </article>
+                        <article>
+                            <span>For business</span>
+                            <h3>生活者の背景まで確認できる</h3>
+                            <ul>
+                                <li>アンケートだけでは見えにくい本音を知る</li>
+                                <li>困りごとの原因と発生状況を把握する</li>
+                                <li>商品開発、改善、マーケティングに活用する</li>
+                            </ul>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="roadmap" class="project-section">
+                    <p class="project-section-number">05</p>
+                    <h2>成長計画と集客</h2>
+                    <div class="business-roadmap" aria-label="3段階の事業展開">
+                        <article>
+                            <span class="business-phase-number">1</span>
+                            <p class="business-phase-label">Phase 1</p>
+                            <h3>ポイ活型データ収集</h3>
+                            <p>投稿をAIで分類し、企業向けの分析レポートとして提供します。</p>
+                            <strong>利用者目標 1万人</strong>
+                        </article>
+                        <article>
+                            <span class="business-phase-number">2</span>
+                            <p class="business-phase-label">Phase 2</p>
+                            <h3>SNS機能を段階実装</h3>
+                            <p>いいね、コメント、フォローを追加し、利用者同士が学び合える場へ移行します。</p>
+                            <strong>長期目標 10万人</strong>
+                            <small>36か月目の計画：43,540人</small>
+                        </article>
+                        <article>
+                            <span class="business-phase-number">3</span>
+                            <p class="business-phase-label">Phase 3</p>
+                            <h3>失敗共有SNSへ展開</h3>
+                            <p>改善方法を共有するSNSとして本格展開し、講演会やイベントも開催します。</p>
+                            <strong>オンラインと対面へ拡大</strong>
+                        </article>
+                    </div>
+
+                    <h3 class="business-subheading">フェーズ1の集客計画</h3>
+                    <div class="business-acquisition-grid">
+                        <article>
+                            <span>Google Ads</span>
+                            <strong>8,470<small>人</small></strong>
+                            <p>想定顧客獲得単価 1,884円<br>月間約605人</p>
+                        </article>
+                        <article>
+                            <span>Build in Public</span>
+                            <strong>1,195<small>人</small></strong>
+                            <p>開発過程を公開し、共感から初期利用者を集める。</p>
+                        </article>
+                        <article>
+                            <span>Referral</span>
+                            <strong>617<small>人</small></strong>
+                            <p>紹介制度を使い、既存利用者から広げる。</p>
+                        </article>
+                    </div>
+                    <div class="project-note">
+                        <span class="project-note-label">14か月の計画</span>
+                        <p>3つの経路を合わせ、10,282人の獲得を見込みました。</p>
+                    </div>
+                    <p class="business-followup-copy">
+                        フェーズ2では、YouTube広告で月650人規模の獲得を見込み、複数分野のマイクロインフルエンサーとの連携も計画しています。
+                    </p>
+                </section>
+
+                <section id="competition" class="project-section">
+                    <p class="project-section-number">06</p>
+                    <h2>競合と独自性</h2>
+                    <p>競合を、SNS、掲示板サイト、不満買取サービスの3種類に分けて比較しました。</p>
+                    <div class="reason-list business-competition-list">
+                        <div>
+                            <h3>既存SNS</h3>
+                            <p>反応の大きい投稿や成功体験が目立ちやすく、失敗から得た学びは埋もれやすい。</p>
+                        </div>
+                        <div>
+                            <h3>掲示板サイト</h3>
+                            <p>投稿が時系列で流れやすく、失敗の原因や改善方法を学びとして整理しにくい。</p>
+                        </div>
+                        <div>
+                            <h3>不満買取サービス</h3>
+                            <p>企業への情報提供に強みがある一方、利用者同士が経験から学び合う場は中心ではない。</p>
+                        </div>
+                        <div class="is-highlighted">
+                            <h3>Feilink</h3>
+                            <p>投稿へのポイント還元、企業向けデータ、利用者同士の学びを、事業の成長に合わせて一つのサービスへ統合する。</p>
+                        </div>
+                    </div>
+                    <div class="project-note business-difference">
+                        <span class="project-note-label">独自性</span>
+                        <p>失敗・不満 × ポイ活 × SNS。データ収集で終わらず、学びと次の挑戦までつなげます。</p>
+                    </div>
+                </section>
+
+                <section id="finance" class="project-section">
+                    <p class="project-section-number">07</p>
+                    <h2>収益モデルと事業計画</h2>
+                    <p>
+                        主な収益源は、企業への回答データと分析レポートの販売です。企業が知りたいテーマに合わせて回答を集め、サンプル数に応じて販売します。
+                    </p>
+                    <div class="business-pricing-grid">
+                        <article>
+                            <span>User reward</span>
+                            <strong>最大50<small>円／1件</small></strong>
+                            <p>投稿者へのポイント還元として試算。</p>
+                        </article>
+                        <article>
+                            <span>Data price</span>
+                            <strong>10<small>万円／100サンプル</small></strong>
+                            <p>200サンプルは20万円、300サンプルは30万円とする計画。</p>
+                        </article>
+                    </div>
+
+                    <div class="before-after business-data-growth" aria-label="利用者数と月間投稿数の成長計画">
+                        <div>
+                            <span>Phase 1</span>
+                            <strong>利用者1万人</strong>
+                            <p>月間投稿数 約4,600件</p>
+                        </div>
+                        <div>
+                            <span>Month 36</span>
+                            <strong>利用者43,540人</strong>
+                            <p>月間投稿数 約19,500件</p>
+                        </div>
+                    </div>
+
+                    <h3 class="business-subheading">3年間の売上・支出計画</h3>
+                    <dl class="business-finance-grid">
+                        <div>
+                            <dt>2026年 売上</dt>
+                            <dd>2,060<small>万円</small></dd>
+                        </div>
+                        <div>
+                            <dt>2027年 売上</dt>
+                            <dd>8,860<small>万円</small></dd>
+                        </div>
+                        <div>
+                            <dt>2028年 売上</dt>
+                            <dd>1億2,510<small>万円</small></dd>
+                        </div>
+                        <div>
+                            <dt>3年間 累計売上</dt>
+                            <dd>2億3,430<small>万円</small></dd>
+                        </div>
+                        <div>
+                            <dt>3年間 支出合計</dt>
+                            <dd>1億3,269<small>万円</small></dd>
+                        </div>
+                    </dl>
+                    <p>
+                        支出には、広告費、人件費、役員報酬、ポイント還元、家賃、水道光熱費などを含めています。2027年4月から新卒5人を採用する前提です。
+                    </p>
+                    <div class="business-plan-note">
+                        <strong>数値について</strong>
+                        <p>掲載値はすべて企画時点の試算であり、実績ではありません。利用者数、投稿率、販売回数などの前提は、検証結果に合わせて更新する必要があります。</p>
+                    </div>
+                </section>
+
+                <section id="role" class="project-section">
+                    <p class="project-section-number">08</p>
+                    <h2>担当と検証課題</h2>
+                    <p>
+                        事業案は5人のチームで作成しました。発表では、導入と課題提起、Feilinkの強み、全体のまとめを担当しました。
+                    </p>
+                    <div class="project-note">
+                        <span class="project-note-label">担当範囲</span>
+                        <p>導入・課題提起／競合を踏まえた独自性の説明／事業全体のまとめ</p>
+                    </div>
+                    <h3 class="business-subheading">次に検証すべきこと</h3>
+                    <ul class="improvement-list">
+                        <li><span>01</span><p>企業へ販売できる1サンプルの条件と、投稿データの品質基準を決める。</p></li>
+                        <li><span>02</span><p>投稿者の同意取得、匿名化、個人情報の管理方法を具体化する。</p></li>
+                        <li><span>03</span><p>ポイント目的の低品質投稿や不正投稿を検知する仕組みを設ける。</p></li>
+                        <li><span>04</span><p>企業の契約数、購入頻度、AI分析費用を含めて収支計画を再検証する。</p></li>
+                        <li><span>05</span><p>SNS展開時の投稿監視と誹謗中傷への対応方針を定める。</p></li>
+                    </ul>
+                </section>
+            </article>
+        </div>
+
+        <nav class="project-next project-next-back" aria-label="前の経験">
+            <span>Previous experience</span>
+            <a href="body-contest.html">
+                <span aria-hidden="true">←</span>
+                ボディコンテスト
+            </a>
+        </nav>
     </main>
+
+    <footer>
+        <p>&copy; 2026 Tatsuki Portfolio</p>
+    </footer>
 </body>
 </html>
