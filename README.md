@@ -5,19 +5,19 @@ IT業界を志望する専門学生、Tatsukiのポートフォリオサイト�
 サイト本体はHTML、CSS、JavaScriptだけで構成しています。ビルド作業や外部ライブラリのインストールは不要です。
 
 - リポジトリ: [OgawaTatsukicreator/tatsuki.github.io](https://github.com/OgawaTatsukicreator/tatsuki.github.io)
-- エントリーページ: `Mypage/index.html`
+- エントリーページ: `index.html`
 - 公開URL: リポジトリ内にGitHub Pagesの公開先は記録されていません
 
 ## ページ一覧
 
 | ファイル | 内容 | 現在の状態 |
 | --- | --- | --- |
-| `Mypage/index.html` | 自己紹介、スキル、制作物、経験、資格、連絡先 | トップページ |
-| `Mypage/work-shift-system.html` | Google Apps Scriptで作成したシフト提出システム | 画面画像と公開URLは準備中 |
-| `Mypage/work-training-diary.html` | 筋トレ記録と2Dキャラクター育成を組み合わせた「マソ君の日常」 | アプリ本体はローカル開発中 |
-| `Mypage/body-contest.html` | マッスルゲート静岡県大会への挑戦 | 新人の部優勝実績を掲載。一部は追記予定 |
-| `Mypage/business-model.html` | 失敗や不満を企業へ届ける事業案「Feilink」 | 企画時点の試算と検証課題を掲載 |
-| `Mypage/work-coming-soon.html` | 次の制作物用ページ | 内容は準備中 |
+| `index.html` | 自己紹介、スキル、制作物、経験、資格、連絡先 | トップページ |
+| `pages/work-shift-system.html` | Google Apps Scriptで作成したシフト提出システム | 画面画像と公開URLは準備中 |
+| `pages/work-training-diary.html` | 筋トレ記録と2Dキャラクター育成を組み合わせた「マソ君の日常」 | アプリ本体はローカル開発中 |
+| `pages/body-contest.html` | マッスルゲート静岡県大会への挑戦 | 新人の部優勝実績を掲載。一部は追記予定 |
+| `pages/business-model.html` | 失敗や不満を企業へ届ける事業案「Feilink」 | 企画時点の試算と検証課題を掲載 |
+| `pages/work-coming-soon.html` | 次の制作物用ページ | 内容は準備中 |
 
 ## 制作物
 
@@ -62,7 +62,7 @@ IT業界を志望する専門学生、Tatsukiのポートフォリオサイト�
 - Vanilla JavaScript
 - Git、GitHub
 
-`package.json`やビルド設定はありません。トップページの動きは`Mypage/script.js`、全ページの見た目は`Mypage/style.css`で管理しています。
+`package.json`やビルド設定はありません。トップページの動きは`js/script.js`、全ページの見た目は`css/style.css`で管理しています。
 
 ### 画面の動き
 
@@ -82,7 +82,7 @@ IT業界を志望する専門学生、Tatsukiのポートフォリオサイト�
 - 820px以下: 複数列の内容を1列または2列へ変更
 - 520px以下: ボタン、詳細ページ、制作物一覧をスマートフォン向けに変更
 
-トップページの背景画像には`Mypage/back.png`を使用しています。
+トップページの背景画像には`images/back.png`を使用しています。
 
 ## アクセシビリティ
 
@@ -104,41 +104,58 @@ IT業界を志望する専門学生、Tatsukiのポートフォリオサイト�
 tatsuki.github.io/
 ├─ .vscode/
 │  └─ settings.json
-├─ README.md
-└─ Mypage/
-   ├─ index.html
-   ├─ body-contest.html
-   ├─ business-model.html
-   ├─ work-shift-system.html
-   ├─ work-training-diary.html
-   ├─ work-coming-soon.html
-   ├─ style.css
-   ├─ script.js
-   └─ back.png
+├─ css/
+│  └─ style.css
+├─ images/
+│  └─ back.png
+├─ js/
+│  └─ script.js
+├─ pages/
+│  ├─ body-contest.html
+│  ├─ business-model.html
+│  ├─ work-shift-system.html
+│  ├─ work-training-diary.html
+│  └─ work-coming-soon.html
+├─ index.html
+└─ README.md
 ```
+
+`index.html`をルートへ置き、CSS、JavaScript、画像、詳細ページを種類ごとに分けています。このサイトの規模では、場所が見つけやすく、GitHub Pagesでも扱いやすい構成です。`.vscode`はLive Serverの開発用設定で、公開ページからは参照しません。
+
+今後ファイル数が大きく増えた場合は、`css`、`js`、`images`を`assets`配下へまとめる方法もあります。現時点では階層が一段増えるだけなので採用していません。`style.css`も、ページごとの変更が増えてから`base.css`と各ページ用CSSへ分ける方が管理しやすくなります。
+
+この変更により、従来の`/Mypage/`を含むURLは使えなくなります。公開済みのURLやブックマークがある場合は、新しいルートURLへ更新してください。
 
 ## ローカル確認
 
-VS CodeのLive Serverを使う場合は、`Mypage/index.html`を開いてLive Serverを起動します。`.vscode/settings.json`でポート`5501`を指定しています。
+VS CodeのLive Serverを使う場合は、`index.html`を開いてLive Serverを起動します。`.vscode/settings.json`でポート`5501`を指定しています。
 
 Pythonの簡易HTTPサーバーを使う場合は、リポジトリのルートで次を実行します。
 
 ```powershell
-python -m http.server 5501 --directory Mypage
+python -m http.server 5501
 ```
 
 起動後は[http://localhost:5501/](http://localhost:5501/)を開きます。HTML、CSS、JavaScriptを保存してブラウザーを再読み込みすれば変更を確認できます。
 
 ## 更新手順
 
-1. トップページの文章や一覧は`Mypage/index.html`で変更します。
-2. 制作物や経験の詳しい内容は、対応するHTMLファイルで変更します。
-3. 色、余白、配置、スマートフォン表示は`Mypage/style.css`で調整します。
-4. イントロ、タイプライター、スクロール表示は`Mypage/script.js`で変更します。
-5. 新しい詳細ページを追加した場合は、`Mypage/index.html`のリンクと詳細ページ間の前後リンクを更新します。
+1. トップページの文章や一覧は`index.html`で変更します。
+2. 制作物や経験の詳しい内容は、`pages`内の対応するHTMLファイルで変更します。
+3. 色、余白、配置、スマートフォン表示は`css/style.css`で調整します。
+4. イントロ、タイプライター、スクロール表示は`js/script.js`で変更します。
+5. 新しい詳細ページを追加した場合は、`index.html`のリンクと詳細ページ間の前後リンクを更新します。
 6. PC幅、820px以下、520px以下で表示を確認します。
 7. Tabキーだけでリンクを移動できるか確認します。
 8. OSの「アニメーションを減らす」設定を有効にし、内容が欠けないことを確認します。
+
+相対パスは、次の基準で記述します。
+
+- トップページから詳細ページ: `pages/ファイル名.html`
+- 詳細ページからトップページ: `../index.html`
+- トップページからCSS: `css/style.css`
+- 詳細ページからCSS: `../css/style.css`
+- CSSから背景画像: `../images/back.png`
 
 制作物ページには準備中の画像とURLがあります。公開するときは、実データや個人情報をダミー情報へ置き換えてから掲載してください。
 

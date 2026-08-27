@@ -88,7 +88,7 @@ a {
 }
 
 .hero::before {
-    background: url("./back.png") center/cover no-repeat;
+    background: url("../images/back.png") center/cover no-repeat;
     transform: scale(1.08);
     animation: hero-image-in 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
 }
