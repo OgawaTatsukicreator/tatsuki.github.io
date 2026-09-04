@@ -14,7 +14,7 @@
         <div class="project-header-inner">
             <a class="back-link" href="../index.html#portfolio">
                 <span aria-hidden="true">←</span>
-                制作物へ戻る
+                制作物一覧へ戻る
             </a>
             <a class="project-brand" href="../index.html">Tatsuki Portfolio</a>
         </div>
@@ -53,12 +53,12 @@
                     <p class="project-toc-title">Agenda</p>
                     <ol>
                         <li><a href="#overview"><span>01</span>アプリケーションの概要</a></li>
-                        <li><a href="#background"><span>02</span>創った背景</a></li>
-                        <li><a href="#stack"><span>03</span>技術スタック</a></li>
-                        <li><a href="#reason"><span>04</span>技術選定の理由</a></li>
-                        <li><a href="#ideas"><span>05</span>工夫した点</a></li>
-                        <li><a href="#improvements"><span>06</span>現時点の改善点</a></li>
-                        <li><a href="#preview"><span>07</span>公開画像・URL</a></li>
+                        <li><a href="#usecase"><span>02</span>主要ユースケースと設計意図</a></li>
+                        <li><a href="#visuals"><span>03</span>画面と構成</a></li>
+                        <li><a href="#stack"><span>04</span>技術スタック</a></li>
+                        <li><a href="#reason"><span>05</span>技術選定の理由</a></li>
+                        <li><a href="#ideas"><span>06</span>工夫した点</a></li>
+                        <li><a href="#improvements"><span>07</span>現時点の改善点</a></li>
                     </ol>
                 </nav>
             </aside>
@@ -73,37 +73,186 @@
                     <p>
                         ホーム、記録カレンダー、トレーニング入力、履歴分析の画面を用意しています。現在の記録データはブラウザ内に保存しており、Supabaseによる認証とデータベースの下地まで作成済みです。
                     </p>
-                    <div class="project-note">
-                        <span class="project-note-label">現在地</span>
-                        <p>主要機能はローカル環境で動作。クラウド保存とWeb公開を次の段階として進めています。</p>
-                    </div>
-                </section>
-
-                <section id="background" class="project-section">
-                    <p class="project-section-number">02</p>
-                    <h2>創った背景</h2>
+                    <h3 class="project-subsection-title">創った背景</h3>
                     <p>
                         一般的な筋トレ記録アプリは数値管理が中心で、入力そのものが作業になりがちです。特に記録習慣のない人は、重量や回数だけでは成果を実感しにくく、継続する理由を見失いやすいと考えました。
                     </p>
                     <p>
                         そこで、育成ゲームが持つ成長と報酬の楽しさを筋トレ記録へ取り入れました。自分がトレーニングを続けるほどマソ君も成長する仕組みにし、記録を義務ではなく、次の変化が楽しみになる体験へ変えることを目指しています。
                     </p>
-                    <div class="before-after" aria-label="アプリの考え方">
-                        <div>
-                            <span>Record</span>
-                            <strong>重量・回数・セット数</strong>
-                            <p>日々のトレーニングを記録</p>
+                    <div class="project-note">
+                        <span class="project-note-label">現在地</span>
+                        <p>主要機能はローカル環境で動作。クラウド保存とWeb公開を次の段階として進めています。</p>
+                    </div>
+                </section>
+
+                <section id="usecase" class="project-section">
+                    <p class="project-section-number">02</p>
+                    <h2>主要ユースケースと設計意図</h2>
+                    <p>
+                        記録を続けたいのに、数字だけでは手応えを得にくい人を中心に据えました。トレーニング直後の短い時間で入力を終え、その場で成長を受け取れる体験を設計しています。
+                    </p>
+                    <dl class="project-usecase-grid" aria-label="主要ユースケース">
+                        <div class="project-usecase-item">
+                            <dt><span class="project-usecase-label">Who</span>誰が</dt>
+                            <dd>
+                                <strong>筋トレを習慣にしたい人</strong>
+                                <span>始めたばかりの人や、数値の記録だけでは成果を実感しづらい人を想定しています。</span>
+                            </dd>
                         </div>
-                        <div>
-                            <span>Reward</span>
-                            <strong>ポイント・アイテム・成長</strong>
-                            <p>努力が目に見える変化になる</p>
+                        <div class="project-usecase-item">
+                            <dt><span class="project-usecase-label">When</span>どんな場面で</dt>
+                            <dd>
+                                <strong>種目を終えた直後に</strong>
+                                <span>ジムでセットを終えたときや、帰宅後にその日の内容を振り返る場面を想定しています。</span>
+                            </dd>
                         </div>
+                        <div class="project-usecase-item">
+                            <dt><span class="project-usecase-label">What</span>何をするのか</dt>
+                            <dd>
+                                <strong>記録し、成長を確かめる</strong>
+                                <span>種目・重量・回数・セット数を入力し、自動計算された成果とマソ君の変化を確認します。</span>
+                            </dd>
+                        </div>
+                    </dl>
+
+                    <div class="project-design-intent">
+                        <p class="project-visual-kicker">Design intent</p>
+                        <h3>「記録した直後に、成長が返る」短い循環</h3>
+                        <p>
+                            入力の先にある報酬を遠ざけないため、記録、計算、育成反映をひと続きにしました。利用者は数値を管理するだけでなく、今日の行動がどんな変化につながったかを、その場で理解できます。
+                        </p>
+                        <ul class="design-intent-points">
+                            <li><strong>迷わせない</strong><span>必須入力を種目・重量・回数・セット数に絞る</span></li>
+                            <li><strong>待たせない</strong><span>入力中からトータルボリュームを自動計算する</span></li>
+                            <li><strong>続けたくなる</strong><span>ポイントとキャラクターの変化で努力を可視化する</span></li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="visuals" class="project-section">
+                    <p class="project-section-number">03</p>
+                    <h2>画面と構成</h2>
+                    <p>
+                        完成時の画面イメージ、体験の変化、データが育成結果へ届くまでの構成を、3つの図でまとめました。
+                    </p>
+
+                    <div class="project-visuals">
+                        <figure class="project-visual project-visual--screen" aria-labelledby="finished-screen-title">
+                            <figcaption class="project-visual-heading">
+                                <span class="project-visual-kicker">Finished screen / 掲載用UIモック</span>
+                                <h3 id="finished-screen-title">ホーム画面の完成イメージ</h3>
+                                <p>今日の状態、マソ君の成長、次の記録操作を一画面で確認できる構成です。実画面公開前のため、掲載用に再構成したUIモックです。</p>
+                            </figcaption>
+                            <div class="app-screen-mock" role="img" aria-label="マソ君のレベルと経験値、今日のトレーニング量、記録ボタン、下部ナビゲーションを配置したスマートフォン向けホーム画面のUIモック">
+                                <div class="app-screen-frame">
+                                    <div class="app-screen-topbar">
+                                        <span>TRAINING DIARY</span>
+                                        <span>DAY 18</span>
+                                    </div>
+                                    <div class="app-screen-character">
+                                        <p>今日も積み上げよう</p>
+                                        <div class="app-screen-character-art" aria-hidden="true">
+                                            <span class="character-head"></span>
+                                            <span class="character-body"></span>
+                                            <span class="character-arm character-arm--left"></span>
+                                            <span class="character-arm character-arm--right"></span>
+                                        </div>
+                                        <strong>マソ君 Lv.12</strong>
+                                        <span>次のレベルまで 320 pt</span>
+                                        <div class="app-screen-progress" aria-hidden="true"><span></span></div>
+                                    </div>
+                                    <div class="app-screen-stats">
+                                        <div><span>Today</span><strong>2,400<small>kg</small></strong></div>
+                                        <div><span>Reward</span><strong>+24<small>pt</small></strong></div>
+                                    </div>
+                                    <div class="app-screen-primary">トレーニングを記録</div>
+                                    <div class="app-screen-tabs">
+                                        <span class="is-active">ホーム</span>
+                                        <span>記録</span>
+                                        <span>分析</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+
+                        <figure class="project-visual project-visual--comparison" aria-labelledby="comparison-title">
+                            <figcaption class="project-visual-heading">
+                                <span class="project-visual-kicker">Before / After</span>
+                                <h3 id="comparison-title">数字の保管から、成長を実感する記録へ</h3>
+                                <p>同じトレーニング記録でも、入力後に意味と報酬を返すことで、次回も記録する理由をつくります。</p>
+                            </figcaption>
+                            <div class="visual-comparison">
+                                <section class="comparison-panel comparison-panel--before" aria-labelledby="before-title">
+                                    <span class="comparison-label">Before</span>
+                                    <h4 id="before-title">数字だけを保存</h4>
+                                    <ol class="comparison-steps">
+                                        <li><span>01</span>重量・回数を入力</li>
+                                        <li><span>02</span>一覧へ数値を追加</li>
+                                        <li><span>03</span>成果は自分で読み取る</li>
+                                    </ol>
+                                    <p>入力が作業になり、続ける目的を感じにくい。</p>
+                                </section>
+                                <div class="comparison-arrow" aria-hidden="true">→</div>
+                                <section class="comparison-panel comparison-panel--after" aria-labelledby="after-title">
+                                    <span class="comparison-label">After</span>
+                                    <h4 id="after-title">行動を成長へ変換</h4>
+                                    <ol class="comparison-steps">
+                                        <li><span>01</span>トレーニングを記録</li>
+                                        <li><span>02</span>2,400kg・24ptへ換算</li>
+                                        <li><span>03</span>マソ君の変化を確認</li>
+                                    </ol>
+                                    <p>努力と変化が結びつき、次の記録が楽しみになる。</p>
+                                </section>
+                            </div>
+                        </figure>
+
+                        <figure class="project-visual project-visual--architecture" aria-labelledby="architecture-title">
+                            <figcaption class="project-visual-heading">
+                                <span class="project-visual-kicker">System / UI architecture</span>
+                                <h3 id="architecture-title">記録から育成反映までの構成</h3>
+                                <p>画面、計算ロジック、保存先を分け、現在のローカル保存からSupabaseへ段階的に移行できる構成です。</p>
+                            </figcaption>
+                            <div class="architecture-diagram" role="group" aria-label="UI層、ロジック層、データ層の3層構成">
+                                <section class="architecture-layer" aria-labelledby="ui-layer-title">
+                                    <span class="architecture-layer-number">01</span>
+                                    <h4 id="ui-layer-title">UI layer</h4>
+                                    <p>Next.js / React / Tailwind CSS</p>
+                                    <ul class="architecture-nodes">
+                                        <li class="architecture-node">ホーム</li>
+                                        <li class="architecture-node">記録入力</li>
+                                        <li class="architecture-node">履歴・分析</li>
+                                    </ul>
+                                </section>
+                                <div class="architecture-connector" aria-hidden="true"><span>入力</span><b>↓</b><span>表示</span></div>
+                                <section class="architecture-layer" aria-labelledby="logic-layer-title">
+                                    <span class="architecture-layer-number">02</span>
+                                    <h4 id="logic-layer-title">Domain logic</h4>
+                                    <p>TypeScript / Zod / Vitest</p>
+                                    <ul class="architecture-nodes">
+                                        <li class="architecture-node">入力検証</li>
+                                        <li class="architecture-node">ボリューム計算</li>
+                                        <li class="architecture-node">ポイント・育成判定</li>
+                                    </ul>
+                                </section>
+                                <div class="architecture-connector" aria-hidden="true"><span>保存</span><b>↓</b><span>読込</span></div>
+                                <section class="architecture-layer" aria-labelledby="data-layer-title">
+                                    <span class="architecture-layer-number">03</span>
+                                    <h4 id="data-layer-title">Data layer</h4>
+                                    <p>段階移行できる保存設計</p>
+                                    <ul class="architecture-nodes">
+                                        <li class="architecture-node"><span class="architecture-status">現在</span>ブラウザ内保存</li>
+                                        <li class="architecture-node"><span class="architecture-status">接続予定</span>Supabase Auth</li>
+                                        <li class="architecture-node"><span class="architecture-status">接続予定</span>PostgreSQL / RLS</li>
+                                    </ul>
+                                </section>
+                            </div>
+                        </figure>
                     </div>
                 </section>
 
                 <section id="stack" class="project-section">
-                    <p class="project-section-number">03</p>
+                    <p class="project-section-number">04</p>
                     <h2>技術スタック</h2>
                     <div class="tech-stack-grid">
                         <div class="tech-item">
@@ -140,30 +289,80 @@
                 </section>
 
                 <section id="reason" class="project-section">
-                    <p class="project-section-number">04</p>
+                    <p class="project-section-number">05</p>
                     <h2>技術選定の理由</h2>
                     <div class="reason-list">
                         <div>
-                            <h3>複数画面と状態を型付きで扱う</h3>
-                            <p>ホーム、カレンダー、入力、分析を1つのWebアプリとして構築し、記録と育成状態の食い違いを減らすためにNext.js、React、TypeScriptを選びました。</p>
+                            <div class="reason-meta">
+                                <span>Frontend architecture</span>
+                                <h3>Next.js 16 / React 19</h3>
+                            </div>
+                            <div class="reason-details">
+                                <p class="reason-requirement"><strong>要件・制約</strong><span>ホーム、カレンダー、入力、分析の4画面で、同じ記録・育成状態を共有する必要がありました。将来の認証・クラウド保存にも無理なく広げられる構成が条件でした。</span></p>
+                                <p class="reason-alternatives"><strong>比較した案</strong><span>単一HTMLとVanilla JavaScript、クライアントだけで完結するReact SPAも検討しました。</span></p>
+                                <p class="reason-decision"><strong>選定理由</strong><span>Reactで画面部品を再利用し、Next.jsでルーティングとレイアウトを一貫して管理できるためです。今後サーバー側の処理を追加するときも、同じ基盤のまま拡張できます。</span></p>
+                            </div>
                         </div>
                         <div>
-                            <h3>認証とデータ分離を一体で設計する</h3>
-                            <p>Supabaseは認証とPostgreSQLをまとめて扱えます。RLSを使い、利用者が自分の記録だけを扱える構成を目指しています。</p>
+                            <div class="reason-meta">
+                                <span>Language</span>
+                                <h3>TypeScript</h3>
+                            </div>
+                            <div class="reason-details">
+                                <p class="reason-requirement"><strong>要件・制約</strong><span>重量・回数・単位・日付・50段階の育成状態など、形の異なるデータを複数画面で安全に受け渡す必要がありました。</span></p>
+                                <p class="reason-alternatives"><strong>比較した案</strong><span>JavaScriptとJSDocによる型注釈も候補にしました。</span></p>
+                                <p class="reason-decision"><strong>選定理由</strong><span>データ構造を型として共有し、項目の追加や計算ロジックの変更時に不整合を開発中に検出できるためです。記録と育成状態の食い違いを減らせます。</span></p>
+                            </div>
                         </div>
                         <div>
-                            <h3>バックエンド未接続でも操作を検証する</h3>
-                            <p>開発中はブラウザ内へ保存し、Supabaseの接続情報がなくても主要な操作を試せるようにしました。</p>
+                            <div class="reason-meta">
+                                <span>UI styling</span>
+                                <h3>Tailwind CSS 4</h3>
+                            </div>
+                            <div class="reason-details">
+                                <p class="reason-requirement"><strong>要件・制約</strong><span>ジムでも片手で使えるスマートフォン中心のUIを、画面間で余白や状態表現を揃えながら短い周期で調整する必要がありました。</span></p>
+                                <p class="reason-alternatives"><strong>比較した案</strong><span>プレーンCSSとCSS Modulesを比較しました。</span></p>
+                                <p class="reason-decision"><strong>選定理由</strong><span>レスポンシブ指定とデザイン値を画面部品の近くで管理でき、試作中の調整が速いためです。共通の尺度を使うことで、画面ごとの見た目のばらつきも抑えられます。</span></p>
+                            </div>
                         </div>
                         <div>
-                            <h3>計算の正しさを画面と切り離して確かめる</h3>
-                            <p>Zodで入力値を検証し、Vitestでボリューム計算や単位換算、育成処理を確認しています。</p>
+                            <div class="reason-meta">
+                                <span>Backend</span>
+                                <h3>Supabase</h3>
+                            </div>
+                            <div class="reason-details">
+                                <p class="reason-requirement"><strong>要件・制約</strong><span>利用者ごとの認証と記録の分離、日付や種目を軸にした集計が必要です。一人で開発するため、認証基盤と独自APIをすべて構築する負担は抑えたいと考えました。</span></p>
+                                <p class="reason-alternatives"><strong>比較した案</strong><span>Firebaseと、独自API＋PostgreSQLの構成を比較しました。</span></p>
+                                <p class="reason-decision"><strong>選定理由</strong><span>Auth、PostgreSQL、RLSを一つのサービスで扱え、リレーショナルな履歴分析とユーザー単位のアクセス制御を両立しやすいためです。現在はブラウザ内保存で操作を検証し、接続情報がなくても開発を進められるようにしています。</span></p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="reason-meta">
+                                <span>Validation</span>
+                                <h3>Zod</h3>
+                            </div>
+                            <div class="reason-details">
+                                <p class="reason-requirement"><strong>要件・制約</strong><span>重量・回数・セット数の上限や未来日、メモの文字数などを、実行時にも同じ規則で検証する必要がありました。</span></p>
+                                <p class="reason-alternatives"><strong>比較した案</strong><span>画面ごとの手書き条件分岐とYupを比較しました。</span></p>
+                                <p class="reason-decision"><strong>選定理由</strong><span>検証ルールをスキーマとして一か所にまとめ、TypeScriptの型とつなげやすいためです。画面ごとの検証漏れを防ぎ、利用者へ返すエラーも揃えられます。</span></p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="reason-meta">
+                                <span>Test</span>
+                                <h3>Vitest</h3>
+                            </div>
+                            <div class="reason-details">
+                                <p class="reason-requirement"><strong>要件・制約</strong><span>ボリューム計算、kg・lb換算、育成ポイント、経験値、日付処理は、小さな変更でも結果が連鎖して変わるため高速な回帰確認が必要でした。</span></p>
+                                <p class="reason-alternatives"><strong>比較した案</strong><span>Jestと、ブラウザ操作だけで確認するE2Eテスト中心の構成を比較しました。</span></p>
+                                <p class="reason-decision"><strong>選定理由</strong><span>TypeScriptの設定と合わせやすく、計算ロジックを画面から切り離して素早く実行できるためです。主要な計算18件を単体で確認し、E2Eテストは公開前の次段階に分けています。</span></p>
+                            </div>
                         </div>
                     </div>
                 </section>
 
                 <section id="ideas" class="project-section">
-                    <p class="project-section-number">05</p>
+                    <p class="project-section-number">06</p>
                     <h2>工夫した点</h2>
                     <div class="feature-list">
                         <article>
@@ -205,7 +404,7 @@
                 </section>
 
                 <section id="improvements" class="project-section">
-                    <p class="project-section-number">06</p>
+                    <p class="project-section-number">07</p>
                     <h2>現時点の改善点</h2>
                     <ul class="improvement-list">
                         <li><span>01</span><p>トレーニング記録、設定、育成状態をSupabaseへ保存する処理を接続する。</p></li>
@@ -217,22 +416,16 @@
                     </ul>
                 </section>
 
-                <section id="preview" class="project-section project-preview-section">
-                    <p class="project-section-number">07</p>
-                    <h2>公開画像・URL</h2>
-                    <p>現在はローカル環境で開発・検証中です。Web公開後、実際の操作画面とURLを掲載します。</p>
-                    <figure class="project-preview-placeholder">
-                        <div class="preview-window" aria-hidden="true">
-                            <span></span><span></span><span></span>
-                            <div class="preview-window-content">Image</div>
-                        </div>
-                        <figcaption>
-                            <strong>公開画面を準備中</strong>
-                            <span>画像URL：未設定</span>
-                        </figcaption>
-                    </figure>
-                    <span class="project-link-disabled" aria-disabled="true">Webアプリを開く（準備中）</span>
-                </section>
+                <nav class="project-return-nav" aria-label="記事を読み終えた後の移動先">
+                    <a class="project-return-link project-return-link--works" href="../index.html#portfolio">
+                        <span aria-hidden="true">←</span>
+                        <span>制作物一覧へ戻る</span>
+                    </a>
+                    <a class="project-return-link project-return-link--home" href="../index.html">
+                        <span aria-hidden="true">⌂</span>
+                        <span>homeへ戻る</span>
+                    </a>
+                </nav>
             </article>
         </div>
 

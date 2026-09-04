@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Google Apps Scriptで制作したシフト提出システムの概要、背景、技術選定、工夫した点を紹介します。">
+    <meta name="description" content="Google Apps Scriptで制作したシフト提出システムの主要ユースケース、設計意図、画面構成、技術選定を紹介します。">
     <title>シフト提出システム | Tatsuki Portfolio</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -14,7 +14,7 @@
         <div class="project-header-inner">
             <a class="back-link" href="../index.html#portfolio">
                 <span aria-hidden="true">←</span>
-                制作物へ戻る
+                制作物一覧へ戻る
             </a>
             <a class="project-brand" href="../index.html">Tatsuki Portfolio</a>
         </div>
@@ -52,12 +52,12 @@
                     <p class="project-toc-title">Agenda</p>
                     <ol>
                         <li><a href="#overview"><span>01</span>アプリケーションの概要</a></li>
-                        <li><a href="#background"><span>02</span>創った背景</a></li>
-                        <li><a href="#stack"><span>03</span>技術スタック</a></li>
-                        <li><a href="#reason"><span>04</span>技術選定の理由</a></li>
-                        <li><a href="#ideas"><span>05</span>工夫した点</a></li>
-                        <li><a href="#improvements"><span>06</span>現時点の改善点</a></li>
-                        <li><a href="#preview"><span>07</span>公開画像・URL</a></li>
+                        <li><a href="#usecase"><span>02</span>主要ユースケースと設計意図</a></li>
+                        <li><a href="#visuals"><span>03</span>画面・比較・構成図</a></li>
+                        <li><a href="#stack"><span>04</span>技術スタック</a></li>
+                        <li><a href="#reason"><span>05</span>技術選定の理由</a></li>
+                        <li><a href="#ideas"><span>06</span>工夫した点</a></li>
+                        <li><a href="#improvements"><span>07</span>現時点の改善点</a></li>
                     </ol>
                 </nav>
             </aside>
@@ -72,37 +72,158 @@
                     <p>
                         店長やエリア管理者は、使い慣れたGoogleスプレッドシート上で調整と確定作業を行います。従業員の入力画面だけを使いやすくしながら、管理者側の運用を大きく変えない構成にしました。
                     </p>
+                    <p>
+                        制作前は、約30名の従業員が1つの表へ直接入力していました。スマートフォンではセルを選びにくく、他の人の入力欄を誤って触ることもあったため、本人の入力だけに集中できるWeb画面へ置き換えました。
+                    </p>
                     <div class="project-note">
                         <span class="project-note-label">担当範囲</span>
                         <p>課題整理、要件定義、画面設計、データ設計、実装、動作確認</p>
                     </div>
                 </section>
 
-                <section id="background" class="project-section">
+                <section id="usecase" class="project-section">
                     <p class="project-section-number">02</p>
-                    <h2>創った背景</h2>
+                    <h2>主要ユースケースと設計意図</h2>
                     <p>
-                        アルバイト先では、約30名の従業員が1つのGoogleスプレッドシートへ直接シフト希望を入力していました。スマートフォンでは表を操作しにくく、他の従業員の入力欄を誤って触ることもありました。
+                        中心に置いたのは、勤務の合間や移動中でも、従業員が自分の希望だけを短時間で提出できる体験です。
                     </p>
-                    <p>
-                        月別・店舗別のシートが増えて必要な情報が埋もれることも課題でした。そこで、従業員は自分専用の画面から入力し、管理者は既存のスプレッドシートを使い続けられる仕組みを作りました。入力時間は1人あたり約2分から約30秒まで短縮しました。
-                    </p>
-                    <div class="before-after" aria-label="改善前と改善後">
-                        <div>
-                            <span>Before</span>
-                            <strong>全員が同じ表へ直接入力</strong>
-                            <p>スマホ操作と誤入力に課題</p>
-                        </div>
-                        <div>
-                            <span>After</span>
-                            <strong>個人専用のWeb画面から送信</strong>
-                            <p>短時間で迷わず提出</p>
-                        </div>
+                    <div class="shift-usecase-grid" aria-label="主要ユースケースの構成">
+                        <article class="shift-usecase-card">
+                            <p class="shift-usecase-label">誰が</p>
+                            <h3>約30名の従業員</h3>
+                            <p>普段の操作端末はスマートフォン。表計算ソフトの詳しい操作経験は前提にしません。</p>
+                        </article>
+                        <article class="shift-usecase-card">
+                            <p class="shift-usecase-label">どんな場面で</p>
+                            <h3>毎月の希望提出期間に</h3>
+                            <p>勤務の休憩中や移動中など、短い時間でも1か月分を入力し、必要なら下書きから再開します。</p>
+                        </article>
+                        <article class="shift-usecase-card">
+                            <p class="shift-usecase-label">何をするのか</p>
+                            <h3>希望日時を選び、確認して提出</h3>
+                            <p>従業員IDでログインし、日付ごとのカードから希望を選択。送信後は自分の提出内容を確認します。</p>
+                        </article>
                     </div>
+                    <aside class="shift-design-intent project-note" aria-labelledby="design-intent-title">
+                        <span id="design-intent-title" class="project-note-label">設計意図</span>
+                        <p>表全体を見せず「日付を選ぶ」という一つの判断へ分解し、本人の名前をログイン後に固定しました。迷いと誤入力を減らす一方、管理者には既存のスプレッドシートを残し、導入時の学習負担を抑えています。</p>
+                    </aside>
+                </section>
+
+                <section id="visuals" class="project-section shift-visuals">
+                    <p class="project-section-number">03</p>
+                    <h2>画面・比較・構成図</h2>
+                    <p>個人情報を含む実画面は掲載せず、設計した操作と情報の流れが伝わるよう、ダミーデータを使った図で再構成しています。</p>
+
+                    <figure class="shift-visual shift-finished-figure">
+                        <div class="shift-visual-heading">
+                            <p class="shift-visual-label">Finished screen</p>
+                            <h3>完成画面のイメージ</h3>
+                        </div>
+                        <div class="shift-ui-mock" aria-hidden="true">
+                            <div class="shift-ui-browserbar">
+                                <span></span><span></span><span></span>
+                                <small>shift.example.app</small>
+                            </div>
+                            <div class="shift-ui-screen">
+                                <div class="shift-ui-header">
+                                    <div>
+                                        <small>2026 / 09</small>
+                                        <strong>9月のシフト希望</strong>
+                                    </div>
+                                    <span class="shift-ui-status">下書き保存済み</span>
+                                </div>
+                                <div class="shift-ui-days">
+                                    <div class="shift-ui-day is-selected">
+                                        <span class="shift-ui-date"><b>01</b><small>火</small></span>
+                                        <span class="shift-ui-choice">10:00–18:00</span>
+                                    </div>
+                                    <div class="shift-ui-day">
+                                        <span class="shift-ui-date"><b>02</b><small>水</small></span>
+                                        <span class="shift-ui-choice">休みを希望</span>
+                                    </div>
+                                    <div class="shift-ui-day is-selected">
+                                        <span class="shift-ui-date"><b>03</b><small>木</small></span>
+                                        <span class="shift-ui-choice">12:00–20:00</span>
+                                    </div>
+                                </div>
+                                <div class="shift-ui-actions">
+                                    <span class="shift-ui-action">下書き保存</span>
+                                    <span class="shift-ui-action is-primary">内容を確認する</span>
+                                </div>
+                            </div>
+                        </div>
+                        <figcaption><strong>掲載用UIモック</strong><span>日付ごとのカード、保存状態、次の操作を一画面で確認できる構成です。</span></figcaption>
+                    </figure>
+
+                    <figure class="shift-visual shift-comparison-figure">
+                        <div class="shift-visual-heading">
+                            <p class="shift-visual-label">Before / After</p>
+                            <h3>提出体験の比較</h3>
+                        </div>
+                        <div class="shift-comparison">
+                            <article class="shift-compare-panel before">
+                                <p class="shift-visual-label">Before</p>
+                                <h4>共有の表へ直接入力</h4>
+                                <ol class="shift-compare-flow">
+                                    <li class="shift-compare-step">月別・店舗別のシートを探す</li>
+                                    <li class="shift-compare-step">自分の行と日付の列を合わせる</li>
+                                    <li class="shift-compare-step">小さなセルへ希望を入力する</li>
+                                </ol>
+                                <p>他の人の欄に触れる不安があり、入力は約2分。</p>
+                            </article>
+                            <article class="shift-compare-panel after">
+                                <p class="shift-visual-label">After</p>
+                                <h4>本人専用の画面から提出</h4>
+                                <ol class="shift-compare-flow">
+                                    <li class="shift-compare-step">従業員IDでログインする</li>
+                                    <li class="shift-compare-step">日付カードから希望を選ぶ</li>
+                                    <li class="shift-compare-step">内容を確認して提出する</li>
+                                </ol>
+                                <p>自分の希望だけに集中でき、入力は約30秒。</p>
+                            </article>
+                        </div>
+                        <figcaption>探す・位置を合わせる操作をなくし、スマートフォンで選択と確認だけに集中できる流れへ変更しました。</figcaption>
+                    </figure>
+
+                    <figure class="shift-visual shift-architecture-figure">
+                        <div class="shift-visual-heading">
+                            <p class="shift-visual-label">System architecture</p>
+                            <h3>システム構成</h3>
+                        </div>
+                        <ol class="shift-architecture-flow" aria-label="従業員の操作からスプレッドシートへ保存されるまでの流れ">
+                            <li class="shift-architecture-node">
+                                <span class="shift-node-kicker">User</span>
+                                <strong>従業員</strong>
+                                <small>スマートフォンから希望を入力</small>
+                            </li>
+                            <li class="shift-architecture-node">
+                                <span class="shift-node-kicker">Interface</span>
+                                <strong>HTML / CSS / JavaScript</strong>
+                                <small>カード表示と入力内容の事前確認</small>
+                            </li>
+                            <li class="shift-architecture-node">
+                                <span class="shift-node-kicker">Bridge</span>
+                                <strong>google.script.run</strong>
+                                <small>画面からサーバー処理を呼び出す</small>
+                            </li>
+                            <li class="shift-architecture-node">
+                                <span class="shift-node-kicker">Backend</span>
+                                <strong>Google Apps Script</strong>
+                                <small>認証、再検証、保存処理を実行</small>
+                            </li>
+                            <li class="shift-architecture-node">
+                                <span class="shift-node-kicker">Data</span>
+                                <strong>Google Sheets</strong>
+                                <small>マスタ、提出内容、履歴を管理</small>
+                            </li>
+                        </ol>
+                        <figcaption>入力画面と保存処理を分け、送信内容はApps Script側でも検証してから各シートへ反映します。</figcaption>
+                    </figure>
                 </section>
 
                 <section id="stack" class="project-section">
-                    <p class="project-section-number">03</p>
+                    <p class="project-section-number">04</p>
                     <h2>技術スタック</h2>
                     <div class="tech-stack-grid">
                         <div class="tech-item">
@@ -129,26 +250,75 @@
                 </section>
 
                 <section id="reason" class="project-section">
-                    <p class="project-section-number">04</p>
+                    <p class="project-section-number">05</p>
                     <h2>技術選定の理由</h2>
-                    <div class="reason-list">
-                        <div>
-                            <h3>今ある業務へ無理なく導入する</h3>
-                            <p>もともとGoogleスプレッドシートを使っていたため、新しい管理サービスへ移行せず導入できるGoogle Apps Scriptを選びました。</p>
-                        </div>
-                        <div>
-                            <h3>引き継ぎ後もコードを書かずに管理する</h3>
-                            <p>店舗や従業員の追加はマスタ用シートから行えます。プログラミング知識のない担当者でも日常運用を続けられることを優先しました。</p>
-                        </div>
-                        <div>
-                            <h3>データの役割を分ける</h3>
-                            <p>データを1か所へ集中させず、全体確認・DB管理・エリア確認・提出ログの4ファイルへ分割しました。</p>
-                        </div>
+                    <p>「使った技術」だけでなく、現場の要件と比較した代替案を基準に選定しました。</p>
+                    <div class="shift-decision-list">
+                        <article class="shift-decision-card">
+                            <header class="shift-decision-heading">
+                                <p class="shift-decision-kicker">Backend</p>
+                                <h3>Google Apps Script</h3>
+                            </header>
+                            <dl class="shift-decision-details">
+                                <div>
+                                    <dt>要件・制約</dt>
+                                    <dd>管理者のGoogle中心の業務を変えず、個人開発で新たなサーバー契約や常時監視を増やさないこと。</dd>
+                                </div>
+                                <div>
+                                    <dt>比較した代替案</dt>
+                                    <dd>Node.jsとFirebase、またはSupabaseを組み合わせた独立Webアプリ。</dd>
+                                </div>
+                                <div>
+                                    <dt>選んだ理由</dt>
+                                    <dd>スプレッドシートを直接扱え、Webアプリの公開から保存処理までGoogle環境内で完結します。約30名規模の利用に対し、構築と保守の負担を抑えられると判断しました。</dd>
+                                </div>
+                            </dl>
+                        </article>
+                        <article class="shift-decision-card">
+                            <header class="shift-decision-heading">
+                                <p class="shift-decision-kicker">Data</p>
+                                <h3>Google Sheets</h3>
+                            </header>
+                            <dl class="shift-decision-details">
+                                <div>
+                                    <dt>要件・制約</dt>
+                                    <dd>店長がコードを書かずに従業員・店舗を更新し、提出状況を目視で確認できること。</dd>
+                                </div>
+                                <div>
+                                    <dt>比較した代替案</dt>
+                                    <dd>Firestoreやリレーショナルデータベースと、専用の管理画面を新設する構成。</dd>
+                                </div>
+                                <div>
+                                    <dt>選んだ理由</dt>
+                                    <dd>現場が使い慣れた並べ替えや絞り込みをそのまま使えます。データの混在を避けるため、全体確認・DB管理・エリア確認・提出ログの4ファイルへ役割を分けました。</dd>
+                                </div>
+                            </dl>
+                        </article>
+                        <article class="shift-decision-card">
+                            <header class="shift-decision-heading">
+                                <p class="shift-decision-kicker">Frontend / Bridge</p>
+                                <h3>Vanilla JS + google.script.run</h3>
+                            </header>
+                            <dl class="shift-decision-details">
+                                <div>
+                                    <dt>要件・制約</dt>
+                                    <dd>スマートフォン向けの入力画面を軽く保ち、Apps ScriptのHTML Service内で配信・更新できること。</dd>
+                                </div>
+                                <div>
+                                    <dt>比較した代替案</dt>
+                                    <dd>ReactやNext.jsを別環境へ配置し、REST APIを介してデータを送る構成。</dd>
+                                </div>
+                                <div>
+                                    <dt>選んだ理由</dt>
+                                    <dd>画面数と状態管理が限定的なため、ビルド工程を持たないHTML・CSS・JavaScriptで十分でした。google.script.runなら別APIを公開せず、成功・失敗を受け取りながらApps Scriptの処理を呼び出せます。</dd>
+                                </div>
+                            </dl>
+                        </article>
                     </div>
                 </section>
 
                 <section id="ideas" class="project-section">
-                    <p class="project-section-number">05</p>
+                    <p class="project-section-number">06</p>
                     <h2>工夫した点</h2>
                     <div class="feature-list">
                         <article>
@@ -183,7 +353,7 @@
                 </section>
 
                 <section id="improvements" class="project-section">
-                    <p class="project-section-number">06</p>
+                    <p class="project-section-number">07</p>
                     <h2>現時点の改善点</h2>
                     <ul class="improvement-list">
                         <li><span>01</span><p>従業員向け画面から確定シフトを確認できる機能を追加する。</p></li>
@@ -193,22 +363,16 @@
                     </ul>
                 </section>
 
-                <section id="preview" class="project-section project-preview-section">
-                    <p class="project-section-number">07</p>
-                    <h2>公開画像・URL</h2>
-                    <p>実データをダミー情報へ置き換えたうえで、公開後の画面とURLを掲載します。</p>
-                    <figure class="project-preview-placeholder">
-                        <div class="preview-window" aria-hidden="true">
-                            <span></span><span></span><span></span>
-                            <div class="preview-window-content">Image</div>
-                        </div>
-                        <figcaption>
-                            <strong>公開画面を準備中</strong>
-                            <span>画像URL：未設定</span>
-                        </figcaption>
-                    </figure>
-                    <span class="project-link-disabled" aria-disabled="true">Webアプリを開く（準備中）</span>
-                </section>
+                <nav class="project-return-nav" aria-label="この記事から移動">
+                    <a class="project-return-link" href="../index.html#portfolio">
+                        <span aria-hidden="true">←</span>
+                        制作物一覧へ戻る
+                    </a>
+                    <a class="project-return-link is-home" href="../index.html">
+                        homeへ戻る
+                        <span aria-hidden="true">↗</span>
+                    </a>
+                </nav>
             </article>
         </div>
 
