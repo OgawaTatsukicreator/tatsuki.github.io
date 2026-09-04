@@ -33,35 +33,51 @@
             return;
         }
 
-        const fullText = readableText.textContent.trim();
+        let timeoutId = null;
+        let timerId = null;
 
-        if (prefersReducedMotion.matches || window.location.hash) {
-            visualText.textContent = fullText;
-            visualText.classList.add("is-complete");
-            return;
-        }
+        const stopAnimation = () => {
+            window.clearTimeout(timeoutId);
+            window.clearInterval(timerId);
+        };
 
-        const characters = Array.from(fullText);
-        let currentIndex = 0;
-        visualText.textContent = "";
+        const renderText = (animate) => {
+            stopAnimation();
 
-        window.setTimeout(() => {
-            const timer = window.setInterval(() => {
-                visualText.textContent += characters[currentIndex];
-                currentIndex += 1;
+            const fullText = readableText.textContent.trim();
+            visualText.classList.remove("is-complete");
 
-                if (currentIndex >= characters.length) {
-                    window.clearInterval(timer);
-                    visualText.classList.add("is-complete");
-                }
-            }, 34);
-        }, startDelay + 120);
+            if (!animate) {
+                visualText.textContent = fullText;
+                visualText.classList.add("is-complete");
+                return;
+            }
+
+            const characters = Array.from(fullText);
+            let currentIndex = 0;
+            visualText.textContent = "";
+
+            timeoutId = window.setTimeout(() => {
+                timerId = window.setInterval(() => {
+                    visualText.textContent += characters[currentIndex];
+                    currentIndex += 1;
+
+                    if (currentIndex >= characters.length) {
+                        window.clearInterval(timerId);
+                        visualText.classList.add("is-complete");
+                    }
+                }, 34);
+            }, startDelay + 120);
+        };
+
+        window.addEventListener("portfolio-language-change", () => renderText(false));
+        renderText(!prefersReducedMotion.matches && !window.location.hash);
     };
 
     const initializeScrollReveal = () => {
         const revealGroups = [
             "#about > div",
-            "#skills > .label, #skills > h2, #skills .skill-card",
+            "#skills > .label, #skills > h2, #skills > .section-intro, #skills .stack-group",
             "#portfolio > .label, #portfolio > h2, #portfolio .work-card",
             "#experience > div, #experience .experience-option",
             "#qualification > .label, #qualification > h2, #qualification .qualification-list li",

@@ -12,7 +12,7 @@ IT業界を志望する専門学生、Tatsukiのポートフォリオサイト�
 
 | ファイル | 内容 | 現在の状態 |
 | --- | --- | --- |
-| `index.html` | 自己紹介、スキル、制作物、経験、資格、連絡先 | トップページ |
+| `index.html` | 自己紹介、技術スタック、制作物、経験、資格、連絡先 | トップページ |
 | `pages/work-shift-system.html` | Google Apps Scriptで作成したシフト提出システム | 画面画像と公開URLは準備中 |
 | `pages/work-training-diary.html` | 筋トレ記録と2Dキャラクター育成を組み合わせた「マソ君の日常」 | アプリ本体はローカル開発中 |
 | `pages/body-contest.html` | マッスルゲート静岡県大会への挑戦 | 新人の部優勝実績を掲載。一部は追記予定 |
@@ -62,12 +62,14 @@ IT業界を志望する専門学生、Tatsukiのポートフォリオサイト�
 - Vanilla JavaScript
 - Git、GitHub
 
-`package.json`やビルド設定はありません。トップページの動きは`js/script.js`、全ページの見た目は`css/style.css`で管理しています。
+`package.json`やビルド設定はありません。トップページのアニメーションは`js/script.js`、固定メニューと言語切替は`js/ui-controls.js`、全ページの見た目は`css/style.css`で管理しています。
 
 ### 画面の動き
 
 トップページには次の動きを実装しています。
 
+- 名前、言語切替、ハンバーガーボタンを備えた固定ヘッダー
+- 日本語と英語の表示切替
 - ページを開いたときのイントロ表示
 - 紹介文のタイプライター表示
 - `IntersectionObserver`を使ったスクロール表示
@@ -109,6 +111,7 @@ tatsuki.github.io/
 ├─ images/
 │  └─ back.png
 ├─ js/
+│  ├─ ui-controls.js
 │  └─ script.js
 ├─ pages/
 │  ├─ body-contest.html
@@ -143,7 +146,7 @@ python -m http.server 5501
 1. トップページの文章や一覧は`index.html`で変更します。
 2. 制作物や経験の詳しい内容は、`pages`内の対応するHTMLファイルで変更します。
 3. 色、余白、配置、スマートフォン表示は`css/style.css`で調整します。
-4. イントロ、タイプライター、スクロール表示は`js/script.js`で変更します。
+4. 固定メニューと言語切替は`js/ui-controls.js`、イントロ、タイプライター、スクロール表示は`js/script.js`で変更します。
 5. 新しい詳細ページを追加した場合は、`index.html`のリンクと詳細ページ間の前後リンクを更新します。
 6. PC幅、820px以下、520px以下で表示を確認します。
 7. Tabキーだけでリンクを移動できるか確認します。
