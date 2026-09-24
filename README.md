@@ -1,166 +1,77 @@
 # Tatsuki Portfolio
 
-IT業界を志望する専門学生、Tatsukiのポートフォリオサイトです。学習中の技術、制作したWebアプリ、資格、ボディコンテストの経験、チームで考えた事業案を掲載しています。
+小川樹の自己紹介、使用技術、制作物・活動経験、資格、連絡先を紹介するポートフォリオです。サイトは静的なHTML、CSS、JavaScriptで作られており、ビルドは不要です。
 
-サイト本体はHTML、CSS、JavaScriptだけで構成しています。ビルド作業や外部ライブラリのインストールは不要です。
+- リポジトリ：[OgawaTatsukicreator/tatsuki.github.io](https://github.com/OgawaTatsukicreator/tatsuki.github.io)
+- 改修の要件：[ポートフォリオ改修 要件定義書](Mypage/portfolio-renewal-requirements.md)
+- エントリーページ：`index.html`
 
-- リポジトリ: [OgawaTatsukicreator/tatsuki.github.io](https://github.com/OgawaTatsukicreator/tatsuki.github.io)
-- エントリーページ: `index.html`
-- 公開URL: リポジトリ内にGitHub Pagesの公開先は記録されていません
+## 画面構成
 
-## ページ一覧
+| ページ | 役割 |
+| --- | --- |
+| `index.html` | 5領域の概要と各詳細ページへの入口 |
+| `pages/about.html` | 基本情報、経歴、人生設計、キャリアプラン |
+| `pages/skills.html` | 技術領域別のスキルと利用状況 |
+| `pages/achievements.html` | 制作物・経験・インターンを切り替える実績一覧 |
+| `pages/qualification.html` | 取得年月順の資格・免許一覧 |
+| `pages/contact.html` | メールとGitHubへのリンク |
 
-| ファイル | 内容 | 現在の状態 |
-| --- | --- | --- |
-| `index.html` | 自己紹介、技術スタック、制作物、経験、資格、連絡先 | トップページ |
-| `pages/work-shift-system.html` | Google Apps Scriptで作成したシフト提出システム | 画面画像と公開URLは準備中 |
-| `pages/work-training-diary.html` | 筋トレ記録と2Dキャラクター育成を組み合わせた「マソ君の日常」 | アプリ本体はローカル開発中 |
-| `pages/body-contest.html` | マッスルゲート静岡県大会への挑戦 | 新人の部優勝実績を掲載。一部は追記予定 |
-| `pages/business-model.html` | 失敗や不満を企業へ届ける事業案「Feilink」 | 企画時点の試算と検証課題を掲載 |
-| `pages/work-coming-soon.html` | 次の制作物用ページ | 内容は準備中 |
+実績の個別ページとして `pages/work-shift-system.html`、`pages/work-training-diary.html`、`pages/body-contest.html`、`pages/business-model.html` を使用します。`pages/work-coming-soon.html` は既存ファイルとして残していますが、現在の画面からはリンクしていません。
 
-## 制作物
+PCでは5つの主要項目をヘッダーに常時表示し、項目を押すと対応する詳細ページへ直接移動します。狭い画面では同じ項目をメニューにまとめます。Achievementsの副メニューは、`#works`、`#experience`、`#internships` をURLに持つタブとして動作します。
 
-このリポジトリに含まれるのは、各制作物の紹介ページです。シフト提出システムと「マソ君の日常」のアプリ本体のソースコードは含まれていません。
+## 掲載している制作物
 
-### シフト提出システム
+- **シフト提出システム**：勤務先のシフト提出をスマートフォンから行えるようにした個人開発。Google Apps ScriptとGoogle Sheetsを使用し、2026年8月に完成。現在は自店舗で検証中です。
+- **マソ君の日常**：筋トレ記録と2Dキャラクター育成を組み合わせたWebアプリ。[公開アプリ](https://masodiary.vercel.app/)と[ソースコード](https://github.com/OgawaTatsukicreator/Muscle-Training-Diary-Raising-Game)を参照できます。ポートフォリオの個別ページでは現在のブラウザ内保存と、今後のクラウド保存の課題を区別して説明しています。
 
-約30名の従業員がスマートフォンからシフト希望を提出するWebアプリです。Googleスプレッドシートへ直接入力していた運用を見直し、1回の入力時間を約2分から約30秒へ短縮しました。
-
-従業員IDによるログイン、初回パスワード登録、下書き保存、希望の再提出、PT申請履歴の確認に対応しています。管理者は従来どおりGoogleスプレッドシートで調整できます。
-
-紹介ページに記載している使用技術は次のとおりです。
-
-- Google Apps Script
-- Google Sheets
-- HTML、CSS、JavaScript
-- `google.script.run`
-
-### マソ君の日常
-
-筋トレの重量、回数、セット数からトータルボリュームを計算し、育成ポイントへ変換するWebアプリです。記録を続けると2Dキャラクターの見た目が50段階で変化します。
-
-ホーム、記録カレンダー、トレーニング入力、履歴分析の4画面を用意しています。現在はブラウザ内へ記録を保存しており、Supabaseへの保存処理とWeb公開は今後の作業です。
-
-紹介ページに記載している使用技術は次のとおりです。
-
-- Next.js 16、React 19
-- TypeScript
-- Tailwind CSS 4
-- Supabase
-- Zod
-- Vitest
-
-これらは「マソ君の日常」本体の技術です。このポートフォリオサイト自体の動作には必要ありません。
+作品の実装コードはこのリポジトリには含まれません。各作品ページには本人が担当した範囲、設計上の判断、現在の状態を記載しています。
+ハッカソンとインターンは、公開可能な担当内容を確認できるまで、参加先と年月など確認済みの事実だけを掲載しています。
 
 ## サイトの実装
 
-### 使用技術
+新しいHomeと5つの詳細ページは `css/portfolio-v2.css` と `js/portfolio-v2.js` を使用します。実績タブの切替は `js/achievements.js` に分けています。既存の作品・経験ページは `css/style.css` を使い続け、共通ヘッダーを重ねています。
+Skillsの技術・サービスアイコンは `assets/icons/` に保存し、[出典と利用条件](assets/icons/README.md)を記録しています。
 
-- HTML5
-- CSS3
-- Vanilla JavaScript
-- Git、GitHub
+画面の主な仕様は次のとおりです。
 
-`package.json`やビルド設定はありません。トップページのアニメーションは`js/script.js`、固定メニューと言語切替は`js/ui-controls.js`、全ページの見た目は`css/style.css`で管理しています。
+- 共通ヘッダーにはHomeへのロゴと5つの詳細ページへのリンクを配置し、現在のページを示します。
+- モバイルメニューはEscキーと背景のクリックでも閉じられ、開いている間は背後の本文へキーボードフォーカスが移りません。
+- 実績のタブはキーボードの左右キー・Home・End・Enter・Spaceに対応し、ブラウザの戻る・進むでも選択を復元します。
+- すべてのページに本文へのスキップリンクを置き、キーボードフォーカスを表示します。動きを減らす設定では画面遷移の動きを抑えます。
 
-### 画面の動き
-
-トップページには次の動きを実装しています。
-
-- 名前、言語切替、ハンバーガーボタンを備えた固定ヘッダー
-- 日本語と英語の表示切替
-- ページを開いたときのイントロ表示
-- 紹介文のタイプライター表示
-- `IntersectionObserver`を使ったスクロール表示
-- ページ内リンクのスムーズスクロール
-
-`IntersectionObserver`を使えないブラウザーや、利用者が動きを減らす設定にしている場合は、内容を最初から表示します。
-
-### レスポンシブ対応
-
-画面幅に応じてレイアウトを切り替えます。
-
-- 820px以下: 複数列の内容を1列または2列へ変更
-- 520px以下: ボタン、詳細ページ、制作物一覧をスマートフォン向けに変更
-
-トップページの背景画像には`images/back.png`を使用しています。
-
-## アクセシビリティ
-
-現在の実装には次の対応が入っています。
-
-- コンテンツ量の多いページの先頭に、本文へのスキップリンクを設置
-- キーボード操作時にフォーカス枠を表示
-- `header`、`nav`、`main`、`section`、`footer`を使った文書構造
-- ナビゲーションや実績欄への`aria-label`
-- 装飾用の文字や図形への`aria-hidden="true"`
-- タイプライター表示と同じ文章をスクリーンリーダー向けに用意
-- `prefers-reduced-motion: reduce`が有効な場合はイントロ、アニメーション、スムーズスクロールを停止
-
-内容を追加するときも、見出しの順番、リンクの名前、キーボード操作、色の判別しやすさを確認してください。
-
-## ファイル構成
-
-```text
-tatsuki.github.io/
-├─ .vscode/
-│  └─ settings.json
-├─ css/
-│  └─ style.css
-├─ images/
-│  └─ back.png
-├─ js/
-│  ├─ ui-controls.js
-│  └─ script.js
-├─ pages/
-│  ├─ body-contest.html
-│  ├─ business-model.html
-│  ├─ work-shift-system.html
-│  ├─ work-training-diary.html
-│  └─ work-coming-soon.html
-├─ index.html
-└─ README.md
-```
-
-`index.html`をルートへ置き、CSS、JavaScript、画像、詳細ページを種類ごとに分けています。このサイトの規模では、場所が見つけやすく、GitHub Pagesでも扱いやすい構成です。`.vscode`はLive Serverの開発用設定で、公開ページからは参照しません。
-
-今後ファイル数が大きく増えた場合は、`css`、`js`、`images`を`assets`配下へまとめる方法もあります。現時点では階層が一段増えるだけなので採用していません。`style.css`も、ページごとの変更が増えてから`base.css`と各ページ用CSSへ分ける方が管理しやすくなります。
-
-この変更により、従来の`/Mypage/`を含むURLは使えなくなります。公開済みのURLやブックマークがある場合は、新しいルートURLへ更新してください。
+この改修ではページ間の言語を日本語に統一しました。旧Homeだけにあった英語切替は新しい画面では表示していません。
 
 ## ローカル確認
 
-VS CodeのLive Serverを使う場合は、`index.html`を開いてLive Serverを起動します。`.vscode/settings.json`でポート`5501`を指定しています。
+静的サイトなので、リポジトリのルートをローカルサーバーで公開して `index.html` を開きます。VS CodeのLive Serverを使う場合、`.vscode/settings.json` のポートは `5501` です。
 
-Pythonの簡易HTTPサーバーを使う場合は、リポジトリのルートで次を実行します。
+変更後はPCとスマートフォンの幅で、Homeの5つの「詳しく見る」、ヘッダー、モバイルメニュー、Achievementsの3タブ、既存作品から実績一覧への戻りを確認してください。外部リンクは本人が指定した実URLだけを掲載し、個人情報を含む画像は公開前に点検します。
 
-```powershell
-python -m http.server 5501
+## 主なファイル
+
+```text
+tatsuki.github.io/
+├─ assets/icons/       （SkillsのSVGアイコンと出典）
+├─ css/
+│  ├─ portfolio-v2.css
+│  └─ style.css
+├─ js/
+│  ├─ portfolio-v2.js
+│  └─ achievements.js
+├─ pages/
+│  ├─ about.html
+│  ├─ skills.html
+│  ├─ achievements.html
+│  ├─ qualification.html
+│  ├─ contact.html
+│  └─ （作品・経験の個別ページ）
+├─ Mypage/
+│  └─ portfolio-renewal-requirements.md
+├─ index.html
+└─ README.md
 ```
-
-起動後は[http://localhost:5501/](http://localhost:5501/)を開きます。HTML、CSS、JavaScriptを保存してブラウザーを再読み込みすれば変更を確認できます。
-
-## 更新手順
-
-1. トップページの文章や一覧は`index.html`で変更します。
-2. 制作物や経験の詳しい内容は、`pages`内の対応するHTMLファイルで変更します。
-3. 色、余白、配置、スマートフォン表示は`css/style.css`で調整します。
-4. 固定メニューと言語切替は`js/ui-controls.js`、イントロ、タイプライター、スクロール表示は`js/script.js`で変更します。
-5. 新しい詳細ページを追加した場合は、`index.html`のリンクと詳細ページ間の前後リンクを更新します。
-6. PC幅、820px以下、520px以下で表示を確認します。
-7. Tabキーだけでリンクを移動できるか確認します。
-8. OSの「アニメーションを減らす」設定を有効にし、内容が欠けないことを確認します。
-
-相対パスは、次の基準で記述します。
-
-- トップページから詳細ページ: `pages/ファイル名.html`
-- 詳細ページからトップページ: `../index.html`
-- トップページからCSS: `css/style.css`
-- 詳細ページからCSS: `../css/style.css`
-- CSSから背景画像: `../images/back.png`
-
-制作物ページには準備中の画像とURLがあります。公開するときは、実データや個人情報をダミー情報へ置き換えてから掲載してください。
 
 ---
 
