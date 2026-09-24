@@ -1,317 +1,121 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Tatsuki</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script>document.documentElement.classList.add('motion-ready');</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="小川樹のポートフォリオ。自己紹介、使用技術、制作物と経験、資格、連絡先を紹介します。">
+  <title>小川樹 | Portfolio</title>
+  <link rel="stylesheet" href="css/portfolio-v2.css">
+  <script src="js/portfolio-v2.js" defer></script>
 </head>
-<body id="top">
-    <div class="page-intro" aria-hidden="true">
-        <div class="page-intro-wordmark">
-            <span>TATSUKI</span>
-            <strong>PORTFOLIO</strong>
-            <i></i>
-        </div>
+<body class="portfolio-v2" data-page="home" data-root="">
+  <a class="v2-skip-link" href="#main-content">本文へ移動</a>
+  <header class="v2-header">
+    <div class="v2-header-inner">
+      <a class="v2-brand" href="index.html" aria-label="小川樹のポートフォリオ・Home">
+        <span class="v2-brand-mark" aria-hidden="true">TO.</span>
+        <span class="v2-brand-name">Tatsuki Ogawa<small>Portfolio</small></span>
+      </a>
+      <nav class="v2-nav" id="primary-nav" aria-label="主なページ">
+        <a class="v2-nav-home" href="index.html">Home<span>トップ</span></a>
+        <a data-nav="about" href="pages/about.html">About<span>自己紹介</span></a>
+        <a data-nav="skills" href="pages/skills.html">Skills<span>使用技術</span></a>
+        <a data-nav="achievements" href="pages/achievements.html">Achievements<span>実績</span></a>
+        <a data-nav="qualification" href="pages/qualification.html">Qualification<span>資格</span></a>
+        <a data-nav="contact" href="pages/contact.html">Contact<span>連絡先</span></a>
+      </nav>
+      <button class="v2-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="メニューを開く">
+        <span class="v2-menu-toggle-lines" aria-hidden="true"></span>
+      </button>
     </div>
+  </header>
+  <div class="v2-menu-backdrop" aria-hidden="true"></div>
 
-    <a class="skip-link" href="#main-content" data-i18n="skipToContent">本文へ移動</a>
-
-    <header class="site-header">
-        <div class="upper-nav">
-            <a class="logo" href="#top">Tatsuki</a>
-            <div class="upper-nav-controls">
-                <div class="language-switcher" role="group" aria-label="表示言語" data-i18n-aria-label="languageSelector">
-                    <button class="language-option" type="button" data-language="en" aria-pressed="false" aria-label="英語で表示" data-i18n-aria-label="languageEnglish">EN</button>
-                    <span class="language-divider" aria-hidden="true">|</span>
-                    <button class="language-option is-active" type="button" data-language="ja" aria-pressed="true" aria-label="日本語で表示" data-i18n-aria-label="languageJapanese">JP</button>
-                </div>
-                <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="メニューを開く">
-                    <span class="menu-toggle-icon" aria-hidden="true">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                </button>
-            </div>
+  <main id="main-content" class="v2-main">
+    <section class="v2-hero" aria-labelledby="home-title">
+      <div class="v2-container v2-hero-grid">
+        <div>
+          <p class="v2-kicker">Tatsuki Ogawa / Portfolio</p>
+          <h1 id="home-title">現場の課題を、<br><em>使える仕組みに。</em></h1>
+          <p class="v2-hero-lede">小川樹です。日本工学院八王子専門学校でITを学びながら、身近な課題からシフト提出システムや筋トレ日記アプリを制作しています。</p>
+          <div class="v2-hero-actions">
+            <a class="v2-button" href="pages/achievements.html">制作物・実績を見る <span aria-hidden="true">↗</span></a>
+            <a class="v2-button v2-button-outline" href="pages/about.html">自己紹介を見る <span aria-hidden="true">→</span></a>
+          </div>
         </div>
-    </header>
-
-    <div class="menu-backdrop" data-menu-dismiss aria-hidden="true"></div>
-    <nav id="site-menu" class="menu-panel" aria-label="メインナビゲーション" data-i18n-aria-label="mainNavigation" aria-hidden="true">
-        <p id="site-menu-title" class="menu-panel-title">Menu</p>
-        <ul>
-            <li><a href="#top"><span data-i18n="navTop">トップ</span><span aria-hidden="true">↑</span></a></li>
-            <li><a href="#about"><span data-i18n="navAbout">自己紹介</span><span aria-hidden="true">↘</span></a></li>
-            <li><a href="#skills"><span data-i18n="navSkills">技術スタック</span><span aria-hidden="true">↘</span></a></li>
-            <li><a href="#portfolio"><span data-i18n="navWorks">制作物</span><span aria-hidden="true">↘</span></a></li>
-            <li><a href="#experience"><span data-i18n="navExperience">経験</span><span aria-hidden="true">↘</span></a></li>
-            <li><a href="#contact"><span data-i18n="navContact">連絡先</span><span aria-hidden="true">↘</span></a></li>
-        </ul>
-    </nav>
-
-    <p id="language-status" class="sr-only" aria-live="polite"></p>
-
-    <section class="hero" aria-labelledby="hero-title">
-
-        <div class="hero-content">
-            <p class="label">IT Student / Fitness Trainer</p>
-            <h1 id="hero-title">Tatsuki Portfolio</h1>
-            <p class="lead typewriter" aria-label="挑戦を楽しみ、ITで価値を生み出す。将来はITとfitnessを掛け合わせた事業で、fitness人口の拡大に貢献することを目指しています。" data-i18n-aria-label="heroStatement">
-                <span class="sr-only" data-i18n="heroStatement">挑戦を楽しみ、ITで価値を生み出す。将来はITとfitnessを掛け合わせた事業で、fitness人口の拡大に貢献することを目指しています。</span>
-                <span class="typewriter-visual" aria-hidden="true" data-i18n="heroStatement">挑戦を楽しみ、ITで価値を生み出す。将来はITとfitnessを掛け合わせた事業で、fitness人口の拡大に貢献することを目指しています。</span>
-            </p>
-            <div class="hero-actions">
-                <a class="button primary" href="#portfolio" data-i18n="heroViewProjects">制作物を見る</a>
-                <a class="button secondary" href="#contact" data-i18n="heroContact">連絡する</a>
-            </div>
-        </div>
+        <aside class="v2-profile-snapshot" aria-label="プロフィール概要">
+          <p>Profile / 2026</p>
+          <strong>小川 樹</strong>
+          <dl>
+            <dt>年齢</dt><dd>21歳（2026年9月時点）</dd>
+            <dt>出身</dt><dd>静岡県伊東市</dd>
+            <dt>学校</dt><dd>日本工学院八王子専門学校</dd>
+            <dt>趣味</dt><dd>筋力トレーニング</dd>
+          </dl>
+        </aside>
+      </div>
     </section>
 
-    <main id="main-content">
-        <section id="about" class="section two-column">
-            <div>
-                <p class="label">About</p>
-                <h2 data-i18n="aboutTitle">自己紹介</h2>
-            </div>
-            <div class="content">
-                <p data-i18n="aboutDescription1">
-                    IT業界を志望している専門学生です。学業でWeb制作やPython、ネットワークを学びながら、
-                    学外ではトレーナーとして活動しています。
-                </p>
-                <p data-i18n="aboutDescription2">
-                    IT技術が社会に大きな影響を与えていることに魅力を感じ、
-                    人の行動や健康を支えるサービスづくりに関わりたいと考えています。
-                </p>
-            </div>
-        </section>
+    <div class="v2-container">
+      <div class="v2-home-intro">
+        <h2 id="explore-title">知りたいところから、<br>ご覧ください。</h2>
+        <p>人物像から制作物まで、5つのページにまとめました。各項目の概要から詳しい内容へ進めます。</p>
+      </div>
+      <div class="v2-preview-list" aria-labelledby="explore-title">
+        <article class="v2-preview">
+          <span class="v2-preview-index">01 / 05</span>
+          <h3>About<span>自己紹介</span></h3>
+          <div class="v2-preview-content">
+            <p>静岡県伊東市出身。サッカーを12年間続け、現在はITを学びながら筋力トレーニングとパーソナルトレーナーの活動にも取り組んでいます。</p>
+            <ul class="v2-preview-facts"><li>21歳</li><li>日本工学院八王子専門学校</li><li>筋力トレーニング</li></ul>
+            <a class="v2-text-link" href="pages/about.html" aria-label="Aboutを詳しく見る">詳しく見る <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article class="v2-preview">
+          <span class="v2-preview-index">02 / 05</span>
+          <h3>Skills<span>使用技術</span></h3>
+          <div class="v2-preview-content">
+            <p>Web制作とアプリ開発で使った技術を、用途ごとに整理しました。実際に使ったものと、現在学んでいるものを区別して紹介します。</p>
+            <ul class="v2-preview-facts"><li>HTML / CSS / JavaScript</li><li>Next.js / TypeScript</li><li>Google Apps Script</li></ul>
+            <a class="v2-text-link" href="pages/skills.html" aria-label="Skillsを詳しく見る">詳しく見る <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article class="v2-preview">
+          <span class="v2-preview-index">03 / 05</span>
+          <h3>Achievements<span>実績</span></h3>
+          <div class="v2-preview-content">
+            <p>アルバイト先のシフト提出システム、育成型筋トレ日記「マソ君の日常」などの制作物と、コンテストやインターンでの経験をまとめています。</p>
+            <ul class="v2-preview-facts"><li>制作物</li><li>経験</li><li>インターン</li></ul>
+            <a class="v2-text-link" href="pages/achievements.html" aria-label="Achievementsを詳しく見る">詳しく見る <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article class="v2-preview">
+          <span class="v2-preview-index">04 / 05</span>
+          <h3>Qualification<span>資格</span></h3>
+          <div class="v2-preview-content">
+            <p>ITとビジネスの学習を重ね、基本情報技術者試験、情報検定、ビジネス能力検定などを取得しました。年月順に確認できます。</p>
+            <ul class="v2-preview-facts"><li>基本情報技術者試験</li><li>J検</li><li>B検2級</li></ul>
+            <a class="v2-text-link" href="pages/qualification.html" aria-label="Qualificationを詳しく見る">詳しく見る <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article class="v2-preview">
+          <span class="v2-preview-index">05 / 05</span>
+          <h3>Contact<span>連絡先</span></h3>
+          <div class="v2-preview-content">
+            <p>制作物や活動についてのご連絡はこちらから。メールとGitHubのリンクを掲載しています。</p>
+            <ul class="v2-preview-facts"><li>メール</li><li>GitHub</li></ul>
+            <a class="v2-text-link" href="pages/contact.html" aria-label="Contactを詳しく見る">詳しく見る <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
 
-        <section id="skills" class="section" aria-labelledby="skills-title">
-            <p class="label">Technology Stack</p>
-            <h2 id="skills-title" data-i18n="skillsTitle">技術スタック</h2>
-            <p class="section-intro stack-intro" data-i18n="skillsIntro">
-                このサイトで実際に使った技術と、制作物で使った技術、現在学んでいる技術を分けて掲載しています。
-            </p>
-
-            <div class="stack-group-grid">
-                <section class="stack-group">
-                    <p class="stack-group-label">This Portfolio</p>
-                    <h3 data-i18n="skillsPortfolioTitle">ポートフォリオ制作</h3>
-                    <p class="stack-group-description" data-i18n="skillsPortfolioDescription">外部フレームワークを使わず、HTML、CSS、JavaScriptで制作しています。</p>
-                    <ul class="stack-list">
-                        <li>
-                            <div class="stack-item-heading">
-                                <strong>HTML5</strong>
-                                <span class="stack-status" data-i18n="statusUsed">使用</span>
-                            </div>
-                            <p data-i18n="skillsHtmlDescription">セマンティックなページ構造と複数ページの導線</p>
-                        </li>
-                        <li>
-                            <div class="stack-item-heading">
-                                <strong>CSS3</strong>
-                                <span class="stack-status" data-i18n="statusUsed">使用</span>
-                            </div>
-                            <p data-i18n="skillsCssDescription">Grid、Flexbox、レスポンシブ対応、アニメーション</p>
-                        </li>
-                        <li>
-                            <div class="stack-item-heading">
-                                <strong>Vanilla JavaScript</strong>
-                                <span class="stack-status" data-i18n="statusUsed">使用</span>
-                            </div>
-                            <p data-i18n="skillsJavascriptDescription">イントロ、タイプライター、スクロール表示</p>
-                        </li>
-                        <li>
-                            <div class="stack-item-heading">
-                                <strong>Git / GitHub</strong>
-                                <span class="stack-status" data-i18n="statusUsed">使用</span>
-                            </div>
-                            <p data-i18n="skillsGitDescription">ソースコードのバージョン管理</p>
-                        </li>
-                    </ul>
-                </section>
-
-                <section class="stack-group">
-                    <p class="stack-group-label">Application</p>
-                    <h3 data-i18n="skillsApplicationTitle">アプリ開発</h3>
-                    <p class="stack-group-description" data-i18n="skillsApplicationDescription">シフト提出システムと育成型筋トレ日記の開発で使用しています。</p>
-                    <ul class="stack-list">
-                        <li>
-                            <div class="stack-item-heading">
-                                <strong>Google Apps Script</strong>
-                                <span class="stack-status" data-i18n="statusUsed">使用</span>
-                            </div>
-                            <p data-i18n="skillsGasDescription">認証、入力検証、Google Sheetsへの保存</p>
-                        </li>
-                        <li>
-                            <div class="stack-item-heading">
-                                <strong>Next.js / React</strong>
-                                <span class="stack-status" data-i18n="statusUsed">使用</span>
-                            </div>
-                            <p data-i18n="skillsNextDescription">筋トレ記録アプリの画面とルーティング</p>
-                        </li>
-                        <li>
-                            <div class="stack-item-heading">
-                                <strong>TypeScript</strong>
-                                <span class="stack-status" data-i18n="statusUsed">使用</span>
-                            </div>
-                            <p data-i18n="skillsTypescriptDescription">記録データと育成状態の型定義</p>
-                        </li>
-                        <li>
-                            <div class="stack-item-heading">
-                                <strong>Tailwind CSS / Zod / Vitest</strong>
-                                <span class="stack-status" data-i18n="statusUsed">使用</span>
-                            </div>
-                            <p data-i18n="skillsToolingDescription">画面構築、入力検証、計算処理のテスト</p>
-                        </li>
-                    </ul>
-                </section>
-
-                <section class="stack-group">
-                    <p class="stack-group-label">Learning</p>
-                    <h3 data-i18n="skillsLearningTitle">学習・導入中</h3>
-                    <p class="stack-group-description" data-i18n="skillsLearningDescription">次の制作や機能追加へ向けて、基礎と実装方法を学んでいます。</p>
-                    <ul class="stack-list">
-                        <li>
-                            <div class="stack-item-heading">
-                                <strong>Python</strong>
-                                <span class="stack-status learning" data-i18n="statusLearning">学習中</span>
-                            </div>
-                            <p data-i18n="skillsPythonDescription">授業を通じた文法とプログラムの基礎</p>
-                        </li>
-                        <li>
-                            <div class="stack-item-heading">
-                                <strong>Supabase</strong>
-                                <span class="stack-status planned" data-i18n="statusPlanned">導入予定</span>
-                            </div>
-                            <p data-i18n="skillsSupabaseDescription">筋トレ記録アプリの認証とデータ保存</p>
-                        </li>
-                        <li>
-                            <div class="stack-item-heading">
-                                <strong data-i18n="skillsNetworkName">ネットワーク / CCNA</strong>
-                                <span class="stack-status learning" data-i18n="statusLearning">学習中</span>
-                            </div>
-                            <p data-i18n="skillsNetworkDescription">ネットワーク構成と通信の基礎</p>
-                        </li>
-                    </ul>
-                </section>
-            </div>
-        </section>
-
-        <section id="portfolio" class="section">
-            <p class="label">Works</p>
-            <h2 data-i18n="worksTitle">制作物</h2>
-            <div class="work-grid">
-                <a class="work-card" href="pages/work-shift-system.html">
-                    <p class="work-tag">Web System</p>
-                    <h3 data-i18n="worksShiftTitle">シフト提出システム</h3>
-                    <p data-i18n="worksShiftDescription">バイト先のシフト提出用システムをGASを活用して制作しました。</p>
-                    <span class="work-card-action"><span data-i18n="viewDetails">詳しく見る</span> <span aria-hidden="true">→</span></span>
-                </a>
-                <a class="work-card" href="pages/work-training-diary.html">
-                    <p class="work-tag">Web application</p>
-                    <h3 data-i18n="worksTrainingTitle">育成型筋トレ日記</h3>
-                    <p data-i18n="worksTrainingDescription">従来にはない筋トレ日記×育成ゲームの融合アプリケーションです。</p>
-                    <span class="work-card-action"><span data-i18n="viewDetails">詳しく見る</span> <span aria-hidden="true">→</span></span>
-                </a>
-                <a class="work-card" href="pages/work-coming-soon.html">
-                    <p class="work-tag">next product</p>
-                    <h3>coming soon...</h3>
-                    <p>coming soon...</p>
-                    <span class="work-card-action"><span data-i18n="viewDetails">詳しく見る</span> <span aria-hidden="true">→</span></span>
-                </a>
-            </div>
-        </section>
-
-        <section id="experience" class="section two-column">
-            <div>
-                <p class="label">Experience</p>
-                <h2 data-i18n="experienceTitle">学生時代に力を入れたこと</h2>
-                <p class="section-intro" data-i18n="experienceInstruction">
-                    詳しく見たいテーマを選択してください。
-                </p>
-            </div>
-            <nav class="experience-menu" aria-label="学生時代に力を入れたこと" data-i18n-aria-label="experienceTitle">
-                <a class="experience-option body-contest-option" href="pages/body-contest.html">
-                    <span class="experience-option-label">Body contest</span>
-                    <strong data-i18n="experienceBodyContest">ボディコンテスト</strong>
-                    <span class="experience-option-action">
-                        <span data-i18n="viewDetails">詳しく見る</span>
-                        <span aria-hidden="true">→</span>
-                    </span>
-                </a>
-                <a class="experience-option business-option" href="pages/business-model.html">
-                    <span class="experience-option-label">Business model</span>
-                    <strong data-i18n="experienceBusinessModel">ビジネスモデル</strong>
-                    <span class="experience-option-action">
-                        <span data-i18n="viewDetails">詳しく見る</span>
-                        <span aria-hidden="true">→</span>
-                    </span>
-                </a>
-            </nav>
-        </section>
-
-        <section id="qualification" class="section">
-            <p class="label">Qualification</p>
-            <h2 data-i18n="qualificationsTitle">資格</h2>
-            <ul class="qualification-list">
-                <li data-i18n="qualificationDriversLicense">普通自動車第一種運転免許</li>
-                <li data-i18n="qualificationFeExam">基本情報技術者試験</li>
-                <li>MOS Excel,Word</li>
-                <li data-i18n="qualificationJkenGrade2">J検 2級</li>
-                <li data-i18n="qualificationJkenSePg">J検（SE,PG認定）</li>
-            </ul>
-        </section>
-
-        <section id="contact" class="section contact">
-            <p class="label">Contact</p>
-            <h2 data-i18n="contactTitle">お問い合わせ</h2>
-            <p data-i18n="contactThanks">ポートフォリオをご覧いただきありがとうございます。</p>
-            <nav class="contact-links" aria-label="連絡先リンク" data-i18n-aria-label="contactLinksLabel">
-                <a class="contact-link gmail" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=g024c1045%40g.neec.ac.jp" target="_blank" rel="noopener noreferrer" aria-label="Gmailで新規メール画面を開く" data-i18n-aria-label="contactGmailLabel">
-                    <span class="contact-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" focusable="false">
-                            <path d="M3.5 6.5 12 13l8.5-6.5"></path>
-                            <path d="M4.5 18.5h15a1 1 0 0 0 1-1v-11h-17v11a1 1 0 0 0 1 1Z"></path>
-                        </svg>
-                    </span>
-                    <span class="contact-link-copy">
-                        <strong>Gmail</strong>
-                        <small>g024c1045@g.neec.ac.jp</small>
-                    </span>
-                </a>
-                <a class="contact-link github" href="https://github.com/OgawaTatsukicreator" target="_blank" rel="noopener noreferrer" aria-label="GitHubプロフィールを新しいタブで開く" data-i18n-aria-label="contactGithubLabel">
-                    <span class="contact-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" focusable="false">
-                            <path d="M12 2.8a9.2 9.2 0 0 0-2.9 17.93c.46.08.63-.2.63-.45v-1.78c-2.56.56-3.1-1.09-3.1-1.09-.42-1.06-1.02-1.34-1.02-1.34-.84-.57.06-.56.06-.56.93.07 1.42.95 1.42.95.82 1.42 2.16 1.01 2.69.77.08-.6.32-1.01.59-1.24-2.05-.23-4.2-1.02-4.2-4.55 0-1 .36-1.83.95-2.47-.1-.23-.41-1.17.09-2.44 0 0 .78-.25 2.53.94a8.8 8.8 0 0 1 4.62 0c1.76-1.19 2.53-.94 2.53-.94.5 1.27.19 2.21.09 2.44.59.64.95 1.47.95 2.47 0 3.54-2.16 4.32-4.21 4.55.33.28.62.84.62 1.7v2.59c0 .25.17.54.63.45A9.2 9.2 0 0 0 12 2.8Z"></path>
-                        </svg>
-                    </span>
-                    <span class="contact-link-copy">
-                        <strong>GitHub</strong>
-                        <small>OgawaTatsukicreator</small>
-                    </span>
-                </a>
-                <a class="contact-link instagram" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagramを新しいタブで開く" data-i18n-aria-label="contactInstagramLabel">
-                    <span class="contact-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" focusable="false">
-                            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-                            <circle cx="12" cy="12" r="4.1"></circle>
-                            <circle class="instagram-dot" cx="17.5" cy="6.7" r="1"></circle>
-                        </svg>
-                    </span>
-                    <span class="contact-link-copy">
-                        <strong>Instagram</strong>
-                        <small>Instagram</small>
-                    </span>
-                </a>
-            </nav>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Tatsuki Portfolio</p>
-    </footer>
-    <script src="js/ui-controls.js" defer></script>
-    <script src="js/script.js" defer></script>
+  <footer class="v2-footer">
+    <div class="v2-container v2-footer-inner">
+      <p>© 2026 Tatsuki Ogawa</p>
+      <a href="pages/contact.html">連絡先を見る →</a>
+    </div>
+  </footer>
 </body>
 </html>
