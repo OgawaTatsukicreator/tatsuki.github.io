@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="小川樹の制作物、活動経験、インターン参加歴を紹介します。">
+    <title>Achievements | 小川樹</title>
+    <link rel="stylesheet" href="../css/portfolio-v2.css">
+    <script defer src="../js/portfolio-v2.js"></script>
+    <script defer src="../js/achievements.js"></script>
+</head>
+<body class="portfolio-v2" data-page="achievements" data-root="../">
+    <a class="v2-skip-link" href="#main-content">本文へ移動</a>
+    <header class="v2-header">
+    <div class="v2-header-inner">
+      <a class="v2-brand" href="../index.html" aria-label="小川樹のポートフォリオ・Home">
+        <span class="v2-brand-mark" aria-hidden="true">TO.</span>
+        <span class="v2-brand-name">Tatsuki Ogawa<small>Portfolio</small></span>
+      </a>
+      <nav class="v2-nav" id="primary-nav" aria-label="主なページ">
+        <a class="v2-nav-home" href="../index.html">Home<span>トップ</span></a>
+        <a data-nav="about" href="about.html">About<span>自己紹介</span></a>
+        <a data-nav="skills" href="skills.html">Skills<span>使用技術</span></a>
+        <a data-nav="achievements" href="achievements.html">Achievements<span>実績</span></a>
+        <a data-nav="qualification" href="qualification.html">Qualification<span>資格</span></a>
+        <a data-nav="contact" href="contact.html">Contact<span>連絡先</span></a>
+      </nav>
+      <button class="v2-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="メニューを開く">
+        <span class="v2-menu-toggle-lines" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+  <div class="v2-menu-backdrop" aria-hidden="true"></div>
+
+    <main id="main-content" class="v2-main">
+        <nav class="achievement-tabs-shell" aria-label="実績の分類">
+            <div class="v2-container">
+                <div class="achievement-tabs" role="tablist" aria-label="表示する実績を選択">
+                    <button class="achievement-tab is-active" id="achievement-tab-works" type="button" role="tab" aria-controls="achievement-panel-works" aria-selected="true" tabindex="0" data-achievement-tab="works">
+                        制作物 <span class="achievement-tab-count" aria-hidden="true">02</span>
+                    </button>
+                    <button class="achievement-tab" id="achievement-tab-experience" type="button" role="tab" aria-controls="achievement-panel-experience" aria-selected="false" tabindex="-1" data-achievement-tab="experience">
+                        経験 <span class="achievement-tab-count" aria-hidden="true">04</span>
+                    </button>
+                    <button class="achievement-tab" id="achievement-tab-internships" type="button" role="tab" aria-controls="achievement-panel-internships" aria-selected="false" tabindex="-1" data-achievement-tab="internships">
+                        インターン <span class="achievement-tab-count" aria-hidden="true">02</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <section class="v2-page-hero" aria-labelledby="achievements-title">
+            <div class="v2-container">
+                <p class="v2-eyebrow">Achievements</p>
+                <h1 id="achievements-title">実績</h1>
+                <p class="v2-lead">制作物、これまでの経験、インターンへの参加をまとめました。上の項目から内容を切り替えられます。</p>
+            </div>
+        </section>
+
+        <div class="v2-container achievements-content">
+            <section class="v2-section achievement-panel" id="achievement-panel-works" role="tabpanel" aria-labelledby="achievement-tab-works" tabindex="0" data-achievement-panel="works">
+                <div class="achievement-panel-heading">
+                    <div>
+                        <p class="v2-eyebrow">Works</p>
+                        <h2>制作物</h2>
+                    </div>
+                    <p class="achievement-panel-count">2件</p>
+                </div>
+                <div class="achievement-grid">
+                    <article class="achievement-card">
+                        <p class="achievement-meta"><time datetime="2026-08">2026.08</time><span class="achievement-status">自店舗で検証中</span></p>
+                        <h3>シフト提出システム</h3>
+                        <p>勤務先のシフト提出で感じた課題をきっかけに、Google Apps Scriptを使って個人開発しました。2026年8月に完成し、自店舗で検証しています。</p>
+                        <dl class="achievement-facts">
+                            <div><dt>取り組み</dt><dd>業務課題からの個人開発</dd></div>
+                            <div><dt>使用技術</dt><dd>Google Apps Script</dd></div>
+                        </dl>
+                        <div class="achievement-actions">
+                            <a href="work-shift-system.html">シフト提出システムの詳細を見る <span aria-hidden="true">↗</span></a>
+                        </div>
+                    </article>
+                    <article class="achievement-card">
+                        <p class="achievement-meta"><span class="achievement-status">Web公開中</span></p>
+                        <h3>マソ君の日常</h3>
+                        <p>筋トレの記録と2Dキャラクターの育成を組み合わせたWebアプリです。重量・回数・セット数から成果を見える形にし、記録の継続につなげます。</p>
+                        <dl class="achievement-facts">
+                            <div><dt>役割</dt><dd>個人開発</dd></div>
+                            <div><dt>現状</dt><dd>Web公開中・記録はブラウザ内に保存</dd></div>
+                            <div><dt>使用技術</dt><dd>Next.js、React、TypeScript</dd></div>
+                        </dl>
+                        <div class="achievement-actions">
+                            <a href="work-training-diary.html">マソ君の日常の詳細を見る <span aria-hidden="true">↗</span></a>
+                            <a href="https://masodiary.vercel.app/" target="_blank" rel="noopener noreferrer">アプリを開く <span class="v2-sr-only">（新しいタブ）</span><span aria-hidden="true">↗</span></a>
+                            <a href="https://github.com/OgawaTatsukicreator/Muscle-Training-Diary-Raising-Game" target="_blank" rel="noopener noreferrer">GitHubでコードを見る <span class="v2-sr-only">（新しいタブ）</span><span aria-hidden="true">↗</span></a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="v2-section achievement-panel" id="achievement-panel-experience" role="tabpanel" aria-labelledby="achievement-tab-experience" tabindex="0" data-achievement-panel="experience" hidden>
+                <div class="achievement-panel-heading">
+                    <div>
+                        <p class="v2-eyebrow">Experience</p>
+                        <h2>経験</h2>
+                    </div>
+                    <p class="achievement-panel-count">4件</p>
+                </div>
+                <div class="achievement-grid">
+                    <article class="achievement-card">
+                        <p class="achievement-meta"><time datetime="2026-08">2026.08</time><span class="achievement-status">参加</span></p>
+                        <h3>関西ビギナーズハッカソン</h3>
+                        <p>初めてハッカソンに参加しました。</p>
+                    </article>
+                    <article class="achievement-card">
+                        <p class="achievement-meta"><time datetime="2026-07">2026.07</time><span class="achievement-status">9チーム中2位</span></p>
+                        <h3>学内ビジネスコンテスト</h3>
+                        <p>5人のチームで、失敗や不満を企業の改善につなげる事業案「Feilink」を企画しました。学内ビジネスコンテストで9チーム中2位となりました。</p>
+                        <div class="achievement-actions">
+                            <a href="business-model.html">事業構想の詳細を見る <span aria-hidden="true">↗</span></a>
+                        </div>
+                    </article>
+                    <article class="achievement-card">
+                        <p class="achievement-meta"><time datetime="2026-03">2026.03</time><span class="achievement-status">活動開始</span></p>
+                        <h3>パーソナルトレーナー</h3>
+                        <p>これまでの筋力トレーニングの経験を生かし、パーソナルトレーナーとして活動を始めました。</p>
+                    </article>
+                    <article class="achievement-card">
+                        <p class="achievement-meta"><time datetime="2025-10">2025.10</time><span class="achievement-status">受賞</span></p>
+                        <h3>マッスルゲート静岡大会</h3>
+                        <p>フィジーク172cm以下級で、新人の部優勝、一般の部4位入賞。大会に向けて継続して取り組みました。</p>
+                        <div class="achievement-actions">
+                            <a href="body-contest.html">大会への取り組みを見る <span aria-hidden="true">↗</span></a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="v2-section achievement-panel" id="achievement-panel-internships" role="tabpanel" aria-labelledby="achievement-tab-internships" tabindex="0" data-achievement-panel="internships" hidden>
+                <div class="achievement-panel-heading">
+                    <div>
+                        <p class="v2-eyebrow">Internships</p>
+                        <h2>インターン</h2>
+                    </div>
+                    <p class="achievement-panel-count">2件</p>
+                </div>
+                <p class="v2-section-lede">公開可能な担当内容を確認しているため、現在は参加先と年月を掲載しています。</p>
+                <div class="achievement-grid">
+                    <article class="achievement-card">
+                        <p class="achievement-meta"><time datetime="2026-09">2026.09</time><span class="achievement-status">参加</span></p>
+                        <h3>ウェブフロンティア株式会社</h3>
+                    </article>
+                    <article class="achievement-card">
+                        <p class="achievement-meta"><time datetime="2026-08">2026.08</time><span class="achievement-status">参加</span></p>
+                        <h3>RIZAPテクノロジーズ株式会社</h3>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="v2-footer">
+        <div class="v2-container">
+            <a href="../index.html">Homeへ戻る <span aria-hidden="true">↑</span></a>
+            <small>© 2026 Tatsuki Ogawa</small>
+        </div>
+    </footer>
+</body>
+</html>
