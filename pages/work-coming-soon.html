@@ -5,15 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coming soon | Tatsuki Portfolio</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/portfolio-v2.css">
+    <script src="../js/portfolio-v2.js" defer></script>
 </head>
-<body class="detail-page">
+<body data-page="achievements" class="portfolio-v2 detail-page">
+    <a class="v2-skip-link" href="#detail-content">本文へ移動</a>
+    <header class="v2-header">
+    <div class="v2-header-inner">
+      <a class="v2-brand" href="../index.html" aria-label="小川樹のポートフォリオ・Home">
+        <span class="v2-brand-mark" aria-hidden="true">TO.</span>
+        <span class="v2-brand-name">Tatsuki Ogawa<small>Portfolio</small></span>
+      </a>
+      <nav class="v2-nav" id="primary-nav" aria-label="主なページ">
+        <a class="v2-nav-home" href="../index.html">Home<span>トップ</span></a>
+        <a data-nav="about" href="about.html">About<span>自己紹介</span></a>
+        <a data-nav="skills" href="skills.html">Skills<span>使用技術</span></a>
+        <a data-nav="achievements" href="achievements.html">Achievements<span>実績</span></a>
+        <a data-nav="qualification" href="qualification.html">Qualification<span>資格</span></a>
+        <a data-nav="contact" href="contact.html">Contact<span>連絡先</span></a>
+      </nav>
+      <button class="v2-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="メニューを開く">
+        <span class="v2-menu-toggle-lines" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+  <div class="v2-menu-backdrop" aria-hidden="true"></div>
     <header class="detail-header">
-        <a class="back-link" href="../index.html#portfolio">
+        <a class="back-link" href="achievements.html#works">
             <span aria-hidden="true">←</span>
             制作物へ戻る
         </a>
     </header>
-    <main class="detail-main">
+    <main id="detail-content" class="detail-main">
         <p class="label">Works / Next product</p>
         <h1>Coming soon...</h1>
         <div class="detail-placeholder" aria-hidden="true"></div>

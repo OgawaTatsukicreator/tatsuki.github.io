@@ -6,13 +6,35 @@
     <meta name="description" content="筋トレ記録と2Dキャラクター育成を組み合わせたWebアプリ『マソ君の日常』を紹介します。">
     <title>育成型筋トレ日記 | Tatsuki Portfolio</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/portfolio-v2.css">
+    <script src="../js/portfolio-v2.js" defer></script>
 </head>
-<body class="detail-page project-page project-page-training">
+<body data-page="achievements" class="portfolio-v2 detail-page project-page project-page-training">
     <a class="skip-link" href="#project-content">本文へ移動</a>
 
+    <header class="v2-header">
+    <div class="v2-header-inner">
+      <a class="v2-brand" href="../index.html" aria-label="小川樹のポートフォリオ・Home">
+        <span class="v2-brand-mark" aria-hidden="true">TO.</span>
+        <span class="v2-brand-name">Tatsuki Ogawa<small>Portfolio</small></span>
+      </a>
+      <nav class="v2-nav" id="primary-nav" aria-label="主なページ">
+        <a class="v2-nav-home" href="../index.html">Home<span>トップ</span></a>
+        <a data-nav="about" href="about.html">About<span>自己紹介</span></a>
+        <a data-nav="skills" href="skills.html">Skills<span>使用技術</span></a>
+        <a data-nav="achievements" href="achievements.html">Achievements<span>実績</span></a>
+        <a data-nav="qualification" href="qualification.html">Qualification<span>資格</span></a>
+        <a data-nav="contact" href="contact.html">Contact<span>連絡先</span></a>
+      </nav>
+      <button class="v2-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="メニューを開く">
+        <span class="v2-menu-toggle-lines" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+  <div class="v2-menu-backdrop" aria-hidden="true"></div>
     <header class="project-header">
         <div class="project-header-inner">
-            <a class="back-link" href="../index.html#portfolio">
+            <a class="back-link" href="achievements.html#works">
                 <span aria-hidden="true">←</span>
                 制作物一覧へ戻る
             </a>
@@ -82,7 +104,7 @@
                     </p>
                     <div class="project-note">
                         <span class="project-note-label">現在地</span>
-                        <p>主要機能はローカル環境で動作。クラウド保存とWeb公開を次の段階として進めています。</p>
+                        <p>主要機能はWebで公開済みです。記録データのクラウド保存は、次の段階として進めています。</p>
                     </div>
                 </section>
 
@@ -142,7 +164,7 @@
                             <figcaption class="project-visual-heading">
                                 <span class="project-visual-kicker">Finished screen / 掲載用UIモック</span>
                                 <h3 id="finished-screen-title">ホーム画面の完成イメージ</h3>
-                                <p>今日の状態、マソ君の成長、次の記録操作を一画面で確認できる構成です。実画面公開前のため、掲載用に再構成したUIモックです。</p>
+                                <p>今日の状態、マソ君の成長、次の記録操作を一画面で確認できる構成です。ここでは掲載用に再構成したUIモックを示し、実際の動作は公開アプリで確認できます。</p>
                             </figcaption>
                             <div class="app-screen-mock" role="img" aria-label="マソ君のレベルと経験値、今日のトレーニング量、記録ボタン、下部ナビゲーションを配置したスマートフォン向けホーム画面のUIモック">
                                 <div class="app-screen-frame">
@@ -412,12 +434,16 @@
                         <li><span>03</span><p>複数ユーザーを使い、RLSによるデータ分離を結合テストで確認する。</p></li>
                         <li><span>04</span><p>記録の編集・削除と、それに伴う育成ポイントの差分調整を実装する。</p></li>
                         <li><span>05</span><p>自重種目と有酸素運動の計算、週別・月別の分析を追加する。</p></li>
-                        <li><span>06</span><p>E2Eテストと性能計測を行い、Vercelで公開する。</p></li>
+                        <li><span>06</span><p>公開版のE2Eテストと性能計測を行う。</p></li>
                     </ul>
                 </section>
 
                 <nav class="project-return-nav" aria-label="記事を読み終えた後の移動先">
-                    <a class="project-return-link project-return-link--works" href="../index.html#portfolio">
+                    <a class="project-return-link project-return-link--home" href="https://masodiary.vercel.app/" target="_blank" rel="noopener noreferrer">
+                        <span aria-hidden="true">↗</span>
+                        <span>公開アプリを開く（新しいタブ）</span>
+                    </a>
+                    <a class="project-return-link project-return-link--works" href="achievements.html#works">
                         <span aria-hidden="true">←</span>
                         <span>制作物一覧へ戻る</span>
                     </a>
