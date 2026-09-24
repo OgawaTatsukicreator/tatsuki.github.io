@@ -15,11 +15,16 @@
 
   const mobile = window.matchMedia("(max-width: 1040px)");
   const main = document.querySelector("main");
-  const footer = document.querySelector(".v2-footer");
+  const footer = document.querySelector("footer");
   const secondaryHeader = document.querySelector(".project-header, .detail-header");
   const brand = document.querySelector(".v2-brand");
-  const skipLink = document.querySelector(".skip-link");
+  const skipLink = document.querySelector(".v2-skip-link, .skip-link");
+  const languageSwitcher = document.querySelector(".v2-language-switcher");
   let returnFocus = null;
+
+  const menuLabel = (open) => document.documentElement.lang === "en"
+    ? (open ? "Close menu" : "Open menu")
+    : (open ? "メニューを閉じる" : "メニューを開く");
 
   const setBackgroundInert = (value) => {
     [main, footer, secondaryHeader, brand, skipLink].forEach((element) => {
@@ -31,7 +36,7 @@
     if (!body.classList.contains("v2-menu-open")) return;
     body.classList.remove("v2-menu-open");
     toggle.setAttribute("aria-expanded", "false");
-    toggle.setAttribute("aria-label", "メニューを開く");
+    toggle.setAttribute("aria-label", menuLabel(false));
     nav.setAttribute("aria-hidden", mobile.matches ? "true" : "false");
     nav.inert = mobile.matches;
     setBackgroundInert(false);
@@ -43,7 +48,7 @@
     returnFocus = document.activeElement;
     body.classList.add("v2-menu-open");
     toggle.setAttribute("aria-expanded", "true");
-    toggle.setAttribute("aria-label", "メニューを閉じる");
+    toggle.setAttribute("aria-label", menuLabel(true));
     nav.setAttribute("aria-hidden", "false");
     nav.inert = false;
     setBackgroundInert(true);
@@ -73,8 +78,8 @@
       return;
     }
     if (event.key !== "Tab") return;
-    // The navigation precedes the toggle in the DOM, so wrap in that order.
-    const focusables = [...nav.querySelectorAll("a"), toggle];
+    // Follow the same order as the header: links, language choices, then menu toggle.
+    const focusables = [...nav.querySelectorAll("a"), ...(languageSwitcher?.querySelectorAll("button") ?? []), toggle];
     const first = focusables[0];
     const last = focusables[focusables.length - 1];
     if (event.shiftKey && (document.activeElement === first || !focusables.includes(document.activeElement))) {

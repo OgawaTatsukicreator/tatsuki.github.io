@@ -7,6 +7,7 @@
     <title>Achievements | 小川樹</title>
     <link rel="stylesheet" href="../css/portfolio-v2.css">
     <script defer src="../js/portfolio-v2.js"></script>
+    <script src="../js/portfolio-i18n.js" defer></script>
     <script defer src="../js/achievements.js"></script>
 </head>
 <body class="portfolio-v2" data-page="achievements" data-root="../">
@@ -25,12 +26,17 @@
         <a data-nav="qualification" href="qualification.html">Qualification<span>資格</span></a>
         <a data-nav="contact" href="contact.html">Contact<span>連絡先</span></a>
       </nav>
+      <div class="v2-language-switcher" role="group" aria-label="表示言語">
+        <button type="button" data-language="ja" lang="ja" aria-label="日本語で表示">JP</button>
+        <button type="button" data-language="en" lang="en" aria-label="Display in English">EN</button>
+      </div>
       <button class="v2-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="メニューを開く">
         <span class="v2-menu-toggle-lines" aria-hidden="true"></span>
       </button>
     </div>
   </header>
   <div class="v2-menu-backdrop" aria-hidden="true"></div>
+  <span id="language-status" class="v2-sr-only" role="status" aria-live="polite"></span>
 
     <main id="main-content" class="v2-main">
         <nav class="achievement-tabs-shell" aria-label="実績の分類">

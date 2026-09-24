@@ -7,6 +7,7 @@
   <title>小川樹 | Portfolio</title>
   <link rel="stylesheet" href="css/portfolio-v2.css">
   <script src="js/portfolio-v2.js" defer></script>
+  <script src="js/portfolio-i18n.js" defer></script>
 </head>
 <body class="portfolio-v2" data-page="home" data-root="">
   <a class="v2-skip-link" href="#main-content">本文へ移動</a>
@@ -24,12 +25,17 @@
         <a data-nav="qualification" href="pages/qualification.html">Qualification<span>資格</span></a>
         <a data-nav="contact" href="pages/contact.html">Contact<span>連絡先</span></a>
       </nav>
+      <div class="v2-language-switcher" role="group" aria-label="表示言語">
+        <button type="button" data-language="ja" lang="ja" aria-label="日本語で表示">JP</button>
+        <button type="button" data-language="en" lang="en" aria-label="Display in English">EN</button>
+      </div>
       <button class="v2-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="メニューを開く">
         <span class="v2-menu-toggle-lines" aria-hidden="true"></span>
       </button>
     </div>
   </header>
   <div class="v2-menu-backdrop" aria-hidden="true"></div>
+  <span id="language-status" class="v2-sr-only" role="status" aria-live="polite"></span>
 
   <main id="main-content" class="v2-main">
     <section class="v2-hero" aria-labelledby="home-title">
