@@ -226,13 +226,13 @@
   const byPage = { home, about, skills, achievements, qualification, contact };
   const page = document.body.dataset.page || "";
   const dictionary = { ...common, ...(byPage[page] || {}) };
-  const secondaryLabels = {
-    "トップ": "Start",
-    "自己紹介": "Profile",
-    "使用技術": "Technologies",
-    "実績": "Projects",
-    "資格": "Credentials",
-    "連絡先": "Get in touch"
+  const navigationLabels = {
+    "トップ": "Home",
+    "自己紹介": "About",
+    "使用技術": "Skills",
+    "実績": "Achievements",
+    "資格": "Qualification",
+    "連絡先": "Contact"
   };
   const textSources = new WeakMap();
   const attributeSources = new WeakMap();
@@ -282,10 +282,10 @@
       const node = walker.currentNode;
       if (!textSources.has(node)) textSources.set(node, node.nodeValue);
       const original = textSources.get(node);
-      const secondary = node.parentElement?.matches(".v2-nav a span, .v2-preview h3 span")
-        ? secondaryLabels[original.trim()]
+      const navigation = node.parentElement?.matches(".v2-nav a")
+        ? navigationLabels[original.trim()]
         : undefined;
-      node.nodeValue = translateText(original, secondary);
+      node.nodeValue = translateText(original, navigation);
     }
   };
 
