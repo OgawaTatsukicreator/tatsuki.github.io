@@ -93,4 +93,40 @@
 
   mobile.addEventListener("change", syncMenu);
   syncMenu();
+
+  // Reveal prose when it enters the viewport, while keeping it visible without JS or motion support.
+  const revealSelectors = [
+    ".v2-home-intro > h2", ".v2-home-intro > p",
+    ".v2-preview h3", ".v2-preview-content > p",
+    ".v2-section-heading > h2", ".v2-section-heading > p:not(.v2-eyebrow)",
+    ".about-timeline-item h3", ".about-timeline-content > p",
+    ".about-purpose-copy", ".about-career-item h3", ".about-career-item > p",
+    ".v2-skill-card h3", ".v2-skill-card > p",
+    ".achievement-panel-heading h2", ".achievement-card h3",
+    ".achievement-card > p:not(.achievement-meta)", ".v2-qualification-name"
+  ];
+  const revealTargets = [...document.querySelectorAll(revealSelectors.join(", "))];
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  if (!revealTargets.length || reduceMotion.matches || !("IntersectionObserver" in window)) return;
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(({ target, isIntersecting }) => {
+      if (!isIntersecting) return;
+      target.classList.add("is-visible");
+      revealObserver.unobserve(target);
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+
+  revealTargets.forEach((element, index) => {
+    element.classList.add("v2-reveal-target");
+    element.style.setProperty("--v2-reveal-delay", `${(index % 3) * 65}ms`);
+    revealObserver.observe(element);
+  });
+  body.classList.add("v2-motion-ready");
+
+  reduceMotion.addEventListener?.("change", (event) => {
+    if (!event.matches) return;
+    revealObserver.disconnect();
+    body.classList.remove("v2-motion-ready");
+  });
 })();
