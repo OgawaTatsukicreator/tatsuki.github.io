@@ -103,9 +103,16 @@
     ".about-purpose-copy", ".about-career-item h3", ".about-career-item > p",
     ".v2-skill-card h3", ".v2-skill-card > p",
     ".achievement-panel-heading h2", ".achievement-card h3",
-    ".achievement-card > p:not(.achievement-meta)", ".v2-qualification-name"
+    ".achievement-card > p:not(.achievement-meta)", ".v2-qualification-name",
+    ".project-page .project-hero-copy .project-subtitle", ".project-page .project-hero-copy .project-lead",
+    ".project-page .project-section h2", ".project-page .project-section > p:not(.project-section-number)",
+    ".project-page .project-visual-heading h3", ".project-page .project-visual-heading > p",
+    ".project-page .case-flow h3", ".project-page .case-flow p",
+    ".project-page .feature-list h3", ".project-page .feature-list p",
+    ".project-page .tech-item h3", ".project-page .tech-item p"
   ];
-  const revealTargets = [...document.querySelectorAll(revealSelectors.join(", "))];
+  const revealTargets = [...document.querySelectorAll(revealSelectors.join(", "))]
+    .filter((element) => !element.querySelector("a, button, input, select, textarea"));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   if (!revealTargets.length || reduceMotion.matches || !("IntersectionObserver" in window)) return;
 

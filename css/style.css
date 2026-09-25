@@ -880,6 +880,22 @@ h3 {
     --project-hero-end: #4a2523;
 }
 
+.project-page-kyotabi {
+    --project-accent: #a84b31;
+    --project-accent-dark: #7c3422;
+    --project-tint: #fff1e9;
+    --project-hero-start: #211c29;
+    --project-hero-end: #573443;
+}
+
+.project-page-face-mask {
+    --project-accent: #285cae;
+    --project-accent-dark: #173f88;
+    --project-tint: #edf4ff;
+    --project-hero-start: #101d38;
+    --project-hero-end: #2a4271;
+}
+
 .experience-page-contest {
     --project-accent: #c78922;
     --project-accent-dark: #80520a;
@@ -986,6 +1002,14 @@ h3 {
 
 .project-page-training .project-hero .label {
     color: #fdba9f;
+}
+
+.project-page-kyotabi .project-hero .label {
+    color: #ffd2b8;
+}
+
+.project-page-face-mask .project-hero .label {
+    color: #c3ddff;
 }
 
 .experience-page-contest .project-hero .label {
@@ -1302,6 +1326,55 @@ h3 {
     --project-rule: color-mix(in srgb, var(--project-accent) 24%, var(--line));
     --project-soft-rule: color-mix(in srgb, var(--project-accent) 12%, var(--line));
     --project-shadow: 0 16px 44px rgba(15, 23, 42, 0.075);
+}
+
+.case-flow {
+    counter-reset: case-step;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin: 24px;
+    padding: 0;
+    list-style: none;
+}
+
+.case-flow--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.case-flow > li {
+    min-width: 0;
+    padding: 24px;
+    border: 1px solid var(--project-rule);
+    border-top: 3px solid var(--project-accent);
+    border-radius: 14px;
+    background: var(--white);
+    box-shadow: var(--project-shadow);
+}
+
+.case-flow > li::before {
+    counter-increment: case-step;
+    content: counter(case-step, decimal-leading-zero);
+    display: block;
+    margin-bottom: 16px;
+    color: var(--project-accent-dark);
+    font-family: var(--font-latin), var(--font-display-jp);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.case-flow h3 {
+    margin: 0 0 9px;
+    overflow-wrap: anywhere;
+    font-size: 1.07rem;
+}
+
+.case-flow p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.8;
 }
 
 .project-page .project-section h2 {
@@ -3608,6 +3681,12 @@ footer {
 }
 
 @media (max-width: 700px) {
+    .case-flow,
+    .case-flow--four {
+        grid-template-columns: 1fr;
+        margin: 16px;
+    }
+
     .visual-heading,
     .project-visual-heading,
     .shift-visual-heading {
@@ -3770,6 +3849,13 @@ footer {
 
     .project-return-link {
         min-height: 64px;
+    }
+}
+
+@media (max-width: 360px) {
+    .project-page-kyotabi .project-hero h1 {
+        font-size: 2.25rem;
+        white-space: nowrap;
     }
 }
 
