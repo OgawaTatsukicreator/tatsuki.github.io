@@ -196,8 +196,14 @@ html[lang="en"] .v2-preview h3 span { display: none; }
 .achievement-slide-button { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--v2-line); border-radius: 50%; background: var(--v2-white); color: var(--v2-blue-dark); font: 700 1.2rem var(--v2-font-latin); cursor: pointer; }
 .achievement-slide-button:hover:not(:disabled) { border-color: var(--v2-blue); background: #edf3fb; }
 .achievement-slide-button:disabled { opacity: .42; cursor: default; }
+.achievement-slide-button[data-slide="next"] { border-color: var(--v2-blue); background: var(--v2-blue); color: var(--v2-white); }
+.achievement-slide-button[data-slide="next"]:hover:not(:disabled) { border-color: var(--v2-blue-dark); background: var(--v2-blue-dark); }
+.achievement-controls[hidden], .achievement-scroll-hint[hidden] { display: none; }
 .achievement-progress { min-width: 75px; color: var(--v2-ink); font: 700 .78rem var(--v2-font-latin); text-align: center; white-space: nowrap; }
+.achievement-scroll-hint { display: flex; width: fit-content; align-items: center; gap: 9px; margin: -11px 0 14px auto; padding: 5px 12px; border-radius: 999px; background: #eaf1fc; color: var(--v2-blue-dark); font: 700 .75rem var(--v2-font-ui); }
+.achievement-scroll-hint span:last-child { font: 700 1rem var(--v2-font-latin); }
 .achievement-grid { display: grid; grid-auto-flow: column; grid-auto-columns: calc(50% - 8.5px); gap: 17px; overflow-x: auto; overscroll-behavior-inline: contain; contain: paint; padding-bottom: 12px; scroll-snap-type: x mandatory; scrollbar-color: #a7bad4 transparent; scrollbar-width: thin; }
+.achievement-grid.has-overflow-cards { grid-auto-columns: calc(50% - clamp(40px, 5vw, 60px)); }
 .achievement-card { display: flex; min-width: 0; flex-direction: column; padding: clamp(22px, 3vw, 32px); border: 1px solid var(--v2-line); border-top: 3px solid var(--v2-blue); border-radius: var(--v2-card-radius); background: var(--v2-white); scroll-snap-align: start; }
 .achievement-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 0 0 18px; color: var(--v2-blue-dark); font: 700 .78rem var(--v2-font-latin); }
 .achievement-status { display: inline-flex; padding: 3px 9px; border: 1px solid #c9d7e9; background: #f1f5fb; color: var(--v2-muted); font: 700 .72rem var(--v2-font-ui); }
@@ -248,7 +254,7 @@ html[lang="en"] .v2-preview h3 span { display: none; }
   .v2-home-intro p { margin-top: 16px; }
   .v2-preview { grid-template-columns: 1fr; gap: 18px; }
   .about-profile, .about-career-list, .v2-skill-grid, .contact-grid { grid-template-columns: 1fr; }
-  .achievement-grid { grid-auto-columns: 86%; gap: 14px; }
+  .achievement-grid, .achievement-grid.has-overflow-cards { grid-auto-columns: 82%; gap: 14px; }
   .achievement-panel-heading { align-items: stretch; flex-direction: column; gap: 14px; }
   .achievement-panel-tools { justify-content: space-between; }
   .achievement-tabs { min-height: 58px; }

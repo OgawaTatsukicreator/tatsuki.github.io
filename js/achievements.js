@@ -16,6 +16,7 @@
         const heading = panel.querySelector(".achievement-panel-heading");
         const count = heading?.querySelector(".achievement-panel-count");
         if (!track || !cards.length || !heading || !count) return;
+        track.classList.toggle("has-overflow-cards", cards.length > 2);
 
         const tools = document.createElement("div");
         tools.className = "achievement-panel-tools";
@@ -40,6 +41,15 @@
         controls.append(previous, progress, next);
         count.replaceWith(tools);
         tools.append(count, controls);
+        const hint = document.createElement("p");
+        hint.className = "achievement-scroll-hint";
+        hint.hidden = true;
+        const hintText = document.createElement("span");
+        const hintArrow = document.createElement("span");
+        hintArrow.setAttribute("aria-hidden", "true");
+        hintArrow.textContent = "→";
+        hint.append(hintText, hintArrow);
+        heading.after(hint);
 
         const metrics = () => {
             const gap = Number.parseFloat(window.getComputedStyle(track).columnGap) || 0;
@@ -59,6 +69,7 @@
             controls.setAttribute("aria-label", english ? "Card slide controls" : "カードのスライド操作");
             previous.setAttribute("aria-label", english ? "Show previous cards" : "前のカードを表示");
             next.setAttribute("aria-label", english ? "Show next cards" : "次のカードを表示");
+            hintText.textContent = english ? "More cards to the right" : "右に続きがあります";
         };
 
         const refresh = () => {
@@ -68,6 +79,7 @@
             controls.hidden = !scrollable;
             track.tabIndex = scrollable ? 0 : -1;
             if (!scrollable) {
+                hint.hidden = true;
                 track.removeAttribute("role");
                 track.removeAttribute("aria-label");
                 return;
@@ -86,6 +98,7 @@
             if (progress.textContent !== text) progress.textContent = text;
             previous.disabled = track.scrollLeft <= 2;
             next.disabled = track.scrollLeft >= max - 2;
+            hint.hidden = next.disabled;
         };
 
         const jumpTo = (index) => {
