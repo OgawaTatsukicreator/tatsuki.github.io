@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="京都のリピーターに新しい寄り道先を届けるWebアプリ『KYOTABI＋』。体験の流れ、実装した機能、技術構成を紹介します。">
+    <title>KYOTABI＋ | Tatsuki Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/portfolio-v2.css">
+    <script src="../js/portfolio-v2.js" defer></script>
+    <script src="../js/portfolio-i18n.js" defer></script>
+</head>
+<body data-page="achievements" class="portfolio-v2 detail-page project-page project-page-kyotabi">
+    <a class="skip-link" href="#project-content">本文へ移動</a>
+
+    <header class="v2-header">
+        <div class="v2-header-inner">
+            <a class="v2-brand" href="../index.html" aria-label="小川樹のポートフォリオ・Home">
+                <span class="v2-brand-mark" aria-hidden="true">TO.</span>
+                <span class="v2-brand-name">Tatsuki Ogawa<small>Portfolio</small></span>
+            </a>
+            <nav class="v2-nav" id="primary-nav" aria-label="主なページ">
+                <a class="v2-nav-home" href="../index.html">トップ<span lang="en">Home</span></a>
+                <a data-nav="about" href="about.html">自己紹介<span lang="en">About</span></a>
+                <a data-nav="skills" href="skills.html">使用技術<span lang="en">Skills</span></a>
+                <a data-nav="achievements" href="achievements.html">実績<span lang="en">Achievements</span></a>
+                <a data-nav="qualification" href="qualification.html">資格<span lang="en">Qualification</span></a>
+                <a data-nav="contact" href="contact.html">連絡先<span lang="en">Contact</span></a>
+            </nav>
+            <button class="v2-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="メニューを開く">
+                <span class="v2-menu-toggle-lines" aria-hidden="true"></span>
+            </button>
+        </div>
+    </header>
+    <div class="v2-menu-backdrop" aria-hidden="true"></div>
+    <span id="language-status" class="v2-sr-only" role="status" aria-live="polite"></span>
+
+    <header class="project-header">
+        <div class="project-header-inner">
+            <a class="back-link" href="achievements.html#works"><span aria-hidden="true">←</span>制作物一覧へ戻る</a>
+            <a class="project-brand" href="../index.html">Tatsuki Portfolio</a>
+        </div>
+    </header>
+
+    <main id="project-content" class="project-main">
+        <section class="project-hero" aria-labelledby="project-title">
+            <div class="project-hero-copy">
+                <p class="label">Works / Hackathon Web App</p>
+                <h1 id="project-title">KYOTABI＋</h1>
+                <p class="project-subtitle">定番を回り尽くした人に、次の京都を。</p>
+                <p class="project-lead">写真から気になる寄り道を見つけ、場所を開く。京都を何度も訪れた人に向けて、3人のチームで制作したWebアプリです。</p>
+            </div>
+            <dl class="project-impact" aria-label="アプリの基本情報">
+                <div><dt>制作時期</dt><dd>2026<small>年8月</small></dd></div>
+                <div><dt>初回ポイント</dt><dd>10<small>pt</small></dd></div>
+                <div><dt>投稿の閲覧</dt><dd>1<small>pt / 件</small></dd></div>
+            </dl>
+        </section>
+
+        <div class="project-layout">
+            <aside class="project-toc">
+                <nav aria-label="ページ内メニュー">
+                    <p class="project-toc-title">Agenda</p>
+                    <ol>
+                        <li><a href="#overview"><span>01</span>プロジェクトの概要</a></li>
+                        <li><a href="#flow"><span>02</span>発見までの流れ</a></li>
+                        <li><a href="#features"><span>03</span>公開版の機能</a></li>
+                        <li><a href="#stack"><span>04</span>技術と選定理由</a></li>
+                        <li><a href="#scope"><span>05</span>現在の範囲</a></li>
+                        <li><a href="#sources"><span>06</span>資料・公開先</a></li>
+                    </ol>
+                </nav>
+            </aside>
+
+            <article class="project-content">
+                <section id="overview" class="project-section">
+                    <p class="project-section-number">01</p>
+                    <h2>プロジェクトの概要</h2>
+                    <p>何度も京都へ行くと、有名な観光地はすでに見ている。次の行き先を探しても、よく知られた場所が先に並ぶ。KYOTABI＋は、そんなリピーターが知らない場所へ寄り道するためのアプリです。</p>
+                    <p>一覧では場所の名前を先に出さず、写真と体験を表すタイトルから選べるようにしています。気になる投稿を開き、ポイントを使うと本文を読めます。場所が登録された投稿では、正確な場所とGoogleマップへのリンクも確認できます。</p>
+                    <div class="project-note">
+                        <span class="project-note-label">制作の背景</span>
+                        <p>関西ビギナーズハッカソン vol.8（2026年8月）の3人チームによる制作物です。<a href="https://github.com/OgawaTatsukicreator/kyoto_Beginners_hackathon_vol1/blob/main/DOCS.md" target="_blank" rel="noopener noreferrer">完成版の要件定義・技術選定</a>と公開コードを基に、現在の内容を紹介しています。</p>
+                    </div>
+                </section>
+
+                <section id="flow" class="project-section">
+                    <p class="project-section-number">02</p>
+                    <h2>発見までの流れ</h2>
+                    <p>写真で興味を持ち、条件で探し、最後に場所を確かめる。操作の順序を短くまとめました。</p>
+                    <figure class="project-visual">
+                        <figcaption class="project-visual-heading">
+                            <span class="project-visual-kicker">Experience flow / 再構成図</span>
+                            <h3>寄り道先を見つける3つの操作</h3>
+                            <p>公開版の画面とコードを基に、操作の流れを文章で再構成しています。実画面のスクリーンショットではありません。</p>
+                        </figcaption>
+                        <ol class="case-flow">
+                            <li>
+                                <h3>写真から選ぶ</h3>
+                                <p>ホームでは投稿の写真とタイトルを見て、気になった寄り道を選びます。場所の名前は一覧に出しません。</p>
+                            </li>
+                            <li>
+                                <h3>条件で探す</h3>
+                                <p>キーワードや気分を選び、天気、時間帯、空き時間なども指定できます。選んだ理由は検索結果にも表示します。</p>
+                            </li>
+                            <li>
+                                <h3>場所を確かめる</h3>
+                                <p>投稿の写真とタイトルを確認してから1ptを使うと、詳しい文章が開きます。場所が登録されていれば地図にも進めます。</p>
+                            </li>
+                        </ol>
+                    </figure>
+                </section>
+
+                <section id="features" class="project-section">
+                    <p class="project-section-number">03</p>
+                    <h2>公開版の機能</h2>
+                    <div class="feature-list">
+                        <article>
+                            <span>01</span>
+                            <div><h3>写真を中心にした投稿一覧</h3><p>写真と体験のタイトルを入口にします。詳細を見る前に場所名や人気の数字を並べない構成です。</p></div>
+                        </article>
+                        <article>
+                            <span>02</span>
+                            <div><h3>条件が伝わる検索結果</h3><p>キーワードと気分は条件に合う投稿だけを表示し、天気や空き時間などは順位付けに使います。「雨でも大丈夫」など、上位に来た理由も示します。</p></div>
+                        </article>
+                        <article>
+                            <span>03</span>
+                            <div><h3>ポイントで開く投稿詳細</h3><p>初回に10ptを持ち、未閲覧の投稿を1ptで開きます。一度開いた投稿には再度ポイントを使いません。</p></div>
+                        </article>
+                        <article>
+                            <span>04</span>
+                            <div><h3>撮影場所を取り込む投稿画面</h3><p>写真に位置情報があれば読み取り、なければ端末の現在地を使えます。位置情報を取得できない場合は場所を手入力できます。</p></div>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="stack" class="project-section">
+                    <p class="project-section-number">04</p>
+                    <h2>技術と選定理由</h2>
+                    <p>ハッカソンの短い制作期間でも公開して試せるよう、ブラウザからすぐ触れられる構成です。検索の並び替えにはAIを使わず、入力条件に対する一致と加点をコードで決めています。</p>
+                    <div class="tech-stack-grid">
+                        <div class="tech-item"><span>Frontend</span><h3>Next.js 15 / React 19</h3><p>画面とルーティングを構成し、Vercelで公開。</p></div>
+                        <div class="tech-item"><span>Language</span><h3>TypeScript</h3><p>投稿と検索条件のデータを型で管理。</p></div>
+                        <div class="tech-item"><span>Shared posts</span><h3>Supabase</h3><p>共有投稿の取得、追加、反応をREST API経由で扱う。</p></div>
+                        <div class="tech-item"><span>Device state</span><h3>localStorage</h3><p>ポイント残高、開いた投稿、自分の投稿を端末内で保持。</p></div>
+                        <div class="tech-item"><span>Location</span><h3>EXIF / Geolocation API</h3><p>写真の撮影地点を読み、取得できないときは現在地や手入力で補う。</p></div>
+                        <div class="tech-item"><span>Styling</span><h3>CSS</h3><p>独立したUIライブラリに頼らず、モバイル向け画面を構成。</p></div>
+                    </div>
+                </section>
+
+                <section id="scope" class="project-section">
+                    <p class="project-section-number">05</p>
+                    <h2>現在の範囲</h2>
+                    <p>アカウント登録なしで公開デモを試せます。共有投稿はSupabaseから読み込みますが、ポイント残高や閲覧履歴は使っている端末のブラウザに保存します。このため、端末を替えても同じ残高や履歴を引き継ぐことはできません。</p>
+                    <p>写真の位置情報は、SNSなどを経由すると削除される場合があります。投稿画面では、端末の現在地を使う操作と場所の手入力を用意しています。</p>
+                    <div class="project-note">
+                        <span class="project-note-label">資料の読み方</span>
+                        <p>リポジトリの<a href="https://github.com/OgawaTatsukicreator/kyoto_Beginners_hackathon_vol1/blob/main/REQUIREMENTS.md" target="_blank" rel="noopener noreferrer">初期の要件定義書</a>とREADMEには、口コミ件数を使う別案が残っています。このページの機能説明は、公開版のコードと<a href="https://github.com/OgawaTatsukicreator/kyoto_Beginners_hackathon_vol1/blob/main/DOCS.md" target="_blank" rel="noopener noreferrer">完成版の資料</a>を基準にしています。</p>
+                    </div>
+                </section>
+
+                <section id="sources" class="project-section">
+                    <p class="project-section-number">06</p>
+                    <h2>資料・公開先</h2>
+                    <p>アプリはブラウザから試せます。詳しい仕様と実装は公開リポジトリで確認できます。</p>
+                    <div class="feature-list">
+                        <article><span>01</span><div><h3>公開デモ</h3><p><a href="https://kyoto-repeater.vercel.app/" target="_blank" rel="noopener noreferrer">KYOTABI＋を開く（新しいタブ）</a></p></div></article>
+                        <article><span>02</span><div><h3>要件定義・技術選定</h3><p><a href="https://github.com/OgawaTatsukicreator/kyoto_Beginners_hackathon_vol1/blob/main/DOCS.md" target="_blank" rel="noopener noreferrer">完成版のDOCS.mdを見る（新しいタブ）</a></p></div></article>
+                        <article><span>03</span><div><h3>実装コード</h3><p><a href="https://github.com/OgawaTatsukicreator/kyoto_Beginners_hackathon_vol1" target="_blank" rel="noopener noreferrer">GitHubリポジトリを見る（新しいタブ）</a></p></div></article>
+                    </div>
+                </section>
+
+                <nav class="project-return-nav" aria-label="記事を読み終えた後の移動先">
+                    <a class="project-return-link project-return-link--home" href="https://kyoto-repeater.vercel.app/" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span><span>公開アプリを開く（新しいタブ）</span></a>
+                    <a class="project-return-link project-return-link--works" href="achievements.html#works"><span aria-hidden="true">←</span><span>制作物一覧へ戻る</span></a>
+                    <a class="project-return-link project-return-link--home" href="../index.html"><span aria-hidden="true">⌂</span><span>homeへ戻る</span></a>
+                </nav>
+            </article>
+        </div>
+
+        <nav class="project-next project-next-back" aria-label="他の制作物">
+            <span>Other work</span>
+            <a href="work-face-mask.html">顔マスク処理アプリを見る<span aria-hidden="true">→</span></a>
+        </nav>
+    </main>
+
+    <footer><p>&copy; 2026 Tatsuki Portfolio</p></footer>
+</body>
+</html>
