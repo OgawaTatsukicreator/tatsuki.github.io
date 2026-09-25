@@ -42,6 +42,8 @@
     "Homeへ戻る": "Back to Home",
     "連絡先を見る": "View contact",
     "連絡先を見る →": "View contact →",
+    "使用技術を見る": "View skills",
+    "資格を見る": "View qualifications",
     "次に見るページ": "Explore next",
     "新しいタブ": "new tab",
     "（新しいタブ）": "(opens in a new tab)",
