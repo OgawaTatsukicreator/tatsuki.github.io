@@ -63,7 +63,6 @@
     "現場の課題を、": "Turning problems into",
     "使える仕組みに。": "practical tools.",
     "小川樹です。日本工学院八王子専門学校でITを学びながら、身近な課題からシフト提出システムや筋トレ日記アプリを制作しています。": "I'm Tatsuki Ogawa. While studying IT at Nippon Kogakuin Hachioji College, I build practical tools for problems close to home, including a shift submission system and a workout diary app.",
-    "制作物・実績を見る": "View projects and achievements",
     "自己紹介を見る": "Read about me",
     "プロフィール概要": "Profile summary",
     "知りたいところから、": "Start with what",
@@ -79,11 +78,11 @@
     "J検": "J-Ken",
     "B検2級": "Business Kentei, Grade 2",
     "小川樹のポートフォリオ。自己紹介、使用技術、制作物と経験、資格、連絡先を紹介します。": "Tatsuki Ogawa's portfolio: background, skills, projects, experience, qualifications, and contact information.",
-    "Aboutを詳しく見る": "Read more about me",
-    "Skillsを詳しく見る": "Explore my skills",
-    "Achievementsを詳しく見る": "Explore my achievements",
-    "Qualificationを詳しく見る": "Explore my qualifications",
-    "Contactを詳しく見る": "Open contact details"
+    "自己紹介を詳しく見る": "Read more about me",
+    "使用技術を詳しく見る": "Explore my skills",
+    "実績を詳しく見る": "Explore my achievements",
+    "資格を詳しく見る": "Explore my qualifications",
+    "連絡先を詳しく見る": "Open contact details"
   };
 
   const about = {
