@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ウェブフロンティアのインターンで扱った顔マスク処理アプリを紹介します。顔検知APIとCanvasを使った画像処理の流れや、現行コードで確認できる機能をまとめました。">
+    <title>顔マスク処理アプリ | Tatsuki Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/portfolio-v2.css">
+    <script src="../js/portfolio-v2.js" defer></script>
+    <script src="../js/portfolio-i18n.js" defer></script>
+</head>
+<body data-page="achievements" class="portfolio-v2 detail-page project-page project-page-face-mask">
+    <a class="skip-link" href="#project-content">本文へ移動</a>
+
+    <header class="v2-header">
+        <div class="v2-header-inner">
+            <a class="v2-brand" href="../index.html" aria-label="小川樹のポートフォリオ・Home">
+                <span class="v2-brand-mark" aria-hidden="true">TO.</span>
+                <span class="v2-brand-name">Tatsuki Ogawa<small>Portfolio</small></span>
+            </a>
+            <nav class="v2-nav" id="primary-nav" aria-label="主なページ">
+                <a class="v2-nav-home" href="../index.html">トップ<span lang="en">Home</span></a>
+                <a data-nav="about" href="about.html">自己紹介<span lang="en">About</span></a>
+                <a data-nav="skills" href="skills.html">使用技術<span lang="en">Skills</span></a>
+                <a data-nav="achievements" href="achievements.html">実績<span lang="en">Achievements</span></a>
+                <a data-nav="qualification" href="qualification.html">資格<span lang="en">Qualification</span></a>
+                <a data-nav="contact" href="contact.html">連絡先<span lang="en">Contact</span></a>
+            </nav>
+            <button class="v2-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="メニューを開く">
+                <span class="v2-menu-toggle-lines" aria-hidden="true"></span>
+            </button>
+        </div>
+    </header>
+    <div class="v2-menu-backdrop" aria-hidden="true"></div>
+    <span id="language-status" class="v2-sr-only" role="status" aria-live="polite"></span>
+
+    <header class="project-header">
+        <div class="project-header-inner">
+            <a class="back-link" href="achievements.html#works">
+                <span aria-hidden="true">←</span>
+                制作物一覧へ戻る
+            </a>
+            <a class="project-brand" href="../index.html">Tatsuki Portfolio</a>
+        </div>
+    </header>
+
+    <main id="project-content" class="project-main">
+        <section class="project-hero" aria-labelledby="project-title">
+            <div class="project-hero-copy">
+                <p class="label">Works / Internship Web Application</p>
+                <h1 id="project-title">顔マスク<br>処理アプリ</h1>
+                <p class="project-subtitle">顔検知の座標を、画像上の絵文字スタンプへ</p>
+                <p class="project-lead">
+                    画像を選び、顔検知APIが返した位置に絵文字を重ねるWebアプリです。
+                    入力から結果表示まで、画像処理の流れを一つの画面体験にまとめました。
+                </p>
+            </div>
+            <dl class="project-impact" aria-label="現行コードで確認できる主な仕様">
+                <div>
+                    <dt>選択できる画像</dt>
+                    <dd>最大10<small>枚</small></dd>
+                </div>
+                <div>
+                    <dt>対応する画像形式</dt>
+                    <dd>3<small>形式</small></dd>
+                </div>
+                <div>
+                    <dt>画面の流れ</dt>
+                    <dd>3<small>段階</small></dd>
+                </div>
+            </dl>
+        </section>
+
+        <div class="project-layout">
+            <aside class="project-toc">
+                <nav aria-label="ページ内メニュー">
+                    <p class="project-toc-title">Agenda</p>
+                    <ol>
+                        <li><a href="#overview"><span>01</span>アプリの概要</a></li>
+                        <li><a href="#flow"><span>02</span>画像処理の流れ</a></li>
+                        <li><a href="#screens"><span>03</span>画面と一括処理</a></li>
+                        <li><a href="#stack"><span>04</span>技術と構成</a></li>
+                        <li><a href="#status"><span>05</span>現在地と改善点</a></li>
+                    </ol>
+                </nav>
+            </aside>
+
+            <article class="project-content">
+                <section id="overview" class="project-section">
+                    <p class="project-section-number">01</p>
+                    <h2>アプリの概要</h2>
+                    <p>
+                        ウェブフロンティア株式会社のインターンで扱った、画像中の顔に絵文字スタンプを重ねるWebアプリです。外部の顔検知APIから顔の位置を受け取り、その座標を使ってブラウザのCanvasに画像とスタンプを描画します。
+                    </p>
+                    <p>
+                        画像に複数人が写っている場合は、返された顔の座標を順に使います。利用者が確認するのは座標の数値ではなく、スタンプを重ねた画像です。
+                    </p>
+                    <div class="project-note">
+                        <span class="project-note-label">このページで紹介する範囲</span>
+                        <p>公開されている仕様書と現行コードを基に、画面と画像処理の構成を説明します。公開デモの動作を確認した記録としては扱いません。</p>
+                    </div>
+                </section>
+
+                <section id="flow" class="project-section">
+                    <p class="project-section-number">02</p>
+                    <h2>画像処理の流れ</h2>
+                    <p>画像を選んでから結果を見るまで、ブラウザ、アプリのAPI、顔検知サービスが順に役割を受け持ちます。</p>
+                    <ol class="case-flow case-flow--four">
+                        <li>
+                            <h3>画像を選ぶ</h3>
+                            <p>ドラッグ＆ドロップ、またはファイル選択から画像を取り込みます。JPEG・PNG・WebPに対応し、1枚10MBまでを確認します。</p>
+                        </li>
+                        <li>
+                            <h3>顔の位置を調べる</h3>
+                            <p>画像をアプリのAPI Route経由で外部の顔検知APIに送ります。返されるのは顔を囲む座標です。</p>
+                        </li>
+                        <li>
+                            <h3>スタンプを重ねる</h3>
+                            <p>各顔の座標から位置と大きさを決め、Canvas上の元画像に「😊」の絵文字を描きます。</p>
+                        </li>
+                        <li>
+                            <h3>結果を確かめる</h3>
+                            <p>処理後の画像を一覧で表示します。顔が見つからなかった画像や通信に失敗した画像には、それぞれメッセージを表示します。</p>
+                        </li>
+                    </ol>
+                </section>
+
+                <section id="screens" class="project-section">
+                    <p class="project-section-number">03</p>
+                    <h2>画面と一括処理</h2>
+                    <p>現行コードは「アップロード → プレビュー → 結果」の3段階で画面を切り替えます。複数画像を選んだ場合にも、送信前の確認と画像ごとの結果表示を行える構成です。</p>
+                    <div class="feature-list">
+                        <article>
+                            <span>01</span>
+                            <div>
+                                <h3>プレビューで1枚ずつ確認</h3>
+                                <p>最大10枚を選択し、前後の矢印と「N枚中M枚目」の表示で、送信前の画像を切り替えます。</p>
+                            </div>
+                        </article>
+                        <article>
+                            <span>02</span>
+                            <div>
+                                <h3>画像ごとに処理を進める</h3>
+                                <p>各画像へのリクエストをまとめて開始し、完了枚数を表示します。画像単位で結果とエラーメッセージを保持します。</p>
+                            </div>
+                        </article>
+                        <article>
+                            <span>03</span>
+                            <div>
+                                <h3>結果をグリッドで見渡す</h3>
+                                <p>処理後は全画像の枠を一覧表示します。正常な画像にはCanvasの描画結果を、エラーになった画像にはメッセージを表示します。</p>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="stack" class="project-section">
+                    <p class="project-section-number">04</p>
+                    <h2>技術と構成</h2>
+                    <div class="tech-stack-grid">
+                        <div class="tech-item">
+                            <span>Interface</span>
+                            <h3>Next.js 16 / React 19</h3>
+                            <p>アップロード、プレビュー、結果の表示と状態管理</p>
+                        </div>
+                        <div class="tech-item">
+                            <span>Language</span>
+                            <h3>TypeScript</h3>
+                            <p>画像ごとのファイル、顔座標、エラー情報を型で管理</p>
+                        </div>
+                        <div class="tech-item">
+                            <span>UI</span>
+                            <h3>Tailwind CSS 4</h3>
+                            <p>画面のレイアウトと操作部品の表示</p>
+                        </div>
+                        <div class="tech-item">
+                            <span>Image processing</span>
+                            <h3>Canvas API</h3>
+                            <p>元画像と顔の位置に合わせた絵文字の合成</p>
+                        </div>
+                    </div>
+                    <h3 class="project-subsection-title">APIキーをブラウザに渡さない構成</h3>
+                    <p>
+                        顔検知サービスへの接続情報は、Next.jsのAPI Routeだけで読み込みます。ブラウザから受け取る画像は、サーバー側でも形式と10MBの上限を確認してから中継します。
+                    </p>
+                </section>
+
+                <section id="status" class="project-section">
+                    <p class="project-section-number">05</p>
+                    <h2>現在地と改善点</h2>
+                    <p>
+                        READMEの2026年9月11日版には、複数画像の一括処理を「要件定義のみ・未実装」とする記載が残っています。その後の現行コードには、最大10枚の選択、プレビュー切替、一括送信、結果一覧の実装があります。このページではコードで確認できる内容として紹介しており、外部APIを使ったブラウザ上の一連の動作は未検証です。
+                    </p>
+                    <p>
+                        顔検知APIについては、画像を送って正常な座標データを取得したcurlとNode.jsの疎通確認ログがあります。アプリ全体の動作確認とは区別しています。
+                    </p>
+                    <ul class="improvement-list">
+                        <li><span>01</span><p>外部APIが返す顔座標の型や範囲を検証する。</p></li>
+                        <li><span>02</span><p>画像の内容検証と、破損画像を使ったエラー表示の確認を行う。</p></li>
+                        <li><span>03</span><p>タイムアウト時の案内と、失敗後の再試行方法を明確にする。</p></li>
+                    </ul>
+                    <h3 class="project-subsection-title">参照資料</h3>
+                    <p>
+                        仕様と現状は、<a href="https://github.com/OgawaTatsukicreator/face-mark-app/blob/main/README.md" target="_blank" rel="noopener noreferrer">README・基本仕様書<span class="v2-sr-only">（新しいタブ）</span></a>、<a href="https://github.com/OgawaTatsukicreator/face-mark-app/blob/main/app/page.tsx" target="_blank" rel="noopener noreferrer">現行の画面コード<span class="v2-sr-only">（新しいタブ）</span></a>、<a href="https://github.com/OgawaTatsukicreator/face-mark-app/blob/main/docs/api-test-log.md" target="_blank" rel="noopener noreferrer">顔検知APIの疎通確認ログ<span class="v2-sr-only">（新しいタブ）</span></a>で確認できます。
+                    </p>
+                </section>
+
+                <nav class="project-return-nav" aria-label="記事を読み終えた後の移動先">
+                    <a class="project-return-link project-return-link--home" href="https://github.com/OgawaTatsukicreator/face-mark-app" target="_blank" rel="noopener noreferrer">
+                        <span aria-hidden="true">↗</span>
+                        <span>GitHubでコードを見る（新しいタブ）</span>
+                    </a>
+                    <a class="project-return-link project-return-link--works" href="achievements.html#works">
+                        <span aria-hidden="true">←</span>
+                        <span>制作物一覧へ戻る</span>
+                    </a>
+                    <a class="project-return-link project-return-link--home" href="../index.html">
+                        <span aria-hidden="true">⌂</span>
+                        <span>homeへ戻る</span>
+                    </a>
+                </nav>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tatsuki Portfolio</p>
+    </footer>
+</body>
+</html>
