@@ -18,7 +18,6 @@
     "表示言語": "Display language",
     "日本語で表示": "View in Japanese",
     "英語で表示": "View in English",
-    "詳しく見る": "View details",
     "制作物": "Projects",
     "経験": "Experience",
     "インターン": "Internships",
@@ -67,7 +66,7 @@
     "プロフィール概要": "Profile summary",
     "知りたいところから、": "Start with what",
     "ご覧ください。": "interests you.",
-    "人物像から制作物まで、5つのページにまとめました。各項目の概要から詳しい内容へ進めます。": "Five pages introduce my background, work, and experience. Browse each summary and open the details that interest you.",
+    "人物像から制作物まで、5つのページにまとめました。カードを選ぶと、それぞれの詳しいページへ進めます。": "Five pages introduce my background, work, and experience. Select a card to open its details.",
     "静岡県伊東市出身。サッカーを12年間続け、現在はITを学びながら筋力トレーニングとパーソナルトレーナーの活動にも取り組んでいます。": "I am from Ito, Shizuoka. After playing soccer for 12 years, I now study IT while pursuing strength training and working as a personal trainer.",
     "Web制作とアプリ開発で使った技術を、用途ごとに整理しました。実際に使ったものと、現在学んでいるものを区別して紹介します。": "Explore the technologies I have used in web and app development, grouped by purpose and separated from those I am currently learning.",
     "シフト提出システムや「マソ君の日常」に加え、ハッカソンで制作した京都観光アプリとインターンで取り組んだ画像処理アプリを紹介します。": "Explore my shift submission system, Maso-kun's Daily Life, a Kyoto travel app built at a hackathon, and an image-processing app developed during an internship.",
@@ -77,12 +76,7 @@
     "基本情報技術者試験": "Fundamental Information Technology Engineer Examination",
     "J検": "J-Ken",
     "B検2級": "Business Kentei, Grade 2",
-    "小川樹のポートフォリオ。自己紹介、使用技術、制作物と経験、資格、連絡先を紹介します。": "Tatsuki Ogawa's portfolio: background, skills, projects, experience, qualifications, and contact information.",
-    "自己紹介を詳しく見る": "Read more about me",
-    "使用技術を詳しく見る": "Explore my skills",
-    "実績を詳しく見る": "Explore my achievements",
-    "資格を詳しく見る": "Explore my qualifications",
-    "連絡先を詳しく見る": "Open contact details"
+    "小川樹のポートフォリオ。自己紹介、使用技術、制作物と経験、資格、連絡先を紹介します。": "Tatsuki Ogawa's portfolio: background, skills, projects, experience, qualifications, and contact information."
   };
 
   const about = {
