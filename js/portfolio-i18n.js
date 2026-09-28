@@ -59,9 +59,7 @@
   };
 
   const home = {
-    "現場の課題を、": "Turning problems into",
-    "使える仕組みに。": "practical tools.",
-    "小川樹です。日本工学院八王子専門学校でITを学びながら、身近な課題からシフト提出システムや筋トレ日記アプリを制作しています。": "I'm Tatsuki Ogawa. While studying IT at Nippon Kogakuin Hachioji College, I build practical tools for problems close to home, including a shift submission system and a workout diary app.",
+    "日本工学院八王子専門学校でITを学びながら、身近な課題からシフト提出システムや筋トレ日記アプリを制作しています。": "While studying IT at Nippon Kogakuin Hachioji College, I build practical tools for problems close to home, including a shift submission system and a workout diary app.",
     "自己紹介を見る": "Read about me",
     "プロフィール概要": "Profile summary",
     "知りたいところから、": "Start with what",
