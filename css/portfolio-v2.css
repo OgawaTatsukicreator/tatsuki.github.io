@@ -36,11 +36,10 @@ body.portfolio-v2 img { max-width: 100%; }
 /* The same site navigation is used on Home, all five category pages and legacy case studies. */
 .v2-header { position: fixed; z-index: 1000; inset: 0 0 auto; height: var(--v2-header-height); color: var(--v2-ink); background: rgba(25, 31, 39, .98); border-bottom: 1px solid var(--v2-line); box-shadow: 0 8px 28px rgba(0, 0, 0, .16); }
 .v2-header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: min(var(--v2-width), calc(100% - 48px)); height: 100%; margin-inline: auto; }
-.v2-brand { display: flex; flex: 0 0 auto; align-items: center; gap: 11px; color: var(--v2-ink) !important; text-decoration: none; line-height: 1.2; }
-.v2-brand-mark { display: grid; place-items: center; width: 43px; height: 43px; border: 1px solid var(--v2-ink); font: 700 1.05rem var(--v2-font-latin); letter-spacing: -.08em; }
-.v2-brand[aria-current="page"] .v2-brand-mark { border-color: var(--v2-blue); box-shadow: inset 0 -3px var(--v2-blue); }
-.v2-brand-name { display: grid; font: 700 .93rem var(--v2-font-latin); letter-spacing: .01em; }
-.v2-brand-name small { margin-top: 2px; color: var(--v2-muted); font: 500 .62rem var(--v2-font-latin); letter-spacing: .16em; text-transform: uppercase; }
+.v2-brand { position: relative; display: flex; flex: 0 0 auto; height: 100%; min-height: 44px; align-items: center; color: var(--v2-ink) !important; text-decoration: none; }
+.v2-brand[aria-current="page"]::after { position: absolute; right: 0; bottom: 0; left: 0; height: 3px; background: var(--v2-blue); content: ""; }
+.v2-brand-name { font: 700 1.08rem/1.2 var(--v2-font-display); letter-spacing: .03em; white-space: nowrap; }
+html[lang="en"] .v2-brand-name { font-family: var(--v2-font-latin); letter-spacing: .01em; }
 .v2-nav { display: flex; align-items: stretch; height: 100%; margin-left: auto; border-left: 1px solid var(--v2-nav-line); }
 .v2-nav .v2-nav-home { display: none; }
 .v2-nav a { position: relative; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; min-width: 106px; padding: 0 11px; border-right: 1px solid var(--v2-nav-line); color: var(--v2-ink) !important; font: 600 .9rem var(--v2-font-ui); text-decoration: none; transition: background .2s ease; }
@@ -283,9 +282,7 @@ html[lang="en"] .v2-preview h3 span { display: none; }
 }
 @media (max-width: 390px) {
   .v2-header-inner { gap: 8px; }
-  .v2-brand-name { font-size: .78rem; }
-  .v2-brand-name small { font-size: .54rem; }
-  .v2-brand-mark { width: 38px; height: 38px; }
+  .v2-brand-name { font-size: .92rem; }
   .v2-language-switcher { gap: 0; padding: 2px; }
   .v2-language-switcher button { min-width: 31px; min-height: 36px; padding: 3px; font-size: .68rem; }
   .v2-menu-toggle { width: 42px; height: 42px; }
