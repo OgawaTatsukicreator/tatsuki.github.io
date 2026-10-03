@@ -44,7 +44,9 @@
   targets.forEach((element) => observer.observe(element));
   document.body.classList.add("mo-ready");
 
-  // Timeline line: progress is measured against a trigger line 60% down the viewport.
+  // Timeline line: progress is measured against a trigger line 60% down the viewport. On tall screens the
+  // timeline's end never gets that low before the page runs out, so the trigger slides to the viewport
+  // bottom as the page bottom approaches and the line always finishes.
   const timeline = document.querySelector(".lp-tl");
   if (!timeline) return;
   const steps = [...timeline.children];
@@ -53,7 +55,10 @@
   const updateTimeline = () => {
     ticking = false;
     const rect = timeline.getBoundingClientRect();
-    const trigger = window.innerHeight * 0.6;
+    const viewport = window.innerHeight;
+    const remaining = Math.max(0, document.documentElement.scrollHeight - (window.scrollY + viewport));
+    const nearEnd = Math.min(1, Math.max(0, 1 - remaining / (viewport * 0.6)));
+    const trigger = viewport * (0.6 + 0.4 * nearEnd);
     const reached = Math.min(rect.height, Math.max(0, trigger - rect.top));
     timeline.style.setProperty("--tl", (reached / rect.height).toFixed(4));
     steps.forEach((step) => step.classList.toggle("is-lit", step.getBoundingClientRect().top + 10 <= trigger));
