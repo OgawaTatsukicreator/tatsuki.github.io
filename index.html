@@ -3,49 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="小川樹のポートフォリオ。自己紹介、使用技術、制作物と経験、資格、連絡先を紹介します。">
+  <meta name="description" content="小川樹（Ogawa Tatsuki）のポートフォリオ。制作物、使用技術、経歴をスクロールで確認できます。">
   <title>小川樹 | Portfolio</title>
   <link rel="stylesheet" href="css/portfolio-v2.css?v=20260929-2">
+  <link rel="stylesheet" href="css/lp.css">
   <script src="js/portfolio-v2.js" defer></script>
-  <script src="js/portfolio-i18n.js?v=20260928-1" defer></script>
+  <script src="js/lp.js" defer></script>
 </head>
-<body class="portfolio-v2" data-page="home" data-root="">
+<body class="portfolio-v2 lp" data-page="home" data-root="">
   <a class="v2-skip-link" href="#main-content">本文へ移動</a>
   <header class="v2-header">
     <div class="v2-header-inner">
-      <a class="v2-brand" href="index.html" aria-label="Tatsuki Ogawa, Home" lang="en">
+      <a class="v2-brand" href="#top" aria-label="Tatsuki Ogawa, ページ先頭へ" lang="en">
         <span class="v2-brand-name" lang="en" translate="no">Tatsuki Ogawa</span>
       </a>
-      <nav class="v2-nav" id="primary-nav" aria-label="主なページ">
-        <a class="v2-nav-home" href="index.html">トップ<span lang="en">Home</span></a>
-        <a data-nav="about" href="pages/about.html">自己紹介<span lang="en">About</span></a>
-        <a data-nav="skills" href="pages/skills.html">使用技術<span lang="en">Skills</span></a>
-        <a data-nav="achievements" href="pages/achievements.html">実績<span lang="en">Achievements</span></a>
-        <a data-nav="qualification" href="pages/qualification.html">資格<span lang="en">Qualification</span></a>
-        <a data-nav="contact" href="pages/contact.html">連絡先<span lang="en">Contact</span></a>
+      <nav class="v2-nav" id="primary-nav" aria-label="ページ内メニュー">
+        <a href="#contact">連絡先<span lang="en">Contact</span></a>
+        <a href="#works">成果物<span lang="en">Works</span></a>
+        <a href="#skills">使用技術<span lang="en">Skills</span></a>
+        <a href="#timeline">年表<span lang="en">Timeline</span></a>
       </nav>
-      <div class="v2-language-switcher" role="group" aria-label="表示言語">
-        <button type="button" data-language="ja" lang="ja" aria-label="日本語で表示">JP</button>
-        <button type="button" data-language="en" lang="en" aria-label="Display in English">EN</button>
-      </div>
       <button class="v2-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="メニューを開く">
         <span class="v2-menu-toggle-lines" aria-hidden="true"></span>
       </button>
     </div>
   </header>
   <div class="v2-menu-backdrop" aria-hidden="true"></div>
-  <span id="language-status" class="v2-sr-only" role="status" aria-live="polite"></span>
 
   <main id="main-content" class="v2-main">
-    <section class="v2-hero" aria-labelledby="home-title">
+    <!-- 1. Hero（既存のヒーローを踏襲） -->
+    <section class="v2-hero" id="top" aria-labelledby="home-title">
       <div class="v2-container v2-hero-grid">
         <div class="v2-hero-copy">
-          <p class="v2-kicker">Tatsuki Ogawa / Portfolio</p>
+          <p class="v2-kicker">Ogawa Tatsuki / Portfolio</p>
           <h1 id="home-title">小川 樹</h1>
           <p class="v2-hero-lede">日本工学院八王子専門学校でITを学びながら、身近な課題からシフト提出システムや筋トレ日記アプリを制作しています。</p>
           <div class="v2-hero-actions">
-            <a class="v2-button" href="pages/achievements.html">実績を見る <span aria-hidden="true">↗</span></a>
-            <a class="v2-button v2-button-outline" href="pages/about.html">自己紹介を見る <span aria-hidden="true">→</span></a>
+            <a class="v2-button" href="#works">成果物を見る <span aria-hidden="true">↓</span></a>
+            <a class="v2-button v2-button-outline" href="#timeline">経歴を見る <span aria-hidden="true">↓</span></a>
           </div>
         </div>
       </div>
@@ -54,72 +49,191 @@
     <div class="v2-profile-band">
       <aside class="v2-container v2-profile-snapshot" aria-label="プロフィール概要">
         <div class="v2-profile-heading">
-          <p>Profile / 2026</p>
+          <p>Ogawa Tatsuki's Portfolio</p>
           <strong>小川 樹</strong>
         </div>
         <dl>
           <dt>年齢</dt><dd>21歳（2026年9月時点）</dd>
           <dt>出身</dt><dd>静岡県伊東市</dd>
           <dt>学校</dt><dd>日本工学院八王子専門学校</dd>
-          <dt>趣味</dt><dd>筋力トレーニング</dd>
         </dl>
       </aside>
     </div>
 
-    <div class="v2-container">
-      <div class="v2-home-intro">
-        <h2 id="explore-title">知りたいところから、<br>ご覧ください。</h2>
-        <p>人物像から制作物まで、5つのページにまとめました。カードを選ぶと、それぞれの詳しいページへ進めます。</p>
+    <!-- 2. 連絡先 -->
+    <section class="lp-section lp-contact" id="contact" aria-labelledby="contact-title">
+      <div class="v2-container">
+        <p class="v2-eyebrow">Contact</p>
+        <h2 id="contact-title">GitHub・連絡先</h2>
+        <ul class="lp-social">
+          <li>
+            <a href="https://github.com/OgawaTatsukicreator" target="_blank" rel="noopener noreferrer" aria-label="GitHub（新しいタブで開く）">
+              <img src="assets/icons/github.png" alt="" width="32" height="32"><span>GitHub</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:g024c1045@g.neec.ac.jp" aria-label="メールを送る">
+              <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3 5.5h18v13H3zM3.5 6l8.5 7 8.5-7"/></svg><span>Mail</span>
+            </a>
+          </li>
+          <li>
+            <!-- TODO: InstagramのアカウントURLに差し替える -->
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram（新しいタブで開く）">
+              <svg viewBox="0 0 24 24" width="32" height="32" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="7" r="1.1" fill="currentColor"/></svg><span>Instagram</span>
+            </a>
+          </li>
+        </ul>
       </div>
-      <div class="v2-preview-list" aria-labelledby="explore-title">
-        <a class="v2-preview" href="pages/about.html" aria-labelledby="home-about-title">
-          <h3 id="home-about-title">自己紹介<span lang="en">About</span></h3>
-          <div class="v2-preview-content">
-            <p>静岡県伊東市出身。サッカーを12年間続け、現在はITを学びながら筋力トレーニングとパーソナルトレーナーの活動にも取り組んでいます。</p>
-            <ul class="v2-preview-facts"><li>21歳</li><li>日本工学院八王子専門学校</li><li>筋力トレーニング</li></ul>
+    </section>
+
+    <!-- 3. 成果物 -->
+    <section class="lp-works" id="works" aria-labelledby="works-title">
+      <div class="lp-works-pin">
+        <div class="v2-container lp-works-head">
+          <div>
+            <p class="v2-eyebrow">Works</p>
+            <h2 id="works-title">成果物</h2>
           </div>
-          <span class="v2-preview-arrow" aria-hidden="true">↗</span>
-        </a>
-        <a class="v2-preview" href="pages/skills.html" aria-labelledby="home-skills-title">
-          <h3 id="home-skills-title">使用技術<span lang="en">Skills</span></h3>
-          <div class="v2-preview-content">
-            <p>Web制作とアプリ開発で使った技術を、用途ごとに整理しました。実際に使ったものと、現在学んでいるものを区別して紹介します。</p>
-            <ul class="v2-preview-facts"><li>HTML / CSS / JavaScript</li><li>Next.js / TypeScript</li><li>Google Apps Script</li></ul>
-          </div>
-          <span class="v2-preview-arrow" aria-hidden="true">↗</span>
-        </a>
-        <a class="v2-preview" href="pages/achievements.html" aria-labelledby="home-achievements-title">
-          <h3 id="home-achievements-title">実績<span lang="en">Achievements</span></h3>
-          <div class="v2-preview-content">
-            <p>シフト提出システムや「マソ君の日常」に加え、ハッカソンで制作した京都観光アプリとインターンで取り組んだ画像処理アプリを紹介します。</p>
-            <ul class="v2-preview-facts"><li>制作物</li><li>経験</li><li>インターン</li></ul>
-          </div>
-          <span class="v2-preview-arrow" aria-hidden="true">↗</span>
-        </a>
-        <a class="v2-preview" href="pages/qualification.html" aria-labelledby="home-qualification-title">
-          <h3 id="home-qualification-title">資格<span lang="en">Qualification</span></h3>
-          <div class="v2-preview-content">
-            <p>ITとビジネスの学習を重ね、基本情報技術者試験、情報検定、ビジネス能力検定などを取得しました。年月順に確認できます。</p>
-            <ul class="v2-preview-facts"><li>基本情報技術者試験</li><li>J検</li><li>B検2級</li></ul>
-          </div>
-          <span class="v2-preview-arrow" aria-hidden="true">↗</span>
-        </a>
-        <a class="v2-preview" href="pages/contact.html" aria-labelledby="home-contact-title">
-          <h3 id="home-contact-title">連絡先<span lang="en">Contact</span></h3>
-          <div class="v2-preview-content">
-            <p>制作物や活動についてのご連絡はこちらから。メールとGitHubのリンクを掲載しています。</p>
-            <ul class="v2-preview-facts"><li>メール</li><li>GitHub</li></ul>
-          </div>
-          <span class="v2-preview-arrow" aria-hidden="true">↗</span>
-        </a>
+          <p class="lp-hint" aria-hidden="true">スクロールで次の作品へ →</p>
+        </div>
+        <div class="lp-works-viewport">
+          <ul class="lp-works-track">
+            <li>
+              <a class="lp-work" href="pages/work-face-mask.html">
+                <span class="lp-work-icon is-app"><img src="assets/icons/face-mask-app.png" alt="" width="72" height="72"></span>
+                <span class="lp-work-meta">2026.09 ／ インターン制作</span>
+                <h3>顔マスク処理アプリ</h3>
+                <p>画像内の顔を検出して絵文字スタンプを重ねるWebアプリ。最大10枚を一括処理できます。</p>
+                <span class="lp-tags"><b>Next.js</b><b>React</b><b>TypeScript</b><b>Tailwind CSS</b></span>
+                <span class="lp-work-more">詳細を見る ↗</span>
+              </a>
+            </li>
+            <li>
+              <a class="lp-work" href="pages/work-kyotabi.html">
+                <span class="lp-work-icon is-app"><img src="assets/icons/kyotabi.png" alt="" width="72" height="72"></span>
+                <span class="lp-work-meta">2026.08 ／ ハッカソン制作</span>
+                <h3>KYOTABI＋</h3>
+                <p>写真や気分から、京都でまだ知らない寄り道先を探せるWebアプリ。関西ビギナーズハッカソン vol.8で制作。</p>
+                <span class="lp-tags"><b>Next.js</b><b>React</b><b>TypeScript</b></span>
+                <span class="lp-work-more">詳細を見る ↗</span>
+              </a>
+            </li>
+            <li>
+              <a class="lp-work" href="pages/work-shift-system.html">
+                <span class="lp-work-icon is-app"><img src="assets/icons/shift-system.png" alt="" width="72" height="72"></span>
+                <span class="lp-work-meta">2026.08 ／ 自店舗で検証中</span>
+                <h3>シフト提出システム</h3>
+                <p>勤務先のシフト提出の課題をきっかけに、Google Apps Scriptで個人開発したシステム。</p>
+                <span class="lp-tags"><b>Google Apps Script</b><b>Google Sheets</b></span>
+                <span class="lp-work-more">詳細を見る ↗</span>
+              </a>
+            </li>
+            <li>
+              <a class="lp-work" href="pages/work-training-diary.html">
+                <span class="lp-work-icon is-app"><img src="assets/icons/maso-diary.png" alt="" width="72" height="72"></span>
+                <span class="lp-work-meta">Web公開中 ／ 個人開発</span>
+                <h3>マソ君の日常</h3>
+                <p>筋トレの記録と2Dキャラクターの育成を組み合わせたWebアプリ。記録の継続につなげます。</p>
+                <span class="lp-tags"><b>Next.js</b><b>React</b><b>TypeScript</b></span>
+                <span class="lp-work-more">詳細を見る ↗</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="v2-container lp-works-foot">
+          <a class="v2-button" href="pages/achievements.html">もっと見る <span aria-hidden="true">→</span></a>
+          <p>制作物とこれまでの経験をまとめて確認できます。</p>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- 4. 使用技術 -->
+    <section class="lp-section lp-skills" id="skills" aria-labelledby="skills-title">
+      <div class="v2-container">
+        <p class="v2-eyebrow">Skills</p>
+        <h2 id="skills-title">使用技術</h2>
+        <p class="lp-legend"><i class="is-used"></i>使用 <i class="is-learning"></i>学習中・導入予定</p>
+
+        <div class="lp-skill-group">
+          <h3>Frontend<span>フロントエンド</span></h3>
+          <ul class="lp-icons">
+            <li tabindex="0" data-name="HTML5"><img src="assets/icons/html5.png" alt="HTML5"></li>
+            <li tabindex="0" data-name="CSS3"><img src="assets/icons/css3.png" alt="CSS3"></li>
+            <li tabindex="0" data-name="JavaScript"><img src="assets/icons/javascript.png" alt="JavaScript"></li>
+            <li tabindex="0" data-name="React"><img src="assets/icons/react.png" alt="React"></li>
+            <li tabindex="0" data-name="Next.js"><img src="assets/icons/nextjs.png" alt="Next.js"></li>
+            <li tabindex="0" data-name="TypeScript"><img src="assets/icons/typescript.png" alt="TypeScript"></li>
+            <li tabindex="0" data-name="Tailwind CSS"><img src="assets/icons/tailwindcss.png" alt="Tailwind CSS"></li>
+          </ul>
+        </div>
+        <div class="lp-skill-group">
+          <h3>Backend<span>バックエンド・データ</span></h3>
+          <ul class="lp-icons">
+            <li tabindex="0" data-name="Google Apps Script"><img src="assets/icons/google-apps-script.png" alt="Google Apps Script"></li>
+            <li tabindex="0" data-name="Google Sheets"><img src="assets/icons/googlesheets.svg" alt="Google Sheets"></li>
+            <li tabindex="0" data-name="PHP"><img src="assets/icons/php.svg" alt="PHP"></li>
+            <li tabindex="0" data-name="MySQL"><img src="assets/icons/mysql.svg" alt="MySQL"></li>
+            <li class="is-learning" tabindex="0" data-name="C言語（学習中）"><img src="assets/icons/c-language.png" alt="C言語（学習中）"></li>
+            <li class="is-learning" tabindex="0" data-name="Python（学習中）"><img src="assets/icons/python.png" alt="Python（学習中）"></li>
+            <li class="is-learning" tabindex="0" data-name="Supabase（導入予定）"><img src="assets/icons/supabase.png" alt="Supabase（導入予定）"></li>
+          </ul>
+        </div>
+        <div class="lp-skill-group">
+          <h3>Infra<span>インフラ・ネットワーク</span></h3>
+          <ul class="lp-icons">
+            <li tabindex="0" data-name="Vercel"><img src="assets/icons/vercel.png" alt="Vercel"></li>
+            <li tabindex="0" data-name="Google Apps Script（ホスティング）"><img src="assets/icons/google-apps-script.png" alt="Google Apps Script（ホスティング）"></li>
+            <li tabindex="0" data-name="Linux"><img src="assets/icons/linux.png" alt="Linux"></li>
+            <li class="is-learning" tabindex="0" data-name="ネットワーク / CCNA（学習中）"><img src="assets/icons/cisco.png" alt="ネットワーク / CCNA（学習中）"></li>
+          </ul>
+        </div>
+        <div class="lp-skill-group">
+          <h3>Dev Tools<span>開発ツール</span></h3>
+          <ul class="lp-icons">
+            <li tabindex="0" data-name="Git"><img src="assets/icons/git.png" alt="Git"></li>
+            <li tabindex="0" data-name="GitHub"><img src="assets/icons/github.png" alt="GitHub"></li>
+            <li tabindex="0" data-name="Vim"><img src="assets/icons/vim.png" alt="Vim"></li>
+            <li tabindex="0" data-name="XAMPP"><img src="assets/icons/xampp.png" alt="XAMPP"></li>
+            <li class="is-learning" tabindex="0" data-name="Power Automate Desktop（PAD）（学習中）"><img src="assets/icons/power-automate-desktop.png" alt="Power Automate Desktop（PAD）（学習中）"></li>
+            <li tabindex="0" data-name="Zod"><img src="assets/icons/zod.png" alt="Zod"></li>
+            <li tabindex="0" data-name="Vitest"><img src="assets/icons/vitest.png" alt="Vitest"></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 年表 -->
+    <section class="lp-section lp-timeline" id="timeline" aria-labelledby="timeline-title">
+      <div class="v2-container">
+        <p class="v2-eyebrow">Timeline</p>
+        <h2 id="timeline-title">年表</h2>
+        <p class="lp-lede">高校時代のサッカー引退から現在までの歩みです。</p>
+        <ol class="lp-tl">
+          <li><time>2023.12</time><span class="lp-tl-tag">高校</span><p>12年間続けたサッカーを引退。</p></li>
+          <li><time>2024.02</time><span class="lp-tl-tag is-cert">資格</span><p>普通自動車第一種運転免許を取得。</p></li>
+          <li><time>2024.04</time><span class="lp-tl-tag">学校</span><p>IT未経験で日本工学院八王子専門学校に入学。同月から本格的に筋力トレーニングを開始。</p></li>
+          <li><time>2024.07</time><span class="lp-tl-tag is-cert">資格</span><p>情報検定（J検）情報活用試験 2級。</p></li>
+          <li><time>2024.12</time><span class="lp-tl-tag is-cert">資格</span><p>基本情報技術者試験に合格。</p></li>
+          <li><time>2025.01</time><span class="lp-tl-tag is-cert">資格</span><p>情報検定（J検）情報システム試験 プログラマ認定・システムエンジニア認定。</p></li>
+          <li><time>2025.10</time><span class="lp-tl-tag">活動</span><p>マッスルゲート静岡大会 フィジーク172cm以下級で、新人の部優勝・一般の部4位。</p></li>
+          <li><time>2026.03</time><span class="lp-tl-tag">活動</span><p>パーソナルトレーナーとして活動を開始。</p></li>
+          <li><time>2026.04</time><span class="lp-tl-tag is-dev">開発</span><p>シフト提出の課題をきっかけに初の個人開発を開始。学内ビジネスコンテストのプロジェクトも始動。</p></li>
+          <li><time>2026.07</time><span class="lp-tl-tag">活動</span><p>学内ビジネスコンテストで9チーム中2位。ビジネス能力検定ジョブパス（B検）2級を取得。</p></li>
+          <li><time>2026.08</time><span class="lp-tl-tag is-dev">開発</span><p>シフト提出システムが完成し自店舗で検証開始。RIZAPテクノロジーズ株式会社のインターンと、関西ビギナーズハッカソンに参加。</p></li>
+          <li><time>2026.09</time><span class="lp-tl-tag is-dev">開発</span><p>ウェブフロンティア株式会社のインターンに参加。</p></li>
+        </ol>
+        <div class="lp-more" id="timeline-more">
+          <a class="v2-button" href="pages/about.html">小川樹についてもっと知る <span aria-hidden="true">→</span></a>
+          <p>人生設計とキャリアプランをご覧いただけます。</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="v2-footer">
     <div class="v2-container v2-footer-inner">
       <p>© 2026 Tatsuki Ogawa</p>
-      <a href="pages/contact.html">連絡先を見る →</a>
+      <a href="#top">ページ先頭へ ↑</a>
     </div>
   </footer>
 </body>
