@@ -43,4 +43,29 @@
 
   targets.forEach((element) => observer.observe(element));
   document.body.classList.add("mo-ready");
+
+  // Timeline line: progress is measured against a trigger line 60% down the viewport.
+  const timeline = document.querySelector(".lp-tl");
+  if (!timeline) return;
+  const steps = [...timeline.children];
+  let ticking = false;
+
+  const updateTimeline = () => {
+    ticking = false;
+    const rect = timeline.getBoundingClientRect();
+    const trigger = window.innerHeight * 0.6;
+    const reached = Math.min(rect.height, Math.max(0, trigger - rect.top));
+    timeline.style.setProperty("--tl", (reached / rect.height).toFixed(4));
+    steps.forEach((step) => step.classList.toggle("is-lit", step.getBoundingClientRect().top + 10 <= trigger));
+  };
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(updateTimeline);
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  window.addEventListener("load", onScroll);
+  updateTimeline();
 })();

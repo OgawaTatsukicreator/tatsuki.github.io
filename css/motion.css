@@ -19,3 +19,10 @@ html[data-motion="bold"] { --mo-y: 56px; --mo-x: 64px; --mo-s: .94; --mo-dur: .9
 html[data-motion="bold"] .mo-ready [data-mo="icon"].is-in { animation-timing-function: cubic-bezier(.34, 1.56, .64, 1); }
 html[data-motion="bold"] .mo-ready [data-mo="icon"].is-in { animation-name: mo-pop-bold; }
 @keyframes mo-pop-bold { from { opacity: 0; transform: translateY(24px) scale(.5); } to { opacity: 1; transform: none; } }
+
+/* Timeline: the line grows with scroll and each dot lights up as the line reaches it. */
+.mo-ready .lp-tl::after { position: absolute; top: 0; left: -2px; width: 2px; height: calc(var(--tl, 0) * 100%); background: var(--v2-blue); box-shadow: 0 0 10px rgba(112, 173, 255, .55); content: ""; transition: height .12s linear; }
+.mo-ready .lp-tl li::before { transition: background .3s ease, box-shadow .3s ease, transform .3s ease; }
+.mo-ready .lp-tl li.is-lit::before { background: var(--v2-blue); box-shadow: 0 0 0 4px rgba(112, 173, 255, .22); }
+html[data-motion="bold"] .mo-ready .lp-tl li.is-lit::before { animation: mo-pulse .7s ease-out; box-shadow: 0 0 0 5px rgba(112, 173, 255, .3), 0 0 14px rgba(112, 173, 255, .7); }
+@keyframes mo-pulse { 0% { transform: scale(.6); } 55% { transform: scale(1.5); } 100% { transform: scale(1); } }
