@@ -1,0 +1,21 @@
+/* Home-page motion. Everything is gated on .mo-ready, which motion.js only sets
+   when the visitor has not asked for reduced motion, so content is never hidden without JS. */
+
+/* Two intensities to compare. Default is subtle; add ?motion=bold to the URL for the other. */
+html { --mo-y: 16px; --mo-x: 24px; --mo-s: 1; --mo-dur: .6s; --mo-step: 60ms; --mo-ease: cubic-bezier(.22, .61, .36, 1); }
+html[data-motion="bold"] { --mo-y: 56px; --mo-x: 64px; --mo-s: .94; --mo-dur: .9s; --mo-step: 110ms; --mo-ease: cubic-bezier(.16, 1, .3, 1); }
+
+/* Reveal on scroll: hidden until the element enters the viewport, then it plays once. */
+.mo-ready [data-mo]:not(.is-in) { opacity: 0; }
+.mo-ready [data-mo].is-in { animation: mo-up var(--mo-dur) var(--mo-ease) backwards; animation-delay: calc(var(--i, 0) * var(--mo-step)); }
+.mo-ready [data-mo="card"].is-in { animation-name: mo-from-right; }
+.mo-ready [data-mo="icon"].is-in { animation-name: mo-pop; }
+.mo-ready [data-mo="step"].is-in { animation-name: mo-from-left; }
+
+@keyframes mo-up { from { opacity: 0; transform: translateY(var(--mo-y)) scale(var(--mo-s)); } to { opacity: 1; transform: none; } }
+@keyframes mo-from-right { from { opacity: 0; transform: translateX(var(--mo-x)) scale(var(--mo-s)); } to { opacity: 1; transform: none; } }
+@keyframes mo-from-left { from { opacity: 0; transform: translateX(calc(var(--mo-x) * -1)); } to { opacity: 1; transform: none; } }
+@keyframes mo-pop { from { opacity: 0; transform: translateY(8px) scale(.85); } to { opacity: 1; transform: none; } }
+html[data-motion="bold"] .mo-ready [data-mo="icon"].is-in { animation-timing-function: cubic-bezier(.34, 1.56, .64, 1); }
+html[data-motion="bold"] .mo-ready [data-mo="icon"].is-in { animation-name: mo-pop-bold; }
+@keyframes mo-pop-bold { from { opacity: 0; transform: translateY(24px) scale(.5); } to { opacity: 1; transform: none; } }
