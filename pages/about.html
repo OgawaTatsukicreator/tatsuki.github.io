@@ -6,35 +6,19 @@
     <meta name="description" content="小川樹のプロフィール、これまでの経歴、人生設計とキャリアプランを紹介します。">
     <title>About | 小川樹のポートフォリオ</title>
     <link rel="stylesheet" href="../css/portfolio-v2.css?v=20260929-2">
+    <link rel="stylesheet" href="../css/lp.css">
     <script src="../js/portfolio-v2.js" defer></script>
-    <script src="../js/portfolio-i18n.js?v=20260928-1" defer></script>
 </head>
 <body class="portfolio-v2" data-page="about" data-root="../">
     <a class="v2-skip-link" href="#main-content">本文へ移動</a>
     <header class="v2-header">
     <div class="v2-header-inner">
-      <a class="v2-brand" href="../index.html" aria-label="Tatsuki Ogawa, Home" lang="en">
+      <a class="v2-brand" href="../index.html#timeline-more" aria-label="Tatsuki Ogawa, トップへ戻る" lang="en">
         <span class="v2-brand-name" lang="en" translate="no">Tatsuki Ogawa</span>
       </a>
-      <nav class="v2-nav" id="primary-nav" aria-label="主なページ">
-        <a class="v2-nav-home" href="../index.html">トップ<span lang="en">Home</span></a>
-        <a data-nav="about" href="about.html">自己紹介<span lang="en">About</span></a>
-        <a data-nav="skills" href="skills.html">使用技術<span lang="en">Skills</span></a>
-        <a data-nav="achievements" href="achievements.html">実績<span lang="en">Achievements</span></a>
-        <a data-nav="qualification" href="qualification.html">資格<span lang="en">Qualification</span></a>
-        <a data-nav="contact" href="contact.html">連絡先<span lang="en">Contact</span></a>
-      </nav>
-      <div class="v2-language-switcher" role="group" aria-label="表示言語">
-        <button type="button" data-language="ja" lang="ja" aria-label="日本語で表示">JP</button>
-        <button type="button" data-language="en" lang="en" aria-label="Display in English">EN</button>
-      </div>
-      <button class="v2-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="メニューを開く">
-        <span class="v2-menu-toggle-lines" aria-hidden="true"></span>
-      </button>
+      <a class="lp-header-back" href="../index.html#timeline-more"><span aria-hidden="true">←</span> 戻る</a>
     </div>
   </header>
-  <div class="v2-menu-backdrop" aria-hidden="true"></div>
-  <span id="language-status" class="v2-sr-only" role="status" aria-live="polite"></span>
 
     <main id="main-content" class="v2-main">
         <section class="v2-page-hero" aria-labelledby="about-title">
@@ -139,7 +123,6 @@
                         </div>
                     </li>
                 </ol>
-                <a class="v2-text-link" href="achievements.html#experience">取り組みの詳細を見る <span aria-hidden="true">→</span></a>
             </div>
         </section>
 
@@ -176,10 +159,11 @@
                 </ol>
             </div>
         </section>
-        <nav class="v2-page-links v2-container" aria-label="次に見るページ">
-            <a href="../index.html">Homeへ戻る</a>
-            <a href="skills.html">使用技術を見る <span aria-hidden="true">→</span></a>
-        </nav>
+        <section class="lp-back" aria-label="トップへ戻る">
+            <div class="v2-container">
+                <a class="v2-button" href="../index.html#timeline-more"><span aria-hidden="true">←</span> 戻る</a>
+            </div>
+        </section>
     </main>
 
     <footer class="v2-footer"><div class="v2-container"><small>© 2026 Tatsuki Ogawa</small></div></footer>
