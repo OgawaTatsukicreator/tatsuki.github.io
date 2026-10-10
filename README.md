@@ -19,7 +19,7 @@
 
 ## ドキュメント
 
-画面ごとの仕様、アニメーション、ファイル構成、更新手順（成果物・使用技術・年表の追加方法）は [docs/specification.md](docs/specification.md) にまとめています。スキルアイコンの出典は [assets/icons/README.md](assets/icons/README.md) です。
+画面ごとの仕様、アニメーション、ファイル構成、更新手順（成果物・使用技術・年表の追加方法）は [docs/specification.md](docs/specification.md) にまとめています。スキルアイコンの出典は [assets/icons/README.md](assets/icons/README.md) です。 PageSpeedの検査結果と変更前後の測定は [性能改善記録](docs/performance-20261010.md) を参照してください。
 
 ## フォルダ構成
 
@@ -30,7 +30,9 @@
 | `css/` | `portfolio-v2.css`（共通）、`lp.css`（LP）、`motion.css`（アニメーション）、`style.css`（詳細ページ） |
 | `js/` | `portfolio-v2.js`（メニュー）、`lp.js`（横スライド）、`motion.js`（アニメーション） |
 | `assets/icons/` | スキル・アプリのアイコン |
-| `docs/` | 仕様書 |
+| `assets/fonts/` | 配信フォント、出典とライセンス |
+| `scripts/build_fonts.py` | 文章更新時のフォント確認・再生成 |
+| `docs/` | 仕様書、性能改善の測定記録 |
 
 ## インストール
 
@@ -41,7 +43,7 @@ git clone https://github.com/OgawaTatsukicreator/tatsuki.github.io.git
 cd tatsuki.github.io
 ```
 
-パッケージのインストールや環境変数の設定はありません。
+サイトの表示に必要なパッケージや環境変数はありません。文章を更新するときの配信フォントの確認・再生成については、[フォントの更新手順](assets/fonts/README.md)を参照してください。
 
 ## 使い方
 
@@ -67,8 +69,11 @@ CSSやJavaScriptを変更した場合は、各HTMLの参照URLに付けた版番
 
 このリポジトリ全体のライセンスは設定されていません。開発ツールの第三者アイコンについては、[出典と利用条件](assets/icons/README.md)を確認してください。
 
+配信フォントはSIL Open Font License 1.1です。[書体ごとのライセンス](assets/fonts/README.md)を同梱しています。
+
 ## 更新履歴
 
+- 2026/10/10: デザインと画面遷移を保ったまま、フォント配信、可逆WebP画像、スクロール処理を改善。
 - 2026/10/03: 仕様書（docs/specification.md）を追加し、READMEを更新。
 - 2026/10/03: 全ページにスクロール連動のアニメーションを追加。
 - 2026/10/03: トップをLP形式に変更。実績ページもスクロール型にし、使用していないページ・ファイル・日英切替を削除。
