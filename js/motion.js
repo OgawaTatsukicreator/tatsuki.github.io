@@ -57,7 +57,16 @@
   // Timeline lines: progress is measured against a trigger line 60% down the viewport. On tall screens the
   // timeline's end never gets that low before the page runs out, so the trigger slides to the viewport
   // bottom as the page bottom approaches and the line always finishes.
-  const timelines = [...document.querySelectorAll(".lp-tl, .about-timeline")];
+  const timelines = [...document.querySelectorAll(".lp-tl, .about-timeline")].map((element) => ({
+    element,
+    steps: [...element.children].map((step) => ({
+      element: step,
+      lit: step.classList.contains("is-lit"),
+      nextLit: false
+    })),
+    progress: null,
+    nextProgress: null
+  }));
   if (!timelines.length) return;
   let ticking = false;
 
@@ -67,11 +76,29 @@
     const remaining = Math.max(0, document.documentElement.scrollHeight - (window.scrollY + viewport));
     const nearEnd = Math.min(1, Math.max(0, 1 - remaining / (viewport * 0.6)));
     const trigger = viewport * (0.6 + 0.4 * nearEnd);
+    // Measure every timeline before changing styles or classes. Interleaving these would force
+    // layout again for each step because --tl changes the line's height.
     timelines.forEach((timeline) => {
-      const rect = timeline.getBoundingClientRect();
+      const rect = timeline.element.getBoundingClientRect();
       const reached = Math.min(rect.height, Math.max(0, trigger - rect.top));
-      timeline.style.setProperty("--tl", (reached / rect.height).toFixed(4));
-      [...timeline.children].forEach((step) => step.classList.toggle("is-lit", step.getBoundingClientRect().top + 10 <= trigger));
+      timeline.nextProgress = (reached / rect.height).toFixed(4);
+      // Offscreen timelines are already entirely before or after the trigger. Still measure their
+      // bounds each frame so anchor jumps, restored scroll positions and reverse scrolling update them.
+      const offscreenLit = rect.top >= viewport ? false : rect.bottom <= 0 && rect.bottom + 10 <= trigger ? true : null;
+      timeline.steps.forEach((step) => {
+        step.nextLit = offscreenLit ?? (step.element.getBoundingClientRect().top + 10 <= trigger);
+      });
+    });
+    timelines.forEach((timeline) => {
+      if (timeline.nextProgress !== timeline.progress) {
+        timeline.element.style.setProperty("--tl", timeline.nextProgress);
+        timeline.progress = timeline.nextProgress;
+      }
+      timeline.steps.forEach((step) => {
+        if (step.nextLit === step.lit) return;
+        step.element.classList.toggle("is-lit", step.nextLit);
+        step.lit = step.nextLit;
+      });
     });
   };
   const onScroll = () => {
