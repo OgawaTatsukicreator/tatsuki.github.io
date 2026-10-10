@@ -16,6 +16,9 @@
   let ticking = false;
 
   const reset = (item) => {
+    // On mobile the plain rows already have the correct layout. Avoid invalidating their styles
+    // during startup or load when the section has never been pinned.
+    if (!item.maxShift && !item.section.classList.contains("is-pinned") && !item.section.classList.contains("is-end") && !item.section.style.height && !item.track.style.transform) return;
     item.maxShift = 0;
     item.section.classList.remove("is-pinned", "is-end");
     item.section.style.height = "";

@@ -57,58 +57,117 @@
   // Timeline lines: progress is measured against a trigger line 60% down the viewport. On tall screens the
   // timeline's end never gets that low before the page runs out, so the trigger slides to the viewport
   // bottom as the page bottom approaches and the line always finishes.
-  const timelines = [...document.querySelectorAll(".lp-tl, .about-timeline")].map((element) => ({
-    element,
-    steps: [...element.children].map((step) => ({
-      element: step,
-      lit: step.classList.contains("is-lit"),
-      nextLit: false
-    })),
-    progress: null,
-    nextProgress: null
-  }));
-  if (!timelines.length) return;
+  const elements = [...document.querySelectorAll(".lp-tl, .about-timeline")];
+  if (!elements.length) return;
+  const active = new Set();
+  const pending = new Set();
+  let initialized = false;
   let ticking = false;
+  let timelineObserver;
+  let lastScrollY = null;
+
+  const refreshObservations = () => {
+    if (!timelineObserver) return;
+    elements.forEach((element) => {
+      timelineObserver.unobserve(element);
+      timelineObserver.observe(element);
+    });
+  };
+
+  const applyTimeline = (timeline) => {
+    if (timeline.nextProgress !== timeline.progress) {
+      timeline.element.style.setProperty("--tl", timeline.nextProgress);
+      timeline.progress = timeline.nextProgress;
+    }
+    timeline.steps.forEach((step) => {
+      if (step.nextLit === step.lit) return;
+      step.element.classList.toggle("is-lit", step.nextLit);
+      step.lit = step.nextLit;
+    });
+  };
 
   const updateTimelines = () => {
     ticking = false;
-    const viewport = window.innerHeight;
-    const remaining = Math.max(0, document.documentElement.scrollHeight - (window.scrollY + viewport));
-    const nearEnd = Math.min(1, Math.max(0, 1 - remaining / (viewport * 0.6)));
-    const trigger = viewport * (0.6 + 0.4 * nearEnd);
-    // Measure every timeline before changing styles or classes. Interleaving these would force
-    // layout again for each step because --tl changes the line's height.
-    timelines.forEach((timeline) => {
-      const rect = timeline.element.getBoundingClientRect();
-      const reached = Math.min(rect.height, Math.max(0, trigger - rect.top));
-      timeline.nextProgress = (reached / rect.height).toFixed(4);
-      // Offscreen timelines are already entirely before or after the trigger. Still measure their
-      // bounds each frame so anchor jumps, restored scroll positions and reverse scrolling update them.
-      const offscreenLit = rect.top >= viewport ? false : rect.bottom <= 0 && rect.bottom + 10 <= trigger ? true : null;
-      timeline.steps.forEach((step) => {
-        step.nextLit = offscreenLit ?? (step.element.getBoundingClientRect().top + 10 <= trigger);
+    // Leave the document's layout alone while every timeline is far from the viewport.
+    if (active.size) {
+      const viewport = window.innerHeight;
+      const remaining = Math.max(0, document.documentElement.scrollHeight - (window.scrollY + viewport));
+      const nearEnd = Math.min(1, Math.max(0, 1 - remaining / (viewport * 0.6)));
+      const trigger = viewport * (0.6 + 0.4 * nearEnd);
+      // Measure active timelines before changing any styles or classes, including offscreen states.
+      active.forEach((timeline) => {
+        const rect = timeline.element.getBoundingClientRect();
+        const reached = Math.min(rect.height, Math.max(0, trigger - rect.top));
+        timeline.nextProgress = (reached / rect.height).toFixed(4);
+        const offscreenLit = rect.top >= viewport ? false : rect.bottom <= 0 && rect.bottom + 10 <= trigger ? true : null;
+        timeline.steps.forEach((step) => {
+          step.nextLit = offscreenLit ?? (step.element.getBoundingClientRect().top + 10 <= trigger);
+        });
+        pending.add(timeline);
       });
-    });
-    timelines.forEach((timeline) => {
-      if (timeline.nextProgress !== timeline.progress) {
-        timeline.element.style.setProperty("--tl", timeline.nextProgress);
-        timeline.progress = timeline.nextProgress;
-      }
-      timeline.steps.forEach((step) => {
-        if (step.nextLit === step.lit) return;
-        step.element.classList.toggle("is-lit", step.nextLit);
-        step.lit = step.nextLit;
-      });
-    });
+    }
+    pending.forEach(applyTimeline);
+    pending.clear();
   };
   const onScroll = () => {
+    if (!initialized) {
+      requestAnimationFrame(initializeTimelines);
+      return;
+    }
+    const scrollY = window.scrollY;
+    // A jump can skip the observer's entire root while staying non-intersecting at both ends.
+    // Re-observe after those jumps to receive fresh bounds without a synchronous layout read.
+    if (lastScrollY !== null && Math.abs(scrollY - lastScrollY) > window.innerHeight) refreshObservations();
+    lastScrollY = scrollY;
+    if (!active.size && !pending.size) return;
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(updateTimelines);
   };
 
+  const initializeTimelines = () => {
+    if (initialized) return;
+    initialized = true;
+    const timelines = new Map(elements.map((element) => [element, {
+      element,
+      steps: [...element.children].map((step) => ({
+        element: step,
+        lit: step.classList.contains("is-lit"),
+        nextLit: false
+      })),
+      progress: null,
+      nextProgress: null
+    }]));
+    timelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const timeline = timelines.get(entry.target);
+        if (entry.isIntersecting) {
+          active.add(timeline);
+        } else {
+          active.delete(timeline);
+          // The observer supplies already-measured bounds. A timeline outside the expanded viewport
+          // is wholly before or after the trigger, even after an anchor jump or reverse scroll.
+          const passed = entry.boundingClientRect.bottom <= 0;
+          timeline.nextProgress = passed ? "1.0000" : "0.0000";
+          timeline.steps.forEach((step) => { step.nextLit = passed; });
+          pending.add(timeline);
+        }
+      });
+      onScroll();
+    }, { rootMargin: "256px 0px" });
+    elements.forEach((element) => timelineObserver.observe(element));
+  };
+  const onLayout = () => {
+    refreshObservations();
+    onScroll();
+  };
+
   window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onScroll);
-  window.addEventListener("load", onScroll);
-  updateTimelines();
+  window.addEventListener("resize", onLayout);
+  window.addEventListener("load", onLayout);
+  window.addEventListener("hashchange", onLayout);
+  window.addEventListener("pageshow", onLayout);
+  // Allow an initial paint before setting up timeline tracking. Scroll/hash events can bring this
+  // forward to the next frame; neither path synchronously measures the document during startup.
+  requestAnimationFrame(() => requestAnimationFrame(initializeTimelines));
 })();
