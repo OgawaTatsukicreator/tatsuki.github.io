@@ -32,6 +32,7 @@
 | `assets/icons/` | スキル・アプリのアイコン |
 | `assets/fonts/` | 配信フォント、出典とライセンス |
 | `scripts/build_fonts.py` | 文章更新時のフォント確認・再生成 |
+| `scripts/build_home_styles.py` | トップページの初期スタイルを生成・確認 |
 | `docs/` | 仕様書、性能改善の測定記録 |
 
 ## インストール
@@ -63,7 +64,14 @@ cd tatsuki.github.io
 3. 変更内容をコミットし、元のリポジトリへプルリクエストを送ります。
 4. mainブランチへの反映後、GitHub Pagesが公開サイトを更新します。[公開サイト](https://tatsuki821.me/)で表示を確認します。
 
-CSSやJavaScriptを変更した場合は、各HTMLの参照URLに付けた版番号（例: `?v=20260929-1`）も更新します。
+CSSやJavaScriptを変更した場合は、対応するHTMLの参照URLに付けた版番号（例: `?v=20261010-2`）も更新します。トップページのスタイルは共有CSSから生成するため、CSSを編集した後は次も実行します。
+
+```bash
+python scripts/build_home_styles.py
+python scripts/build_home_styles.py --check
+```
+
+フォントの再生成では、トップページの初期スタイルも自動で更新します。
 
 ## ライセンス
 
@@ -73,6 +81,7 @@ CSSやJavaScriptを変更した場合は、各HTMLの参照URLに付けた版番
 
 ## 更新履歴
 
+- 2026/10/10: モバイル向けに年表の初期化、背景写真、トップページのCSS配信を追加改善。測定は[追加改善記録](docs/performance-20261010-phase2.md)に記載。
 - 2026/10/10: デザインと画面遷移を保ったまま、フォント配信、可逆WebP画像、スクロール処理を改善。
 - 2026/10/03: 仕様書（docs/specification.md）を追加し、READMEを更新。
 - 2026/10/03: 全ページにスクロール連動のアニメーションを追加。

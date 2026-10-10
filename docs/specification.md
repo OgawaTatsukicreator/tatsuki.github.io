@@ -48,7 +48,7 @@
 | セクション | id | 内容 |
 | --- | --- | --- |
 | ヘッダー | － | 固定表示。左に手書き風の名前ロゴ、右にページ内リンク（連絡先 / 成果物 / 使用技術 / 年表）。1040px以下はハンバーガーメニュー |
-| Hero | `top` | 既存のヒーロー（背景画像 `images/back.webp`、元画像と同じ画素・寸法）。名前、一言説明、「成果物を見る」「経歴を見る」ボタン |
+| Hero | `top` | 既存のヒーロー（背景画像 `images/back-optimized.webp`、元画像と同じ構図・寸法）。名前、一言説明、「成果物を見る」「経歴を見る」ボタン |
 | プロフィール帯 | － | 「Ogawa Tatsuki's Portfolio」、名前、年齢（21歳・2026年9月時点）、出身（静岡県伊東市）、学校（日本工学院八王子専門学校） |
 | 連絡先 | `contact` | GitHub・メール・Instagram のアイコンを横並び・中央揃え |
 | 成果物 | `works` | 4件のカードを横並びで表示し、同時に2つ見せる。縦スクロールで横にスライド（3.1.1）。最後に「もっと見る」ボタン |
@@ -182,7 +182,7 @@ GitHub、デモ（`kyoto-repeater.vercel.app`、`masodiary.vercel.app`）、各�
 
 ### 5.2 フォント
 
-従来と同じCaveat（ヘッダーの名前ロゴ）、IBM Plex Sans JP（見出し・UI）、Shippori Mincho（本文）、Space Grotesk（英数字）の字形と太さを、使用文字に絞ったローカルWOFF2で配信します。IBMの予約名に対応し、サブセットの内部名・CSS名は「Portfolio Sans JP」とします。各ページは `css/fonts-ページ名.css` をHTMLから読み込み、CSS内のGoogle Fonts `@import` は使用しません。出典、OFL、文章更新時の再生成は [配信フォント](../assets/fonts/README.md) を参照してください。
+従来と同じCaveat（ヘッダーの名前ロゴ）、IBM Plex Sans JP（見出し・UI）、Shippori Mincho（本文）、Space Grotesk（英数字）の字形と太さを、使用文字に絞ったローカルWOFF2で配信します。IBMの予約名に対応し、サブセットの内部名・CSS名は「Portfolio Sans JP」とします。トップページは `css/fonts-index.css` の宣言を生成した初期スタイル内に含め、他のページは `css/fonts-ページ名.css` をHTMLから読み込みます。CSS内のGoogle Fonts `@import` は使用しません。出典、OFL、文章更新時の再生成は [配信フォント](../assets/fonts/README.md) を参照してください。
 
 ## 6. 技術仕様
 
@@ -203,9 +203,10 @@ tatsuki.github.io/
 │  ├─ lp.js                縦スクロール→横スライドの変換、アンカー再調整
 │  └─ motion.js            スクロール表示・年表の線
 ├─ assets/icons/           スキル・アプリのアイコン（出典は同フォルダの README）
-├─ images/back.webp        Hero背景（元PNGも保持）
+├─ images/back-optimized.webp Hero背景（元PNG・可逆WebPも保持）
 ├─ assets/fonts/           配信WOFF2、ライセンス、文字一覧とハッシュ
 ├─ scripts/build_fonts.py  配信フォントのローカル再生成・確認
+├─ scripts/build_home_styles.py トップページの初期スタイル生成・確認
 ├─ docs/specification.md   この仕様書
 ├─ CNAME                   独自ドメイン
 └─ README.md
@@ -223,7 +224,7 @@ tatsuki.github.io/
 
 ### 6.4 キャッシュ
 
-変更した共通CSS、フォントCSS、`motion.js` の参照には版番号（`?v=…`）を付けています。各ファイルを変更したら対応するHTMLの版番号も更新してください。配信WOFF2は内容ハッシュを含むファイル名を使います。GitHub Pagesのキャッシュ期間自体は変更していません。
+変更した共通CSS、フォントCSS、`motion.js` の参照には版番号（`?v=…`）を付けています。各ファイルを変更したら対応するHTMLの版番号も更新してください。トップページの初期スタイルはHTML内に生成します。共通CSS・LP用CSS・モーションCSS・トップのフォントCSSを編集した後は、`python scripts/build_home_styles.py` とその `--check` を実行してください。配信WOFF2は内容ハッシュを含むファイル名を使います。GitHub Pagesのキャッシュ期間自体は変更していません。
 
 ### 6.5 性能改善（2026年10月10日）
 
@@ -232,6 +233,14 @@ tatsuki.github.io/
 - 年表では、位置の計測をまとめてからスタイルとクラスを更新する。同じ値の再設定と、画面外の項目の計測を省く。線の高さの遷移、光り方、点灯位置、表示アニメーションは維持する。
 - 配色、レイアウト、表示内容、リンク先、メニュー、横スライド、戻る動作を変更しない。
 - 測定条件・改善前後の結果・表示確認は [性能改善記録](performance-20261010.md) に記録する。
+
+### 6.6 モバイル性能の追加改善（2026年10月10日）
+
+- 年表の同期計測は初回描画後、画面近くの年表に限定する。遠い年表はIntersectionObserverが提供する位置から状態を更新し、大きな移動・戻る操作にも対応する。
+- 背景写真は同じ寸法・構図の高品質WebP（quality 95）を使う。元PNGと可逆WebPを保管し、[画像の情報](../images/README.md)を記録する。
+- トップページの既存フォント宣言・共通UI・LP・演出・レスポンシブ規則をHTMLの初期スタイルにまとめ、4つのCSSへの追加通信をなくす。下部の配置・メニュー・JavaScript無効時の表示も維持する。他8ページのCSS配信は従来どおり。
+- スタイルの元ファイルは共有CSSに残す。初期スタイルを直接編集せず、生成スクリプトで更新する。フォント再生成も自動で初期スタイルへ反映する。
+- 検証・測定結果は[追加改善記録](performance-20261010-phase2.md)を参照する。
 
 ## 7. 更新手順
 
@@ -257,7 +266,7 @@ tatsuki.github.io/
 
 ### 7.5 文章を更新した後のフォント確認
 
-`python scripts/build_fonts.py --check` を実行する。追加した文字が配信フォントに含まれない場合は、[フォントの更新手順](../assets/fonts/README.md)に従って再生成し、対応するフォントCSSの版番号を更新する。新しい詳細ページには、そのページ用の `css/fonts-ページ名.css` も読み込む。
+`python scripts/build_fonts.py --check` を実行する。追加した文字が配信フォントに含まれない場合は、[フォントの更新手順](../assets/fonts/README.md)に従って再生成し、他のページが参照するフォントCSSの版番号を更新する。トップページの初期スタイルは自動で再生成され、`--check` でも一致を確認する。新しい詳細ページには、そのページ用の `css/fonts-ページ名.css` も読み込む。
 
 ## 8. 動作確認チェックリスト
 
