@@ -69,7 +69,7 @@ body.portfolio-v2.detail-page :is(.skip-link, .back-link, .project-toc a, .proje
 /* The original stage photograph is the Home's visual anchor. Its dark left side holds the copy. */
 .v2-hero { position: relative; display: grid; min-height: clamp(540px, 66vh, 660px); overflow: hidden; align-items: center; padding: clamp(64px, 7vw, 90px) 0; color: var(--v2-white); background: var(--v2-black); }
 .v2-hero::before, .v2-hero::after { position: absolute; inset: 0; content: ""; pointer-events: none; }
-.v2-hero::before { background: url("../images/back.png") center 62% / cover no-repeat; }
+.v2-hero::before { background: url("../images/back.webp") center 62% / cover no-repeat; }
 .v2-hero::after { background: linear-gradient(90deg, rgba(16,19,24,.94) 0%, rgba(16,19,24,.82) 34%, rgba(16,19,24,.26) 72%, rgba(16,19,24,.14) 100%), linear-gradient(0deg, rgba(16,19,24,.35), transparent 40%); }
 .v2-hero-grid { position: relative; z-index: 1; width: min(var(--v2-width), calc(100% - 48px)); }
 .v2-hero-copy { max-width: 620px; }
