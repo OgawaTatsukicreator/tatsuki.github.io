@@ -11,6 +11,8 @@ import html
 import json
 from pathlib import Path
 import re
+import subprocess
+import sys
 import tempfile
 import urllib.parse
 import urllib.request
@@ -101,6 +103,7 @@ def main():
             if hashlib.sha256(data).hexdigest() != font["sha256"]:
                 raise SystemExit(f"Font hash differs: {font['file']}")
         print("Font coverage and file hashes match the current site.")
+        subprocess.run([sys.executable, str(root / "scripts/build_home_styles.py"), "--check"], check=True)
         return
 
     from fontTools import subset
@@ -168,6 +171,8 @@ def main():
     for page, rules in declarations.items():
         (root / "css" / f"fonts-{page}.css").write_text("\n\n".join(rules) + "\n", encoding="utf-8")
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    # Refresh Home's inline font URLs before removing any superseded files.
+    subprocess.run([sys.executable, str(root / "scripts/build_home_styles.py")], check=True)
     current_files = {font["file"] for font in manifest["fonts"]}
     for old in previous["fonts"]:
         if old["file"] not in current_files:
